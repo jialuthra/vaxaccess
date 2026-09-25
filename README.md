@@ -1,93 +1,156 @@
 # cs373-fall-2026-18
 
+ VaxAccess
 
+**Connecting underserved communities to vaccine sites, vaccine information, and volunteer opportunities nationwide.**
 
-## Getting started
+VaxAccess is a civic-engagement platform that shows where vaccine access is weakest across the United States, focusing on rural counties and low-income communities with limited access to transportation, insurance, or provider coverage. It brings together federally-supported health center data, CDC vaccine and coverage data, and volunteer opportunities from national service organizations.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Residents can find a nearby place to get vaccinated and understand what they need. Community members can see where access is weakest nationally and act on it — by volunteering, contributing skills, and/or donating.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Project information
 
-## Add your files
+| | |
+|---|---|
+| Canvas / Discord group | IDB-18 |
+| Project name | VaxAccess |
+| GitLab repository | cs373-fall-2026-18 |
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Contents
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/nifemisoyemi/cs373-fall-2026-18.git
-git branch -M main
-git push -uf origin main
-```
+- [Questions the site answers](#questions-the-site-answers)
+- [Data models](#data-models)
+- [Model relationships](#model-relationships)
+- [Data sources](#data-sources)
+- [Civic engagement](#civic-engagement)
+- [Team](#team)
 
-## Integrate with your tools
+## Questions the site answers
 
-* [Set up project integrations](https://gitlab.com/nifemisoyemi/cs373-fall-2026-18/-/settings/integrations)
+**1. Where's the nearest place to get vaccinated, and can I access it?**
+Users filter/sort Sites by cost, distance, and accessibility to find providers near underserved zip codes.
 
-## Collaborate with your team
+**2. Which vaccines have the lowest coverage, and what do I need to know about them?**
+Users sort Vaccines by national coverage rate and filter by age group to identify the biggest gaps.
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+**3. How can I help close the gap with my time, talent, or money?**
+Users find VolunteerOpportunities tied to low-access sites and sign up directly.
 
-## Test and Deploy
+## Data models
 
-Use the built-in continuous integration in GitLab.
+VaxAccess has three interconnected models. Every instance links to instances of the other two models, has at least five filterable/sortable card attributes, and includes at least two types of media.
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+| Model | Represents | Estimated instances |
+|---|---|---|
+| Site | HRSA-funded health centers, FQHCs, and vaccine providers nationwide | ~15,000 |
+| Vaccine | CDC-tracked vaccines and the diseases they prevent | ~30 |
+| VolunteerOpportunity | Volunteer roles supporting vaccine access, sourced from national service networks | ~5,000 |
 
-***
+### Site
 
-# Editing this README
+Each Site is a HRSA-supported health center, FQHC, or vaccine-administering location. Health center "look-alikes" are included as a subtype rather than a separate model.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+**Card attributes (filterable / sortable)**
 
-## Suggestions for a good README
+| Attribute | Description |
+|---|---|
+| Cost | Free, sliding scale, or insurance-only |
+| Vaccines offered | Count and list of vaccines available on-site |
+| Distance from underserved area | Proximity to the nearest medically underserved area/HPSA |
+| Accessibility | Walk-in availability, languages spoken on-site |
+| Community need score | Based on HPSA/MUA designation for the surrounding area |
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+**Additional attributes:** address, coordinates, hours, phone number, site type (FQHC / look-alike / mobile unit), parent organization/grantee.
 
-## Name
-Choose a self-explaining name for your project.
+**Connections:** Each site links to the vaccines offered there and to the volunteer opportunities hosted at or supporting that site.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+**Media:**
+- Interactive map showing the site's location with directions
+- Photo of the facility
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Vaccine
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Each Vaccine is a CDC-tracked immunization — for example flu, COVID-19, MMR, HPV, Tdap, shingles, or RSV.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+**Card attributes (filterable / sortable)**
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+| Attribute | Description |
+|---|---|
+| Recommended age group | E.g. infant, adolescent, adult, senior |
+| National coverage rate | From CDC VaxView data |
+| Number of doses | Dose schedule required |
+| Disease category | Respiratory, childhood, travel, etc. |
+| Side effect severity | Mild or moderate, per CDC guidance |
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+**Additional attributes:** description of the disease prevented, ACIP recommendation status, typical cost range, manufacturer(s).
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+**Connections:** Each Vaccine links to the Sites that offer it and to the volunteer opportunities focused on educating people about it.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+**Media:**
+- CDC explainer video
+- Dosing/schedule infographic
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### VolunteerOpportunity
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Each VolunteerOpportunity is a role posted through a national volunteer network in support of vaccine access — clinic staffing, transportation, interpretation, outreach, or fundraising.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+**Card attributes (filterable / sortable)**
 
-## License
-For open source projects, say how it is licensed.
+| Attribute | Description |
+|---|---|
+| Role type | Medical, driver, interpreter, admin, fundraising |
+| Time commitment | One-time or recurring |
+| Spots remaining | Open slots left for the opportunity |
+| Location / zip | Where the opportunity takes place |
+| Sign-up deadline | Date by which volunteers must register |
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**Additional attributes:** skills required, hosting organization, cause area, description.
+
+**Connections:** Each opportunity links to the Site it supports and the Vaccine(s) it's tied to (e.g. an education or outreach role for a specific vaccine).
+
+**Media:**
+- Sign-up activity feed showing recent volunteers
+- Short volunteer testimonial video
+
+## Model relationships
+
+Users can move between all three models from any detail page.
+
+| Starting point | Connected models | Example user journey |
+|---|---|---|
+| Site | Vaccines offered there; VolunteerOpportunities hosted there | Find a low-access clinic, see which vaccines it offers, and find a way to volunteer there. |
+| Vaccine | Sites where it's offered; VolunteerOpportunities focused on it | Look up a vaccine with low coverage, see where to get it, and find outreach opportunities promoting it. |
+| VolunteerOpportunity | Site it supports; Vaccine(s) it's tied to | Discover a volunteer role, see which site it supports, and learn which vaccine(s) the work is helping promote. |
+
+## Data sources
+
+| # | Source | Primary model | Collection method | URL |
+|---|---|---|---|---|
+| 1 | HRSA Health Center Service Delivery Sites | Site | REST API / data download | data.hrsa.gov |
+| 2 | HRSA Health Professional Shortage Areas (HPSA) / Medically Underserved Areas | Site | REST API / data download | data.hrsa.gov |
+| 3 | CDC Vaccines.gov / VaccineFinder Provider Locations | Site | REST API (Socrata) | data.cdc.gov |
+| 4 | CDC VaxView (ChildVaxView, COVIDVaxView) coverage data | Vaccine | Data download / dashboard export | cdc.gov/vaccines/data-reporting |
+| 5 | CDC Immunization Schedules & Vaccine Information Statements | Vaccine | Web scraping / structured pages | cdc.gov/vaccines/hcp/imz-schedules |
+| 6 | VolunteerMatch (Idealist) Open Network API | VolunteerOpportunity | REST API | developers.volunteermatch.org |
+| 7 | AmeriCorps / Volunteer.gov listings | VolunteerOpportunity | Web scraping | volunteer.gov |
+
+### How the data fits together
+
+Health center sites are matched to HPSA/MUA designations to determine each Site's community need score. Vaccine coverage and schedule data from CDC VaxView and the CDC immunization schedules are linked to each Vaccine by name. Volunteer opportunities scraped or pulled from VolunteerMatch and AmeriCorps/Volunteer.gov are matched to the Sites and Vaccines they support based on the organization and cause area listed in each posting. HPSA/MUA designations and coverage rates are labeled as area-level indicators, not as direct measures of whether a specific individual lacks access.
+
+## Civic engagement
+
+VaxAccess helps users find where vaccine access is weakest and gives them concrete ways to help.
+
+| Contribution | How users can help |
+|---|---|
+| Time | Volunteer at vaccine clinics, transportation drives, and community outreach events |
+| Talent | Interpret, provide medical staffing, or run education/outreach campaigns |
+| Money | Donate to organizations running VolunteerOpportunities in underserved areas |
+
+## Team
+- Nifemi Soyemi
+- Enzo Sagun
+- Luke Yan
+- Alex Bui
+- Jia Luthra
