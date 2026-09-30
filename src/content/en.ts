@@ -79,6 +79,18 @@ export const en = {
       'Each vaccine category summarizes who it is generally for, how it is given and its dose schedule, based on CDC guidance. Details link to the CDC sources and to the historical Austin sites and volunteer activities where that vaccine was offered.',
   },
 
+  vaccineDetail: {
+    factsHeading: 'At a glance',
+    aboutHeading: 'About this vaccine',
+    providerNoteHeading: 'Check with a provider',
+    providerNote:
+      'This is general information from CDC, not medical advice. Whether and when you should get this vaccine depends on your age, health and vaccination history, so confirm eligibility and timing with a qualified provider.',
+    videoHeading: 'Video',
+    sitesHeading: 'Sites with documented vaccination activity',
+    opportunitiesHeading: 'Volunteer opportunities that supported this vaccine',
+    linksHeading: 'Official medical information',
+  },
+
   currentResources: {
     heading: 'Looking for a vaccine now?',
     body: 'The sites below are dated historical examples of community vaccination work, not a current appointment directory. For current clinics, eligibility and costs, use Austin Public Health.',

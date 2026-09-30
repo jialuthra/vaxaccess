@@ -12,7 +12,6 @@ Still placeholders unless noted:
 | --- | --- | --- |
 | `HomePage.tsx` | Jia | #23 |
 | `SitesPage.tsx`, `SiteDetailPage.tsx` (done) | Nifemi | #17, #20 |
-| `VaccinesPage.tsx`, `VaccineDetailPage.tsx` | Alex | #18, #21 |
 | `OpportunitiesPage.tsx`, `OpportunityDetailPage.tsx` | Enzo | #19, #22 |
 | `AboutPage.tsx` | Enzo | #34 |
 
