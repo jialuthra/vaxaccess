@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import ModelListing from '../components/ModelListing.tsx';
 import { en } from '../content/en.ts';
 import { getOpportunityCards, getCatalogSummary } from '../services/catalog.ts';
@@ -6,7 +5,7 @@ import { getOpportunityCards, getCatalogSummary } from '../services/catalog.ts';
 export default function OpportunitiesPage() {
   const strings = en.models.opportunities;
   const summary = getCatalogSummary('opportunities');
-  const cards = useMemo(() => getOpportunityCards(), []);
+  const cards = getOpportunityCards();
  
   return (
     <div className="container py-4">

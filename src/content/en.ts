@@ -84,5 +84,45 @@ export const en = {
       `We couldn't find that ${singular}. Here are all ${pluralNoun} instead.`,
   },
 
+  opportunityDetail: {
+    pastNotice: 'Past activity — not accepting signups through this listing.',
+    viewHistoricalSource: 'View historical source',
+    exploreOrganizer: 'Explore organizer information',
+    signUp: 'Sign up',
+    detailsHeading: 'Details',
+    dateLabel: 'Date',
+    statusLabel: 'Status',
+    noEndDate: 'Ongoing — no end date',
+    dateNotStated: 'Date not stated',
+    aboutHeading: 'About this opportunity',
+    locationHeading: 'Location',
+    relatedSites: 'Related sites',
+    relatedVaccines: 'Related vaccines',
+  },
+
+  media: {
+    photoCredit: 'Photo',
+    license: 'License',
+    viewFullImage: 'View full image',
+    mapTitle: (label: string) => `Map of ${label}`,
+    mapUnavailable: 'Map unavailable: location coordinates are not recorded yet.',
+    mapAttribution: '© OpenStreetMap contributors',
+    openMap: 'Open in OpenStreetMap',
+    videoTitle: (title: string, publisher: string) => `${title} (${publisher})`,
+    watchVideo: (publisher: string) => `Watch on YouTube (${publisher})`,
+  },
+
+  sources: {
+    heading: 'Sources',
+    restApi: 'REST API',
+    published: (date: string) => `Published ${date}`,
+    retrieved: (date: string) => `Retrieved ${date}`,
+    verifiedOn: (date: string) => `Last verified ${date}`,
+  },
+
+  vaccinesPage: {
+    intro: 'Vaccines offered at the documented Austin-area sites and volunteer activities.',
+  },
+
   notConfigured: 'Not configured',
 };

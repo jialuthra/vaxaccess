@@ -8,5 +8,6 @@
   "tests/unit/listing.test.ts": "lukeyawn",
   "tests/unit/media.test.tsx": "nifemisoyemi",
   "tests/unit/routes.test.tsx": "lukeyawn",
-  "tests/unit/validate-data.test.ts": "atb2923"
+  "tests/unit/validate-data.test.ts": "atb2923",
+  "tests/unit/OpportunitiesPage.test.tsx": "j.enzosagun"
 }
