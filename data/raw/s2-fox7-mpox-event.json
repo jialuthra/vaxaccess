@@ -3,10 +3,10 @@
   "url": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health",
   "requestUrl": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health",
   "finalUrl": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health",
-  "retrievedAt": "2026-09-30T20:25:27.707Z",
+  "retrievedAt": "2026-09-30T20:27:48.563Z",
   "status": 200,
   "contentType": "text/html; charset=utf-8",
-  "bodySha256": "d55f51b3f9acdaf4bb88ce0b9a8c4266fb9c5d40aac6226fb4ad5cd1ea07d2c9",
+  "bodySha256": "2f4cbb86d95d562b0e03afae43afa568949fc2bbcc8ad806c918d90211bbeb01",
   "title": "APH provides free Mpox vaccines as global concern grows | FOX 7 Austin",
   "publishedAt": "2024-08-24",
   "fieldsDerived": "Mpox event date, venue, Medical Reserve Corps participation and event price",
@@ -20,6 +20,8 @@
     "They set up a vaccination clinic at the Montopolis Recreation Center.",
     "Carmen is one of dozens in line for the Mpox vaccine, also called Jynneos .",
     "Mpox: World Health Organization raises alarm",
-    "Mpox, formerly known as monkeypox, is raising concerns among health officials."
+    "Mpox, formerly known as monkeypox, is raising concerns among health officials.",
+    "Free at-home COVID-19 test program will restart late September",
+    "A little more than a week ago, the World Health Organization declared Mpox a global health emergency."
   ]
 }

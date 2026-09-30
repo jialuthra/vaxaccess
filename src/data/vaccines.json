@@ -5,7 +5,7 @@
     "summary": "Seasonal vaccines that protect against influenza, generally recommended for people aged six months and older.",
     "descriptionParagraphs": [
       "Influenza is a contagious respiratory illness caused by influenza viruses. CDC recommends seasonal flu vaccination for most people aged six months and older, with some products limited to particular age groups or health histories.",
-      "Flu vaccines come as inactivated, recombinant or live attenuated products. Most are given by injection; an eligible nasal-spray formulation is also available. Children may need two doses in their first vaccination season. Confirm the right product and timing with a qualified provider."
+      "Flu vaccines come as inactivated, recombinant or live attenuated products. Most are given by injection; an eligible nasal-spray formulation is also available. Some children need two doses in a season. Confirm the right product and timing with a qualified provider."
     ],
     "photoId": "vaccine-influenza",
     "sourceIds": ["s8a-cdc-flu-basics", "s8b-cdc-flu-key-facts"],
@@ -14,13 +14,13 @@
       "ageGroup": ["s8a-cdc-flu-basics"],
       "vaccineType": ["s8b-cdc-flu-key-facts"],
       "administrationMethod": ["s8b-cdc-flu-key-facts"],
-      "scheduleSummary": ["s8a-cdc-flu-basics"]
+      "scheduleSummary": ["s8a-cdc-flu-basics", "s8b-cdc-flu-key-facts"]
     },
     "externalLinks": [
       { "label": "CDC: Flu vaccines", "url": "https://www.cdc.gov/flu/vaccines/index.html" },
       { "label": "CDC: Flu vaccine formulations", "url": "https://www.cdc.gov/flu/vaccines/keyfacts.html" }
     ],
-    "verifiedOn": "2026-09-29",
+    "verifiedOn": "2026-09-30",
     "diseasesPrevented": ["Influenza"],
     "ageGroup": "Generally people aged 6 months and older, with product-specific restrictions",
     "vaccineType": "Inactivated, recombinant or live attenuated, depending on product",
@@ -31,10 +31,10 @@
   {
     "id": "covid-19",
     "name": "COVID-19",
-    "summary": "Vaccines that protect against COVID-19; eligibility and timing depend on age, product, risk and current CDC guidance.",
+    "summary": "Vaccines that protect against COVID-19; CDC recommends them for people aged 6 months and older through individual decision-making with a provider.",
     "descriptionParagraphs": [
-      "COVID-19 is a respiratory illness caused by the SARS-CoV-2 virus. Recommendations for who should receive a COVID-19 vaccine, and when, depend on age, the specific product, individual risk and current clinical guidance, which CDC updates for each season.",
-      "Available products use different approaches, including mRNA and protein-based vaccines, and all are given by injection. Because the schedule changes over time, VaxAccess does not publish a fixed seasonal schedule; follow CDC's current guidance and confirm with a qualified provider."
+      "COVID-19 is a respiratory illness caused by the SARS-CoV-2 virus. CDC recommends the current season's COVID-19 vaccine for people aged 6 months and older, based on individual decision-making with a provider, and describes it as especially important for people aged 65 and older, people at high risk for severe COVID-19 and people who have never been vaccinated. CDC updates this guidance for each season.",
+      "Products in the United States are either mRNA or protein subunit vaccines, and all are given by injection. Because the schedule changes over time, VaxAccess does not publish a fixed seasonal schedule; follow CDC's current guidance and confirm with a qualified provider."
     ],
     "photoId": "vaccine-covid-19",
     "sourceIds": ["s9a-cdc-covid-stay-up-to-date", "s9b-cdc-covid-how-they-work"],
@@ -47,12 +47,13 @@
     },
     "externalLinks": [
       { "label": "CDC: Staying up to date with COVID-19 vaccines", "url": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html" },
-      { "label": "CDC: How COVID-19 vaccines work", "url": "https://www.cdc.gov/covid/vaccines/how-they-work.html" }
+      { "label": "CDC: How COVID-19 vaccines work", "url": "https://www.cdc.gov/covid/vaccines/how-they-work.html" },
+      { "label": "CDC: Current interim clinical considerations for COVID-19 vaccines", "url": "https://www.cdc.gov/covid/hcp/vaccine-considerations/index.html" }
     ],
-    "verifiedOn": "2026-09-29",
+    "verifiedOn": "2026-09-30",
     "diseasesPrevented": ["COVID-19"],
-    "ageGroup": "Depends on age, product, risk and current guidance",
-    "vaccineType": "Product-dependent, including mRNA and protein-based vaccines",
+    "ageGroup": "People aged 6 months and older, through individual decision-making; especially important for people 65 and older or at high risk",
+    "vaccineType": "mRNA or protein subunit, depending on product",
     "administrationMethod": "Injection",
     "scheduleSummary": "Timing and number of doses depend on current guidance and individual history",
     "videoId": "aph-getting-immunized"
@@ -62,8 +63,8 @@
     "name": "Mpox",
     "summary": "Vaccination for people who meet mpox exposure or risk criteria; the documented Austin clinic used the two-dose JYNNEOS vaccine.",
     "descriptionParagraphs": [
-      "Mpox is a viral disease that spreads mainly through close, often skin-to-skin, contact. CDC recommends vaccination for people who meet exposure or risk criteria; administration by age requires review by a provider.",
-      "The Austin clinic documented on this site used JYNNEOS, a live, nonreplicating vaccine. It is given by subcutaneous injection or, where eligible, intradermal injection. The cited CDC guidance describes two doses given four weeks apart. Confirm eligibility and timing with a qualified provider."
+      "Mpox is a viral disease. CDC recommends vaccination for people who meet its exposure or risk criteria, and advises that vaccinated people should still avoid close, skin-to-skin contact with someone who has mpox. Use in people younger than 18 requires review by a provider.",
+      "The Austin clinic documented on this site used JYNNEOS, a live, nonreplicating vaccine. It is given by subcutaneous injection or, where eligible, intradermal injection; people younger than 18 receive it subcutaneously. CDC recommends two doses, the second four weeks (28 days) after the first. Confirm eligibility and timing with a qualified provider."
     ],
     "photoId": "vaccine-mpox",
     "sourceIds": ["s10a-cdc-mpox-vaccination", "s10b-mmwr-jynneos", "s2-fox7-mpox-event"],
@@ -78,12 +79,12 @@
       { "label": "CDC: Mpox vaccines", "url": "https://www.cdc.gov/monkeypox/vaccines/" },
       { "label": "CDC MMWR: JYNNEOS", "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm" }
     ],
-    "verifiedOn": "2026-09-29",
+    "verifiedOn": "2026-09-30",
     "diseasesPrevented": ["Mpox"],
     "ageGroup": "People meeting exposure or risk criteria; age-specific use requires provider review",
     "vaccineType": "Live, nonreplicating (JYNNEOS, used at the documented event)",
     "administrationMethod": "Subcutaneous, or eligible intradermal, injection",
-    "scheduleSummary": "Two doses four weeks apart, per cited CDC guidance",
+    "scheduleSummary": "Two doses, four weeks (28 days) apart",
     "videoId": "aph-getting-immunized"
   }
 ]

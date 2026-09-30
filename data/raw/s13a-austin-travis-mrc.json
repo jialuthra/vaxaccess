@@ -3,10 +3,10 @@
   "url": "https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps",
   "requestUrl": "https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps",
   "finalUrl": "https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps",
-  "retrievedAt": "2026-09-30T20:25:29.638Z",
+  "retrievedAt": "2026-09-30T20:27:49.894Z",
   "status": 200,
   "contentType": "text/html; charset=UTF-8",
-  "bodySha256": "3337c54ea54bd7ec2264dc46bc33a066f6553f0ab205184a1bd37b40199efc47",
+  "bodySha256": "dc6ad581cc5811d1aeca1924ece5bc3fb918d22ef9eb54e46f6ee10323c2b85e",
   "title": "Austin-Travis County Medical Reserve Corps | Austin Public Health | AustinTexas.gov",
   "publishedAt": null,
   "fieldsDerived": "Organizer information; not a promise of an available shift",
@@ -20,6 +20,8 @@
     "Volunteers are a part of a local community-based unit that works to improve emergency response capabilities, reduce potential public health risks and vulnerabilities, and build resiliency within a community.",
     "MRC volunteers also regularly contribute to community preparedness —engaging in activities like health fairs and assisting with community vaccination clinics.",
     "WHO volunteers with the MRC?",
-    "Austin/Travis County MRC is open to all volunteers over the age of 18."
+    "Austin/Travis County MRC is open to all volunteers over the age of 18.",
+    "Volunteers can include medical and public health professionals as well as any other community members without healthcare backgrounds who wish to donate their time and expertise.",
+    "WHY should I volunteer?"
   ]
 }

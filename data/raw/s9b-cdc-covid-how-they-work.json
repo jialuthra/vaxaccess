@@ -3,7 +3,7 @@
   "url": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
   "requestUrl": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
   "finalUrl": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
-  "retrievedAt": "2026-09-30T20:25:29.461Z",
+  "retrievedAt": "2026-09-30T20:27:49.660Z",
   "status": 200,
   "contentType": "text/html",
   "bodySha256": "1eedca164a42ba502ed7f24b6d0907af95a66123222fc52e59ad0901b2a7e640",
@@ -20,6 +20,8 @@
     "Once inside, they use the cells’ machinery to produce a harmless piece of what is called the spike protein.",
     "The spike protein is found on the surface of the virus that causes COVID-19.",
     "After the protein piece is made, our cells break down the mRNA and remove it, leaving the body as waste.",
+    "Next, our cells display the spike protein piece on their surface.",
+    "Our immune system recognizes that the protein does not belong there.",
     "Protein subunit vaccines (Novavax)"
   ]
 }

@@ -7,7 +7,7 @@
       "sourceAddress": "7311 Decker Lane, Austin, TX 78724",
       "endpoint": "onelineaddress",
       "requestUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=7311+Decker+Lane%2C+Austin%2C+TX+78724",
-      "retrievedAt": "2026-09-30T20:25:30.082Z",
+      "retrievedAt": "2026-09-30T20:27:53.552Z",
       "status": 200,
       "benchmark": "Public_AR_Current",
       "accepted": {
@@ -64,7 +64,7 @@
       "sourceAddress": "1200 Montopolis Drive, Austin, TX 78741",
       "endpoint": "onelineaddress",
       "requestUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=1200+Montopolis+Drive%2C+Austin%2C+TX+78741",
-      "retrievedAt": "2026-09-30T20:25:30.432Z",
+      "retrievedAt": "2026-09-30T20:27:53.829Z",
       "status": 200,
       "benchmark": "Public_AR_Current",
       "accepted": {
@@ -121,7 +121,7 @@
       "sourceAddress": "100 W Rundberg Lane, Austin, TX 78753",
       "endpoint": "onelineaddress",
       "requestUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=100+W+Rundberg+Lane%2C+Austin%2C+TX+78753",
-      "retrievedAt": "2026-09-30T20:25:30.660Z",
+      "retrievedAt": "2026-09-30T20:27:54.132Z",
       "status": 200,
       "benchmark": "Public_AR_Current",
       "accepted": {

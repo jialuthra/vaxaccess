@@ -3,7 +3,7 @@
   "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
   "requestUrl": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
   "finalUrl": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
-  "retrievedAt": "2026-09-30T20:25:29.518Z",
+  "retrievedAt": "2026-09-30T20:27:49.801Z",
   "status": 200,
   "contentType": "text/html",
   "bodySha256": "e6366f40ca30766e19b376ea838f847e7ddcecf67e1cec50ce2fc17a6311f6ee",
@@ -20,6 +20,8 @@
     "On February 22, 2023, ACIP voted to recommend the 2-dose JYNNEOS vaccination series**** for persons aged ≥18 years who are considered to be at risk for mpox during an mpox outbreak. †††† On October 25, 2023, ACIP voted to recommend the 2-dose JYNNEOS vaccination series for persons aged ≥18 years who are at risk for acquiring mpox during the ongoing clade IIb outbreak that began in 2022.",
     "No human data regarding safety of JYNNEOS administration during pregnancy or breastfeeding are available; however, JYNNEOS is a nonreplicating vaccine, and data from animal models, including rats and rabbits, have shown no evidence of harm to a developing fetus ( Table 1 ).",
     "JYNNEOS is recommended as a 2-dose subcutaneous vaccination series, with the second dose administered 28 days after the first.",
-    "At this time, persons who have been vaccinated with the 2-dose JYNNEOS series do not require an additional dose, nor do they need to be revaccinated during a future outbreak."
+    "At this time, persons who have been vaccinated with the 2-dose JYNNEOS series do not require an additional dose, nor do they need to be revaccinated during a future outbreak.",
+    "Although the 2-dose JYNNEOS series may not be as effective in severely immunocompromised persons, it is not known whether additional doses will improve effectiveness; in addition, some data have suggested that more than 2 doses may cause increased reactogenicity ( 22 ) and for this reason, additional doses are not recommended.",
+    "Because JYNNEOS behaves like a nonlive virus vaccine and is recommended as a 2-dose series, its role as postexposure prophylaxis is poorly understood; studies are ongoing to understand VE of JYNNEOS postexposure vaccination."
   ]
 }

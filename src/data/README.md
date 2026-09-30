@@ -15,5 +15,4 @@ Unknown facts are written as "Not stated in the historical source."; never fill 
 
 ## Still to do
 
-- Verify the vaccine clinical text against the cited CDC pages (Alex, #27)
 - `team.json` with member profiles (Jia, #42)

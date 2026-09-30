@@ -3,7 +3,7 @@
   "url": "https://www.cdc.gov/flu/vaccines/index.html",
   "requestUrl": "https://www.cdc.gov/flu/vaccines/index.html",
   "finalUrl": "https://www.cdc.gov/flu/vaccines/index.html",
-  "retrievedAt": "2026-09-30T20:25:29.258Z",
+  "retrievedAt": "2026-09-30T20:27:49.503Z",
   "status": 200,
   "contentType": "text/html",
   "bodySha256": "b28034891e3dae1f61d11541a9157769b99f65a1919252a0665e9953046820c2",

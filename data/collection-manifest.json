@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T20:25:30.826Z",
+  "generatedAt": "2026-09-30T20:27:54.527Z",
   "userAgent": "VaxAccess-collector/0.1 (+https://gitlab.com/nifemisoyemi/cs373-fall-2026-18)",
   "sources": [
     {
@@ -7,7 +7,7 @@
       "url": "https://sites.utexas.edu/sonstudentservices/2020/10/30/volunteer-opportunity-flu-vaccination/",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:24.462Z",
+      "retrievedAt": "2026-09-30T20:27:46.452Z",
       "publishedAt": "2020-10-30T14:22:46+00:00",
       "rawPath": "data/raw/s1-ut-flu-volunteer-notice.json",
       "ok": true,
@@ -18,18 +18,18 @@
       "url": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:27.707Z",
+      "retrievedAt": "2026-09-30T20:27:48.563Z",
       "publishedAt": "2024-08-24",
       "rawPath": "data/raw/s2-fox7-mpox-event.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s3-aph-commission-backup",
       "url": "https://bandc.crccheck.com/lesbian-gay-bisexual-transgender-and-queer-quality-life-advisory-commission/431865-backup/",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:27.827Z",
+      "retrievedAt": "2026-09-30T20:27:48.732Z",
       "publishedAt": null,
       "rawPath": "data/raw/s3-aph-commission-backup.json",
       "ok": true,
@@ -40,7 +40,7 @@
       "url": "https://nursing.utexas.edu/news/honesto-transparente-y-empatico-mobile-vaccination-clinics-reach-austin-area-hispanic",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:28.205Z",
+      "retrievedAt": "2026-09-30T20:27:48.936Z",
       "publishedAt": "2021-10-18T07:00:00-0500",
       "rawPath": "data/raw/s4-ut-nursing-vamos.json",
       "ok": true,
@@ -51,7 +51,7 @@
       "url": "https://www.traviscountytx.gov/exposition-center/rental",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:28.279Z",
+      "retrievedAt": "2026-09-30T20:27:49.012Z",
       "publishedAt": null,
       "rawPath": "data/raw/s5-travis-county-expo.json",
       "ok": true,
@@ -62,7 +62,7 @@
       "url": "https://www.austintexas.gov/parks/locations/montopolis-recreation-and-community-center",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:28.386Z",
+      "retrievedAt": "2026-09-30T20:27:49.126Z",
       "publishedAt": null,
       "rawPath": "data/raw/s6-montopolis-facility.json",
       "ok": true,
@@ -73,7 +73,7 @@
       "url": "https://austinspanishfirsttx.adventistchurch.org/",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:28.929Z",
+      "retrievedAt": "2026-09-30T20:27:49.299Z",
       "publishedAt": "2025-06-03T17:16:15-04:00",
       "rawPath": "data/raw/s7-austin-spanish-first-sda.json",
       "ok": true,
@@ -84,7 +84,7 @@
       "url": "https://www.cdc.gov/flu/vaccines/index.html",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.258Z",
+      "retrievedAt": "2026-09-30T20:27:49.503Z",
       "publishedAt": "2026-09-01T17:06:10Z",
       "rawPath": "data/raw/s8a-cdc-flu-basics.json",
       "ok": true,
@@ -95,84 +95,84 @@
       "url": "https://www.cdc.gov/flu/vaccines/keyfacts.html",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.375Z",
+      "retrievedAt": "2026-09-30T20:27:49.593Z",
       "publishedAt": "2026-09-01T17:08:39Z",
       "rawPath": "data/raw/s8b-cdc-flu-key-facts.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s9a-cdc-covid-stay-up-to-date",
       "url": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.410Z",
+      "retrievedAt": "2026-09-30T20:27:49.632Z",
       "publishedAt": "2026-09-28T12:14:35Z",
       "rawPath": "data/raw/s9a-cdc-covid-stay-up-to-date.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 9
     },
     {
       "id": "s9b-cdc-covid-how-they-work",
       "url": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.461Z",
+      "retrievedAt": "2026-09-30T20:27:49.660Z",
       "publishedAt": "2025-09-05T13:58:06Z",
       "rawPath": "data/raw/s9b-cdc-covid-how-they-work.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s10a-cdc-mpox-vaccination",
       "url": "https://www.cdc.gov/monkeypox/vaccines/",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.491Z",
+      "retrievedAt": "2026-09-30T20:27:49.773Z",
       "publishedAt": "2026-01-23T15:22:40Z",
       "rawPath": "data/raw/s10a-cdc-mpox-vaccination.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s10b-mmwr-jynneos",
       "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.518Z",
+      "retrievedAt": "2026-09-30T20:27:49.801Z",
       "publishedAt": "2025-06-18",
       "rawPath": "data/raw/s10b-mmwr-jynneos.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s12-aph-immunizations",
       "url": "https://www.austintexas.gov/health/programs/immunizations",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.602Z",
+      "retrievedAt": "2026-09-30T20:27:49.867Z",
       "publishedAt": null,
       "rawPath": "data/raw/s12-aph-immunizations.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s13a-austin-travis-mrc",
       "url": "https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.638Z",
+      "retrievedAt": "2026-09-30T20:27:49.894Z",
       "publishedAt": null,
       "rawPath": "data/raw/s13a-austin-travis-mrc.json",
       "ok": true,
-      "excerptCount": 10
+      "excerptCount": 12
     },
     {
       "id": "s13b-ut-mrc",
       "url": "https://sites.utexas.edu/utmrc/",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:29.796Z",
+      "retrievedAt": "2026-09-30T20:27:49.921Z",
       "publishedAt": null,
       "rawPath": "data/raw/s13b-ut-mrc.json",
       "ok": true,
@@ -183,7 +183,7 @@
       "url": "https://nursing.utexas.edu/",
       "kind": "html",
       "status": 200,
-      "retrievedAt": "2026-09-30T20:25:30.053Z",
+      "retrievedAt": "2026-09-30T20:27:53.482Z",
       "publishedAt": null,
       "rawPath": "data/raw/s14-ut-nursing.json",
       "ok": true,
@@ -193,7 +193,7 @@
   "rest": {
     "id": "s11-census-geocoder",
     "rawPath": "data/raw/s11-census-geocoder.json",
-    "retrievedAt": "2026-09-30T20:25:30.660Z",
+    "retrievedAt": "2026-09-30T20:27:54.132Z",
     "sites": [
       {
         "siteId": "travis-county-exposition-center",

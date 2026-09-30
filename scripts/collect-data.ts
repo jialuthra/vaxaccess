@@ -26,7 +26,7 @@ const CENSUS_BENCHMARK = 'Public_AR_Current';
 // An honest, descriptive client name. CDC's CDN rejects Node's default agent string.
 const USER_AGENT = 'VaxAccess-collector/0.1 (+https://gitlab.com/nifemisoyemi/cs373-fall-2026-18)';
 const TIMEOUT_MS = 20_000;
-const MAX_EXCERPTS = 10;
+const MAX_EXCERPTS = 12;
 const MAX_EXCERPT_LENGTH = 400;
 
 /**
@@ -42,10 +42,10 @@ const EXCERPT_KEYWORDS: Record<string, string[]> = {
   's6-montopolis-facility': ['1200 montopolis', 'montopolis dr', 'hours'],
   's7-austin-spanish-first-sda': ['rundberg', 'austin, tx', 'map embed'],
   's8a-cdc-flu-basics': ['6 months', 'every season', 'two doses', '2 doses', 'nasal', 'shot'],
-  's8b-cdc-flu-key-facts': ['inactivated', 'recombinant', 'live attenuated', 'nasal spray', 'needle', '2 doses', 'two doses', '6 months'],
-  's9a-cdc-covid-stay-up-to-date': ['recommend', 'months', 'clinical', 'guidance', 'up to date'],
+  's8b-cdc-flu-key-facts': ['inactivated', 'recombinant', 'live attenuated', 'nasal spray', 'needle', 'children need two doses', '6 months'],
+  's9a-cdc-covid-stay-up-to-date': ['recommends', '6 months', 'clinical considerations', 'especially important', 'high risk'],
   's9b-cdc-covid-how-they-work': ['mrna', 'protein', 'novavax', 'injection', 'shot'],
-  's10a-cdc-mpox-vaccination': ['jynneos', '2 doses', '4 weeks', '28 days', 'subcutaneous', 'intradermal', 'under 18', 'recommends vaccination'],
+  's10a-cdc-mpox-vaccination': ['jynneos', '2 doses', '4 weeks', '28 days', 'subcutaneous', 'intradermal', 'under 18', 'recommends vaccination', 'skin-to-skin'],
   's10b-mmwr-jynneos': ['nonreplicating', 'non-replicating', 'jynneos', 'two-dose', '2-dose'],
   's12-aph-immunizations': ['immuniz', 'vaccin', 'appointment', 'a to z', 'insur'],
   's13a-austin-travis-mrc': ['medical reserve corps', 'volunteer'],
@@ -212,7 +212,7 @@ function redactContacts(text: string): string {
 }
 
 /**
- * Short passages mentioning the keywords, favoring passages that mention more of them, in
+ * Short passages mentioning the keywords, favoring passages that match more (or longer) ones, in
  * page order. Bounded so evidence never becomes a copy of the article.
  */
 function excerpts(text: string, keywords: readonly string[]): string[] {
@@ -221,7 +221,10 @@ function excerpts(text: string, keywords: readonly string[]): string[] {
   for (const line of text.split('\n')) {
     for (const sentence of line.split(/(?<=[.!?])\s+(?=[A-Z0-9“"])/)) {
       const lower = sentence.toLowerCase();
-      const score = keywords.filter((keyword) => lower.includes(keyword)).length;
+      // Multi-word phrases are more specific than single words, so they weigh more.
+      const score = keywords
+        .filter((keyword) => lower.includes(keyword))
+        .reduce((total, keyword) => total + keyword.split(' ').length, 0);
       if (sentence.length < 20 || score === 0) {
         continue;
       }
