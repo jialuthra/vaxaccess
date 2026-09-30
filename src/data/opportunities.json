@@ -1,0 +1,108 @@
+[
+  {
+    "id": "ut-flu-expo-2020",
+    "name": "UT nursing flu-vaccination support at the Expo Center",
+    "summary": "UT Austin nursing students, supervised by faculty, supported a community flu-vaccination event at the Travis County Exposition Center on November 7, 2020.",
+    "descriptionParagraphs": [
+      "The UT Austin School of Nursing invited nursing students to volunteer at a community flu-vaccination event at the Travis County Exposition Center on November 7, 2020. Students worked under faculty supervision, helping with vaccination and patient education.",
+      "This was a single-day event and is no longer accepting volunteers. The notice does not state shift lengths. To learn about current opportunities, contact the organizer directly."
+    ],
+    "photoId": "opportunity-flu",
+    "sourceIds": ["s1-ut-flu-volunteer-notice", "s14-ut-nursing"],
+    "fieldSources": {
+      "organization": ["s1-ut-flu-volunteer-notice"],
+      "activityType": ["s1-ut-flu-volunteer-notice"],
+      "timeCommitment": ["s1-ut-flu-volunteer-notice"],
+      "requirements": ["s1-ut-flu-volunteer-notice"],
+      "dateLabel": ["s1-ut-flu-volunteer-notice"],
+      "organizerUrl": ["s14-ut-nursing"]
+    },
+    "externalLinks": [
+      { "label": "Historical volunteer notice", "url": "https://sites.utexas.edu/sonstudentservices/2020/10/30/volunteer-opportunity-flu-vaccination/" }
+    ],
+    "verifiedOn": "2026-09-29",
+    "organization": "UT Austin School of Nursing",
+    "activityType": "Supervised vaccination and patient education",
+    "timeCommitment": "Single-day event; shift length not stated in the historical source",
+    "requirements": ["Nursing students supervised by faculty"],
+    "kind": "event",
+    "status": "past",
+    "startDate": "2020-11-07",
+    "endDate": "2020-11-07",
+    "datePrecision": "day",
+    "dateLabel": "November 7, 2020",
+    "applicationUrl": null,
+    "organizerUrl": "https://nursing.utexas.edu/"
+  },
+  {
+    "id": "aph-mpox-montopolis-2024",
+    "name": "Austin–Travis County MRC mpox-clinic support",
+    "summary": "Medical Reserve Corps volunteers supported Austin Public Health's free mpox vaccination clinic at the Montopolis Recreation Center on August 24, 2024.",
+    "descriptionParagraphs": [
+      "On August 24, 2024, the Austin–Travis County Medical Reserve Corps supported Austin Public Health at a free mpox vaccination clinic at the Montopolis Recreation and Community Center, according to a contemporaneous news report and corroborating city material.",
+      "This was a single-day event and is no longer accepting volunteers. The event report does not state shift lengths or the qualifications required of volunteers. The Medical Reserve Corps' current recruitment information is linked below as organizer information, not as an open shift."
+    ],
+    "photoId": "opportunity-mpox",
+    "sourceIds": ["s2-fox7-mpox-event", "s3-aph-commission-backup", "s13a-austin-travis-mrc", "s13b-ut-mrc"],
+    "fieldSources": {
+      "organization": ["s2-fox7-mpox-event", "s3-aph-commission-backup"],
+      "activityType": ["s2-fox7-mpox-event"],
+      "timeCommitment": ["s2-fox7-mpox-event"],
+      "requirements": ["s2-fox7-mpox-event"],
+      "dateLabel": ["s2-fox7-mpox-event"],
+      "organizerUrl": ["s13a-austin-travis-mrc"]
+    },
+    "externalLinks": [
+      { "label": "FOX 7 event report", "url": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health" },
+      { "label": "UT Medical Reserve Corps", "url": "https://sites.utexas.edu/utmrc/" }
+    ],
+    "verifiedOn": "2026-09-29",
+    "organization": "Austin–Travis County Medical Reserve Corps / Austin Public Health",
+    "activityType": "Vaccination-clinic support",
+    "timeCommitment": "Single-day event; shift length not stated in the historical source",
+    "requirements": ["Event-specific volunteer qualifications not stated in the event report"],
+    "kind": "event",
+    "status": "past",
+    "startDate": "2024-08-24",
+    "endDate": "2024-08-24",
+    "datePrecision": "day",
+    "dateLabel": "August 24, 2024",
+    "applicationUrl": null,
+    "organizerUrl": "https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps"
+  },
+  {
+    "id": "vamos-rundberg-2021",
+    "name": "VAMOS community COVID-19 outreach at Rundberg",
+    "summary": "Volunteers supported the UT Austin nursing VAMOS program's recurring COVID-19 vaccination outreach, including at Austin First Spanish SDA Church, documented in 2021.",
+    "descriptionParagraphs": [
+      "VAMOS, a UT Austin School of Nursing program, ran recurring Wednesday COVID-19 vaccination outreach with community volunteers in 2021. The program's outreach included Austin First Spanish SDA Church on West Rundberg Lane.",
+      "The source confirms volunteer participation in the program and outreach at the church; it does not say which volunteers or roles were assigned to that location. This archived program is no longer accepting volunteers through this listing, and its last operating date is not documented."
+    ],
+    "photoId": "opportunity-covid-19",
+    "sourceIds": ["s4-ut-nursing-vamos", "s14-ut-nursing"],
+    "fieldSources": {
+      "organization": ["s4-ut-nursing-vamos"],
+      "activityType": ["s4-ut-nursing-vamos"],
+      "timeCommitment": ["s4-ut-nursing-vamos"],
+      "requirements": ["s4-ut-nursing-vamos"],
+      "dateLabel": ["s4-ut-nursing-vamos"],
+      "organizerUrl": ["s14-ut-nursing"]
+    },
+    "externalLinks": [
+      { "label": "UT nursing report on VAMOS outreach", "url": "https://nursing.utexas.edu/news/honesto-transparente-y-empatico-mobile-vaccination-clinics-reach-austin-area-hispanic" }
+    ],
+    "verifiedOn": "2026-09-29",
+    "organization": "UT Austin School of Nursing / VAMOS",
+    "activityType": "Vaccination outreach and support",
+    "timeCommitment": "Recurring Wednesday outreach; shift length not stated in the historical source",
+    "requirements": ["Event-specific prerequisites not stated"],
+    "kind": "ongoing",
+    "status": "past",
+    "startDate": null,
+    "endDate": null,
+    "datePrecision": "year",
+    "dateLabel": "Historical outreach documented in 2021",
+    "applicationUrl": null,
+    "organizerUrl": "https://nursing.utexas.edu/"
+  }
+]
