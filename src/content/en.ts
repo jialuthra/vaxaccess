@@ -15,6 +15,16 @@ export const en = {
     opportunities: 'Volunteer opportunities',
     about: 'About',
     skipToContent: 'Skip to main content',
+    label: 'Main',
+    menu: 'Menu',
+  },
+
+  footer: {
+    navLabel: 'Footer',
+    explore: 'Explore',
+    project: 'Project',
+    repository: 'Source code on GitLab',
+    tagline: 'Vaccine information and historical community vaccination examples for Austin and Travis County.',
   },
 
   models: {
@@ -75,6 +85,70 @@ export const en = {
     photoSource: 'Photo source',
   },
 
+  vaccinesPage: {
+    intro:
+      'Each vaccine category summarizes who it is generally for, how it is given and its dose schedule, based on CDC guidance. Details link to the CDC sources and to the historical Austin sites and volunteer activities where that vaccine was offered.',
+  },
+
+  vaccineDetail: {
+    factsHeading: 'At a glance',
+    aboutHeading: 'About this vaccine',
+    providerNoteHeading: 'Check with a provider',
+    providerNote:
+      'This is general information from CDC, not medical advice. Whether and when you should get this vaccine depends on your age, health and vaccination history, so confirm eligibility and timing with a qualified provider.',
+    videoHeading: 'Video',
+    sitesHeading: 'Sites with documented vaccination activity',
+    opportunitiesHeading: 'Volunteer opportunities that supported this vaccine',
+    linksHeading: 'Official medical information',
+  },
+
+  currentResources: {
+    heading: 'Looking for a vaccine now?',
+    body: 'The sites below are dated historical examples of community vaccination work, not a current appointment directory. For current clinics, eligibility and costs, use Austin Public Health.',
+    link: "Austin Public Health's current immunization resources",
+    detailLink: 'Find current vaccination services',
+  },
+
+  sitesPage: {
+    intro:
+      'Austin-area places where community vaccination activity was documented. Each site lists who the activity served, what it cost and how people got vaccinated, as far as the historical source states, and links to the related vaccines and volunteer opportunities.',
+  },
+
+  siteDetail: {
+    accessHeading: 'Access details',
+    costPolicy: 'Cost/payment',
+    populationServed: 'Population and eligibility',
+    appointmentMethod: 'Appointment method',
+    documentedActivity: 'Documented activity',
+    historicalNote:
+      'This page describes a documented past event. It does not mean this venue offers vaccinations today, and its normal operating hours are not vaccination hours.',
+    locationHeading: 'Location',
+    mapCaption: (name: string) => `Event-location context: ${name}. The marker shows the address from the source.`,
+    vaccinesHeading: 'Vaccines with documented activity at this site',
+    opportunitiesHeading: 'Volunteer opportunities at this site',
+    linksHeading: 'External links',
+  },
+
+  media: {
+    photoCredit: 'Photo',
+    license: 'License',
+    viewFullImage: 'View full image and source',
+    mapTitle: (label: string) => `OpenStreetMap of ${label}`,
+    mapAttribution: '© OpenStreetMap contributors',
+    openMap: 'Open in OpenStreetMap',
+    mapUnavailable: 'Map coordinates have not been collected yet.',
+    videoTitle: (title: string, publisher: string) => `${title} (${publisher}) video`,
+    watchVideo: (publisher: string) => `Watch on YouTube (${publisher})`,
+  },
+
+  sources: {
+    heading: 'Sources',
+    published: (date: string) => `Published ${date}`,
+    retrieved: (date: string) => `Retrieved ${date}`,
+    restApi: 'REST API',
+    verifiedOn: (date: string) => `Facts on this page verified ${date}.`,
+  },
+
   related: {
     noneDocumented: (noun: string) => `No related ${noun} are documented.`,
   },
@@ -98,30 +172,6 @@ export const en = {
     locationHeading: 'Location',
     relatedSites: 'Related sites',
     relatedVaccines: 'Related vaccines',
-  },
-
-  media: {
-    photoCredit: 'Photo',
-    license: 'License',
-    viewFullImage: 'View full image',
-    mapTitle: (label: string) => `Map of ${label}`,
-    mapUnavailable: 'Map unavailable: location coordinates are not recorded yet.',
-    mapAttribution: '© OpenStreetMap contributors',
-    openMap: 'Open in OpenStreetMap',
-    videoTitle: (title: string, publisher: string) => `${title} (${publisher})`,
-    watchVideo: (publisher: string) => `Watch on YouTube (${publisher})`,
-  },
-
-  sources: {
-    heading: 'Sources',
-    restApi: 'REST API',
-    published: (date: string) => `Published ${date}`,
-    retrieved: (date: string) => `Retrieved ${date}`,
-    verifiedOn: (date: string) => `Last verified ${date}`,
-  },
-
-  vaccinesPage: {
-    intro: 'Vaccines offered at the documented Austin-area sites and volunteer activities.',
   },
 
   notConfigured: 'Not configured',
