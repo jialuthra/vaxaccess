@@ -26,6 +26,8 @@ Phase I is an informational directory. It does not book appointments, accept pay
 - [Model relationships](#model-relationships)
 - [Data sources](#data-sources)
 - [Technology](#technology)
+- [Local setup](#local-setup)
+- [Continuous integration](#continuous-integration)
 - [Civic engagement](#civic-engagement)
 - [Team](#team)
 - [Submission info](#submission-info)
@@ -136,6 +138,62 @@ Photographs come from Wikimedia Commons under their recorded licenses, with cred
 | CI | GitLab CI |
 
 See [DESIGN.md](DESIGN.md) for the full Phase I specification.
+
+## Local setup
+
+**Prerequisites:** Node.js 24 (the version in `.nvmrc`) and npm. `make` is optional.
+
+```sh
+npm ci            # install exactly what package-lock.json specifies
+cp .env.example .env.local   # optional; see below
+npm run dev       # start the Vite dev server
+```
+
+**Configuration.** The frontend reads two public variables, listed in `.env.example`:
+
+| Variable | Value |
+|---|---|
+| `VITE_STATS_URL` | Deployed statistics Lambda function URL |
+| `VITE_POSTMAN_URL` | Published Postman documentation URL |
+
+Both may be left empty during development: the site then renders the Postman link as "Not configured" and statistics as unavailable. Never put a GitLab token or other secret in a `VITE_` variable, since those are bundled into the browser build. Server-only values (`GITLAB_TOKEN`, `GITLAB_PROJECT_PATH`, `CONTRIBUTOR_MAP`) belong in the Lambda configuration; see [docs/deployment.md](docs/deployment.md).
+
+**Tasks.** Each npm script has a matching `make` target (for example, `make test-unit`).
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Development server |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript project check |
+| `npm run validate-data` | Check fixture integrity in `src/data/` |
+| `npm run test-unit` | Vitest unit and component tests; writes `reports/junit.xml` |
+| `npm run test-acceptance` | Playwright browser tests against the production build (run `npx playwright install` once first) |
+| `npm run build` | Type-check and build the site to `dist/` |
+| `npm run collect-data` | Re-fetch source evidence into `data/raw/`; run deliberately, never as part of a build |
+
+Before pushing, run `npm run lint`, `npm run typecheck` and `npm run test-unit`.
+
+## Continuous integration
+
+GitLab CI ([.gitlab-ci.yml](.gitlab-ci.yml)) runs four stages on every pipeline:
+
+| Job | Runs |
+|---|---|
+| `check` | Lint, typecheck and fixture validation |
+| `unit` | Vitest; publishes `reports/junit.xml` as the pipeline test report |
+| `build` | Production build |
+| `acceptance` | Playwright: full suite in Chromium, `@smoke` tests in Firefox and WebKit |
+
+### Cross-phase CI contract
+
+The About page's unit-test statistics come from the deployed statistics Lambda, which reads the latest default-branch pipeline. Production code is frozen after Phase I submission, but the frozen Lambda keeps reading pipelines produced by later work. **Through Phase I grading, all later changes must preserve:**
+
+- a default-branch job named exactly `unit`;
+- the `unit-test-owners.json` artifact produced by that job, at schema version 1;
+- the JUnit test-case classname format containing the repository-relative file path and suite name;
+- an entry in [tests/test-owners.json](tests/test-owners.json) for **every new unit-test file**, mapping it to the GitLab username of the member who wrote it.
+
+Changing any of these requires deploying a compatible Lambda, which is not allowed during the freeze. See DESIGN.md §4.9.
 
 ## Civic engagement
 
