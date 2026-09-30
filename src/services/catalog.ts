@@ -59,12 +59,15 @@ export type FieldKeyOf<M extends ModelKind> = (typeof MODEL_FIELDS)[M][number];
 export type CardBadge = 'historical' | 'past' | 'ongoing' | 'upcoming';
 
 /** Everything a card needs: display strings for filtering/sorting plus presentation data. */
-export interface CardData<M extends ModelKind = ModelKind> extends ListingItem<FieldKeyOf<M>> {
+export interface CardData<M extends ModelKind> extends ListingItem<FieldKeyOf<M>> {
   kind: M;
   href: string;
   photo: Photograph | undefined;
   badge: CardBadge | null;
 }
+
+/** A card of any model, e.g. for components that render all three kinds. */
+export type AnyCardData = { [M in ModelKind]: CardData<M> }[ModelKind];
 
 const byName = <T extends { name: string }>(a: T, b: T): number => compareText(a.name, b.name);
 

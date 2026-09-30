@@ -43,7 +43,10 @@ export function matchesFilters<K extends string>(item: ListingItem<K>, filters: 
   });
 }
 
-export function filterItems<K extends string, T extends ListingItem<K>>(items: readonly T[], filters: Filters<K>): T[] {
+export function filterItems<K extends string, T extends ListingItem<K>>(
+  items: readonly T[],
+  filters: NoInfer<Filters<K>>,
+): T[] {
   return items.filter((item) => matchesFilters(item, filters));
 }
 
@@ -53,7 +56,7 @@ export function filterItems<K extends string, T extends ListingItem<K>>(items: r
  */
 export function sortItems<K extends string, T extends ListingItem<K>>(
   items: readonly T[],
-  sortKey: SortKey<K>,
+  sortKey: NoInfer<SortKey<K>>,
   direction: SortDirection,
 ): T[] {
   const sign = direction === 'asc' ? 1 : -1;
@@ -69,7 +72,7 @@ export function sortItems<K extends string, T extends ListingItem<K>>(
 /** Filtering precedes sorting. */
 export function applyListing<K extends string, T extends ListingItem<K>>(
   items: readonly T[],
-  { filters, sortKey, direction }: ListingOptions<K>,
+  { filters, sortKey, direction }: NoInfer<ListingOptions<K>>,
 ): T[] {
   return sortItems(filterItems(items, filters), sortKey, direction);
 }
