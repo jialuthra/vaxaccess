@@ -1,4 +1,5 @@
 {
+  "tests/unit/SitesPage.test.tsx": "nifemisoyemi",
   "tests/unit/VaccinesPage.test.tsx": "atb2923",
   "tests/unit/catalog.test.ts": "lukeyawn",
   "tests/unit/components.test.tsx": "lukeyawn",
