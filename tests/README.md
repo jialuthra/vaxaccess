@@ -5,6 +5,7 @@
   - `listing.test.ts`: filter/sort rules
   - `catalog.test.ts`: data access, relationships, display strings, every filter and sort key
   - `routes.test.tsx`: all 14 URLs and the redirects
+  - `shell.test.tsx`: navbar links, active section, mobile menu, skip link, one `main` and `h1` per page, footer links
   - `components.test.tsx`: cards, listing controls, related cards
   - `VaccinesPage.test.tsx`: Vaccines listing header, cards and filtering
   - `VaccineDetailPage.test.tsx`: provider note, five facts, photo and video, related cards, CDC links and sources
@@ -16,6 +17,7 @@
   - `listings.spec.ts`: cards, decoded unique photos, sorting, filtering, zero matches and Clear filters on each listing
   - `vaccine-details.spec.ts`: photo decodes and the APH video embeds on all three Vaccine pages
   - `responsive.spec.ts`: 1/2/3 card columns on phone/tablet/desktop, no horizontal overflow
+  - `shell.spec.ts`: mobile menu button, desktop navigation and the skip link
 - `test-owners.json`: maps each unit-test file (not the acceptance specs, which are not unit tests) to the GitLab username of the member who wrote it. The About page's per-member unit-test counts depend on it, so **add every new test file**.
 
 ## Still to do

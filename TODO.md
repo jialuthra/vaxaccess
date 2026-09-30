@@ -17,7 +17,7 @@ Run `npm ci`, then `npm run dev`. Before pushing, run `npm run lint`, `npm run t
 
 ## Jia (Phase I leader)
 
-- [ ] **#14 Shared shell**: build `src/components/Navbar.tsx`, `Footer.tsx` and `PageLayout.tsx`, then replace the temporary header in `src/App.tsx`. Include a collapsible mobile menu, active link, skip link and footer links (§4.2).
+- [x] **#14 Shared shell**: build `src/components/Navbar.tsx`, `Footer.tsx` and `PageLayout.tsx`, then replace the temporary header in `src/App.tsx`. Include a collapsible mobile menu, active link, skip link and footer links (§4.2).
 - [ ] **#23 Home page**: replace the placeholder in `src/pages/HomePage.tsx` with the hero photo, intro, link to current resources, and primary/secondary buttons (§4.2).
 - [ ] **#42 Team profiles**: collect bios, photos and responsibilities and create `src/data/team.json` (use the `TeamMember` type in `src/types/domain.ts`). Enzo's About page reads this file.
 - [ ] **#41 README**: required fields for each member (EID, GitLab ID, estimated/actual time, comments), plus the pipeline link, Git SHA, setup instructions and CI contract. Make it consistent with DESIGN.md.

@@ -293,3 +293,101 @@ p[role='status'].fw-semibold {
   background-color: var(--va-support-mark);
 }
 
+
+/* Shared shell: navbar, skip link and footer (DESIGN.md §4.2) */
+.va-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background-color: var(--va-surface);
+  border-bottom: 1px solid var(--va-border);
+  box-shadow: var(--va-shadow);
+}
+
+.va-navbar .navbar-brand {
+  color: var(--va-primary);
+  font-weight: 700;
+}
+
+.va-navbar .navbar-brand:hover {
+  color: var(--va-primary-hover);
+}
+
+.va-navbar .nav-link {
+  --bs-nav-link-color: var(--va-text);
+  --bs-nav-link-hover-color: var(--va-link-hover);
+  position: relative;
+}
+
+/* The active section gets an underline bar as well as color, so it isn't color-only. */
+.va-navbar .nav-link.active {
+  color: var(--va-primary);
+  font-weight: 600;
+}
+
+.va-navbar .nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: var(--bs-navbar-nav-link-padding-x, 0.5rem);
+  right: var(--bs-navbar-nav-link-padding-x, 0.5rem);
+  bottom: 0.2rem;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--va-accent-mark);
+}
+
+/* Collapsed (mobile) links are stacked, so the bar sits at the left edge instead. */
+@media (max-width: 991.98px) {
+  .va-navbar .nav-link.active::after {
+    left: 0;
+    right: auto;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 3px;
+    height: auto;
+  }
+
+  .va-navbar .nav-link {
+    padding-left: 0.75rem;
+  }
+}
+
+.va-navbar .navbar-toggler {
+  border-color: var(--va-border);
+  color: var(--va-text);
+}
+
+.va-navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1080;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--va-primary);
+  color: var(--va-on-primary);
+}
+
+/* The skip link focuses main programmatically; don't outline the whole page. */
+main:focus {
+  outline: none;
+}
+
+.va-footer {
+  background-color: var(--va-accent-bg);
+  border-top: 1px solid var(--va-accent-border);
+  color: var(--va-text);
+}
+
+.va-footer-brand {
+  font-weight: 700;
+  color: var(--va-primary);
+}
+
+.va-footer li + li {
+  margin-top: 0.25rem;
+}

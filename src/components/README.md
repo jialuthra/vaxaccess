@@ -12,9 +12,12 @@ Reusable UI pieces shared across pages.
 | `MediaBlock.tsx` | Captioned media for detail pages. `<MediaBlock type="photo" photo={getPhoto(record.photoId)!} />` (pass `lazy={false}` if it is in the first screen), `<MediaBlock type="map" label={site.name} address={formatAddress(site.address)} latitude={site.latitude} longitude={site.longitude} />` (OpenStreetMap), or `<MediaBlock type="video" video={getVideo(vaccine.videoId)!} />` (YouTube, privacy-enhanced, no autoplay). Captions and external links stay outside the iframe. |
 | `SourceList.tsx` | Sources section for detail pages: `<SourceList sourceIds={record.sourceIds} verifiedOn={record.verifiedOn} />`. |
 | `CurrentResourcesLink.tsx` | Callout linking to Austin Public Health's current immunization resources (Sites listing; reusable on Home). |
+| `PageLayout.tsx` | Shared shell used by `App.tsx`: skip link, `Navbar`, the single `<main id="main-content">` and `Footer`. Pages supply their own container and `h1`. |
+| `Navbar.tsx` | Brand and section links with the active section marked; collapses behind a "Menu" button below Bootstrap's `lg` breakpoint (React state, no Bootstrap JS). |
+| `Footer.tsx` | Section links and the repository link. Credits stay on About and in media captions. |
+| `navItems.ts` | The five section links shared by `Navbar` and `Footer`. |
 | `RedirectNotice.tsx` | Shows the message carried by an unknown-ID redirect. Rendered once in `App.tsx`. |
 
 ## Still to do
 
-- `Navbar.tsx`, `Footer.tsx`, `PageLayout.tsx`: Jia (#14)
 - `TeamCard.tsx`, `StatsPanel.tsx`: Enzo (#34)
