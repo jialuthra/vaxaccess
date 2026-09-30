@@ -91,7 +91,7 @@ The site has exactly 14 pages: Home, three model listings, nine detail pages, an
 |---|---|
 | Organization | The organizing group |
 | Activity | Type of volunteer work |
-| Time commitment | Date or schedule of the activity |
+| Time commitment | Expected duration or cadence, such as a single-day event or recurring weekly outreach (never the calendar date) |
 | Requirements | Documented prerequisites for volunteers |
 | Supported vaccines | Vaccines the activity supported |
 
