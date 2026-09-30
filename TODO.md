@@ -27,11 +27,12 @@ Run `npm ci`, then `npm run dev`. Before pushing, run `npm run lint`, `npm run t
 
 ## Nifemi (repo owner)
 
-- [ ] **#10 Styles**: `src/styles/tokens.css` (all 55 palette colors), `global.css`, `components.css`; import them in `src/main.tsx` after Bootstrap (§4.3).
-- [ ] **#17 Sites listing**: in `src/pages/SitesPage.tsx`, add the explanation, the Austin Public Health current-resources link and `<ModelListing kind="sites" cards={getSiteCards()} />`. Keep the catalog summary line.
-- [ ] **#20 Site detail pages**: in `src/pages/SiteDetailPage.tsx`, add the historical status, fields, photo, OpenStreetMap embed, `RelatedCards` for vaccines and opportunities, sources and the "Find current vaccination services" link (§4.2, §4.8). Build `MediaBlock.tsx` and `SourceList.tsx` in a way Alex and Enzo can reuse.
-- [ ] **#36, #37 Postman**: six requests, examples, test scripts, exported to `postman/`; publish the docs and send the URL to Enzo for the About page.
-- [ ] **#38, #39, #40 AWS**: Amplify hosting (add the rewrite rule documented in `amplify.yml`), vaxaccess.me with HTTPS, and deployment of the statistics Lambda.
+- [x] **#10 Styles**: `src/styles/tokens.css` (all 55 palette colors), `global.css`, `components.css`; import them in `src/main.tsx` after Bootstrap (§4.3).
+- [x] **#17 Sites listing**: in `src/pages/SitesPage.tsx`, add the explanation, the Austin Public Health current-resources link and `<ModelListing kind="sites" cards={getSiteCards()} />`. Keep the catalog summary line.
+- [x] **#20 Site detail pages**: in `src/pages/SiteDetailPage.tsx`, add the historical status, fields, photo, OpenStreetMap embed, `RelatedCards` for vaccines and opportunities, sources and the "Find current vaccination services" link (§4.2, §4.8). Build `MediaBlock.tsx` and `SourceList.tsx` in a way Alex and Enzo can reuse.
+- [x] **#36 Postman**: six requests, examples and test scripts exported to `postman/`.
+- [ ] **#37 Publish Postman docs** and send the URL to Enzo for the About page (see `postman/README.md`).
+- [ ] **#38, #39, #40 AWS** (runbook in `docs/deployment.md`): Amplify hosting (add the rewrite rule documented in `amplify.yml`), vaxaccess.me with HTTPS, and deployment of the statistics Lambda.
 
 ## Alex
 
