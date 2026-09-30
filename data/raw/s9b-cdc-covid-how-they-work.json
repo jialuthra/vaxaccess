@@ -1,0 +1,25 @@
+{
+  "sourceId": "s9b-cdc-covid-how-they-work",
+  "url": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
+  "requestUrl": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
+  "finalUrl": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
+  "retrievedAt": "2026-09-30T20:25:29.461Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "1eedca164a42ba502ed7f24b6d0907af95a66123222fc52e59ad0901b2a7e640",
+  "title": "COVID-19 Vaccine Basics | COVID-19 | CDC",
+  "publishedAt": "2025-09-05T13:58:06Z",
+  "fieldsDerived": "COVID-19 vaccine types",
+  "excerpts": [
+    "Currently, there are two types of COVID-19 vaccines for use in the United States: mRNA, and protein subunit vaccines.",
+    "mRNA vaccines (Pfizer-BioNTech or Moderna)",
+    "Instead, mRNA vaccines use mRNA created in a laboratory to teach our cells how to make a protein—or even just a piece of a protein—that triggers an immune response inside our bodies.",
+    "How mRNA COVID-19 vaccines work",
+    "First, mRNA COVID-19 vaccines are given in the upper arm muscle or upper thigh, depending on the age of who is getting vaccinated.",
+    "After vaccination, the mRNA will enter the muscle cells.",
+    "Once inside, they use the cells’ machinery to produce a harmless piece of what is called the spike protein.",
+    "The spike protein is found on the surface of the virus that causes COVID-19.",
+    "After the protein piece is made, our cells break down the mRNA and remove it, leaving the body as waste.",
+    "Protein subunit vaccines (Novavax)"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "sourceId": "s11-census-geocoder",
+  "benchmark": "Public_AR_Current",
+  "requests": [
+    {
+      "siteId": "travis-county-exposition-center",
+      "sourceAddress": "7311 Decker Lane, Austin, TX 78724",
+      "endpoint": "onelineaddress",
+      "requestUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=7311+Decker+Lane%2C+Austin%2C+TX+78724",
+      "retrievedAt": "2026-09-30T20:25:30.082Z",
+      "status": 200,
+      "benchmark": "Public_AR_Current",
+      "accepted": {
+        "matchedAddress": "7311 DECKER LN, AUSTIN, TX, 78724",
+        "longitude": -97.623820293276,
+        "latitude": 30.297557829352
+      },
+      "rejectionReason": null,
+      "response": {
+        "result": {
+          "input": {
+            "address": {
+              "address": "7311 Decker Lane, Austin, TX 78724"
+            },
+            "benchmark": {
+              "isDefault": true,
+              "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+              "id": "4",
+              "benchmarkName": "Public_AR_Current"
+            }
+          },
+          "addressMatches": [
+            {
+              "tigerLine": {
+                "side": "R",
+                "tigerLineId": "63952327"
+              },
+              "coordinates": {
+                "x": -97.623820293276,
+                "y": 30.297557829352
+              },
+              "addressComponents": {
+                "zip": "78724",
+                "streetName": "DECKER",
+                "preType": "",
+                "city": "AUSTIN",
+                "preDirection": "",
+                "suffixDirection": "",
+                "fromAddress": "7001",
+                "state": "TX",
+                "suffixType": "LN",
+                "toAddress": "7399",
+                "suffixQualifier": "",
+                "preQualifier": ""
+              },
+              "matchedAddress": "7311 DECKER LN, AUSTIN, TX, 78724"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "siteId": "montopolis-recreation-center",
+      "sourceAddress": "1200 Montopolis Drive, Austin, TX 78741",
+      "endpoint": "onelineaddress",
+      "requestUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=1200+Montopolis+Drive%2C+Austin%2C+TX+78741",
+      "retrievedAt": "2026-09-30T20:25:30.432Z",
+      "status": 200,
+      "benchmark": "Public_AR_Current",
+      "accepted": {
+        "matchedAddress": "1200 MONTOPOLIS DR, AUSTIN, TX, 78741",
+        "longitude": -97.698902133007,
+        "latitude": 30.23231582904
+      },
+      "rejectionReason": null,
+      "response": {
+        "result": {
+          "input": {
+            "address": {
+              "address": "1200 Montopolis Drive, Austin, TX 78741"
+            },
+            "benchmark": {
+              "isDefault": true,
+              "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+              "id": "4",
+              "benchmarkName": "Public_AR_Current"
+            }
+          },
+          "addressMatches": [
+            {
+              "tigerLine": {
+                "side": "R",
+                "tigerLineId": "63949277"
+              },
+              "coordinates": {
+                "x": -97.698902133007,
+                "y": 30.23231582904
+              },
+              "addressComponents": {
+                "zip": "78741",
+                "streetName": "MONTOPOLIS",
+                "preType": "",
+                "city": "AUSTIN",
+                "preDirection": "",
+                "suffixDirection": "",
+                "fromAddress": "1200",
+                "state": "TX",
+                "suffixType": "DR",
+                "toAddress": "1298",
+                "suffixQualifier": "",
+                "preQualifier": ""
+              },
+              "matchedAddress": "1200 MONTOPOLIS DR, AUSTIN, TX, 78741"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "siteId": "austin-first-spanish-sda",
+      "sourceAddress": "100 W Rundberg Lane, Austin, TX 78753",
+      "endpoint": "onelineaddress",
+      "requestUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=100+W+Rundberg+Lane%2C+Austin%2C+TX+78753",
+      "retrievedAt": "2026-09-30T20:25:30.660Z",
+      "status": 200,
+      "benchmark": "Public_AR_Current",
+      "accepted": {
+        "matchedAddress": "100 W RUNDBERG LN, AUSTIN, TX, 78753",
+        "longitude": -97.693379495615,
+        "latitude": 30.3609629265
+      },
+      "rejectionReason": null,
+      "response": {
+        "result": {
+          "input": {
+            "address": {
+              "address": "100 W Rundberg Lane, Austin, TX 78753"
+            },
+            "benchmark": {
+              "isDefault": true,
+              "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+              "id": "4",
+              "benchmarkName": "Public_AR_Current"
+            }
+          },
+          "addressMatches": [
+            {
+              "tigerLine": {
+                "side": "R",
+                "tigerLineId": "63982672"
+              },
+              "coordinates": {
+                "x": -97.693379495615,
+                "y": 30.3609629265
+              },
+              "addressComponents": {
+                "zip": "78753",
+                "streetName": "RUNDBERG",
+                "preType": "",
+                "city": "AUSTIN",
+                "preDirection": "W",
+                "suffixDirection": "",
+                "fromAddress": "100",
+                "state": "TX",
+                "suffixType": "LN",
+                "toAddress": "198",
+                "suffixQualifier": "",
+                "preQualifier": ""
+              },
+              "matchedAddress": "100 W RUNDBERG LN, AUSTIN, TX, 78753"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

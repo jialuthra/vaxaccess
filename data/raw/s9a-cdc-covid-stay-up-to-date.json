@@ -1,0 +1,25 @@
+{
+  "sourceId": "s9a-cdc-covid-stay-up-to-date",
+  "url": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+  "requestUrl": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+  "finalUrl": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+  "retrievedAt": "2026-09-30T20:25:29.410Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "84c4f9335213df8833604cdaefe8d37c36420c221661dc9ffb573f347729e9d1",
+  "title": "Staying Up to Date with COVID-19 Vaccines | Covid | CDC",
+  "publishedAt": "2026-09-28T12:14:35Z",
+  "fieldsDerived": "COVID-19 eligibility and link to current clinical guidance",
+  "excerpts": [
+    "Staying Up to Date with COVID-19 Vaccines | Covid | CDC",
+    "Interim Clinical Considerations",
+    "Clinical Care Quick Reference",
+    "Staying Up to Date with COVID-19 Vaccines",
+    "CDC has posted Interim Clinical Considerations for the 2026-2027 COVID-19 Vaccines in the United States as guidance for public health and healthcare professionals.",
+    "CDC recommends a 2025-2026 COVID-19 vaccine for people ages 6 months and older based on individual-based decision-making.",
+    "Parents of children ages 6 months to 17 years should discuss the benefits of vaccination with a healthcare provider.",
+    "CDC recommends the 2025-2026 COVID-19 vaccine for people ages 6 months and older based on individual-based decision making.",
+    "Importance of staying up to date",
+    "When are you up to date?"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "sourceId": "s8b-cdc-flu-key-facts",
+  "url": "https://www.cdc.gov/flu/vaccines/keyfacts.html",
+  "requestUrl": "https://www.cdc.gov/flu/vaccines/keyfacts.html",
+  "finalUrl": "https://www.cdc.gov/flu/vaccines/keyfacts.html",
+  "retrievedAt": "2026-09-30T20:25:29.375Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "298c634246d0818cc3cf678877084e42837d440b62d52b9224506b43f739d021",
+  "title": "Key Facts About Seasonal Flu Vaccine | Influenza (Flu) | CDC",
+  "publishedAt": "2026-09-01T17:08:39Z",
+  "fieldsDerived": "Influenza vaccine formulations and administration",
+  "excerpts": [
+    "Everyone 6 months and older in the United States, with rare exception, should get a flu vaccine every season.",
+    "Options for this age group include inactivated influenza vaccines [IIVs], recombinant influenza vaccine [RIV], or live attenuated influenza vaccine (LAIV), with no preference for any flu vaccine over another.",
+    "Everyone should get an age-appropriate vaccine (that is, one that is approved for their age), with the exception that people 18 through 64 years old who have had a solid organ transplant and are taking immunosuppressive medications may receive high-dose (HD-IIV3) or adjuvanted inactivated (aIIV3) influenza vaccines as acceptable options (without a preference over other age-appropriate IIV3s and R…",
+    "These are Fluzone High-Dose flu vaccine , Flublok Recombinant flu vaccine and Fluad Adjuvanted flu vaccine .",
+    "These vaccines are approved for use in children as young as 6 months.",
+    "Most influenza shots are given in the arm (muscle) with a needle.",
+    "Shots are given in the arm or thigh (muscle) with a needle.",
+    "Afluria can be given either with a needle (for people 6 months and older) or with a jet injector (for people 18 through 64 years only).",
+    "An egg-based live attenuated influenza nasal spray vaccine (FluMist made with attenuated (weakened) live influenza viruses, which is approved for use in people 2 years through 49 years.",
+    "Flu vaccines that are given with a needle (flu shots) are currently made in two ways: the vaccine is made either with a) influenza vaccine viruses that have been killed (inactivated) and are therefore not infectious, or b) with proteins from an influenza virus (which is the case for recombinant influenza vaccine )."
+  ]
+}

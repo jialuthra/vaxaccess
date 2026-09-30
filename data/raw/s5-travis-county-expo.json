@@ -1,0 +1,16 @@
+{
+  "sourceId": "s5-travis-county-expo",
+  "url": "https://www.traviscountytx.gov/exposition-center/rental",
+  "requestUrl": "https://www.traviscountytx.gov/exposition-center/rental",
+  "finalUrl": "https://www.traviscountytx.gov/exposition-center/rental",
+  "retrievedAt": "2026-09-30T20:25:28.279Z",
+  "status": 200,
+  "contentType": "text/html; charset=utf-8",
+  "bodySha256": "0e213601c7f9c64338b24fe3c5a74ae2d4ad7c1324f045a4c34aecd9c2b45a21",
+  "title": "Rental & Payment Information | Travis County, Texas",
+  "publishedAt": null,
+  "fieldsDerived": "Exposition Center address",
+  "excerpts": [
+    "Mail payments to 7311 Decker Lane, Austin, TX 78724."
+  ]
+}
