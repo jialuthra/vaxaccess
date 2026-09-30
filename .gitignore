@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Build output (frontend and Lambda bundles)
+dist/
+server/dist/
+*.zip
+
+# Test output, coverage and browser traces
+coverage/
+reports/
+test-results/
+playwright-report/
+blob-report/
+
+# Caches
+.cache/
+.npm/
+.eslintcache
+*.tsbuildinfo
+
+# Logs (the course-required IDB1.log.txt is not matched)
+*.log
+npm-debug.log*
+
+# Environment files and credentials; keep the committed templates
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+!server/.env.example
+server/config/contributors.json
+*.pem
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local planning notes
+RESPONSIBILITIES.md
