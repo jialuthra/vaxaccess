@@ -32,8 +32,8 @@
     "populationServed": "Community vaccination participants",
     "costPolicy": "Not stated in the historical source",
     "appointmentMethod": "Not stated in the historical source",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 30.297558,
+    "longitude": -97.62382,
     "serviceContext": "historical",
     "contextLabel": "Influenza vaccination event, November 7, 2020"
   },
@@ -70,8 +70,8 @@
     "populationServed": "Community members seeking mpox vaccination",
     "costPolicy": "Free at the documented event",
     "appointmentMethod": "Not stated in the historical source",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 30.232316,
+    "longitude": -97.698902,
     "serviceContext": "historical",
     "contextLabel": "Mpox vaccination clinic, August 24, 2024"
   },
@@ -108,8 +108,8 @@
     "populationServed": "Underserved Austin-area residents reached through community outreach",
     "costPolicy": "Not stated in the historical source",
     "appointmentMethod": "Not stated in the historical source",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 30.360963,
+    "longitude": -97.693379,
     "serviceContext": "historical",
     "contextLabel": "COVID-19 community outreach documented in 2021"
   }
