@@ -1,0 +1,24 @@
+{
+  "sourceId": "s9a-cdc-covid-stay-up-to-date",
+  "url": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+  "requestUrl": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+  "finalUrl": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+  "retrievedAt": "2026-09-30T20:27:49.632Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "84c4f9335213df8833604cdaefe8d37c36420c221661dc9ffb573f347729e9d1",
+  "title": "Staying Up to Date with COVID-19 Vaccines | Covid | CDC",
+  "publishedAt": "2026-09-28T12:14:35Z",
+  "fieldsDerived": "COVID-19 eligibility and link to current clinical guidance",
+  "excerpts": [
+    "Interim Clinical Considerations",
+    "CDC has posted Interim Clinical Considerations for the 2026-2027 COVID-19 Vaccines in the United States as guidance for public health and healthcare professionals.",
+    "CDC recommends a 2025-2026 COVID-19 vaccine for people ages 6 months and older based on individual-based decision-making.",
+    "It is especially important to get your 2025–2026 COVID-19 vaccine if you are ages 65 and older, are at high risk for severe COVID-19, or have never received a COVID-19 vaccine.",
+    "Parents of children ages 6 months to 17 years should discuss the benefits of vaccination with a healthcare provider.",
+    "CDC recommends the 2025-2026 COVID-19 vaccine for people ages 6 months and older based on individual-based decision making.",
+    "Getting the 2025–2026 COVID-19 vaccine is especially important if you:",
+    "Are at high risk for severe COVID-19",
+    "Anyone ages 6 months and older"
+  ]
+}

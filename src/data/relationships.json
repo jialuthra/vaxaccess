@@ -1,0 +1,119 @@
+{
+  "siteVaccine": [
+    {
+      "siteId": "travis-county-exposition-center",
+      "vaccineId": "influenza",
+      "sourceIds": [
+        "s1-ut-flu-volunteer-notice"
+      ],
+      "context": "Influenza vaccination event at the Exposition Center on November 7, 2020, described in the UT volunteer notice.",
+      "historical": true,
+      "startDate": "2020-11-07",
+      "endDate": "2020-11-07",
+      "datePrecision": "day"
+    },
+    {
+      "siteId": "montopolis-recreation-center",
+      "vaccineId": "mpox",
+      "sourceIds": [
+        "s2-fox7-mpox-event",
+        "s3-aph-commission-backup"
+      ],
+      "context": "Free Austin Public Health mpox vaccination clinic at the recreation center on August 24, 2024.",
+      "historical": true,
+      "startDate": "2024-08-24",
+      "endDate": "2024-08-24",
+      "datePrecision": "day"
+    },
+    {
+      "siteId": "austin-first-spanish-sda",
+      "vaccineId": "covid-19",
+      "sourceIds": [
+        "s4-ut-nursing-vamos"
+      ],
+      "context": "VAMOS COVID-19 vaccination outreach at the church, documented in 2021.",
+      "historical": true,
+      "startDate": null,
+      "endDate": null,
+      "datePrecision": "year"
+    }
+  ],
+  "opportunitySite": [
+    {
+      "opportunityId": "ut-flu-expo-2020",
+      "siteId": "travis-county-exposition-center",
+      "sourceIds": [
+        "s1-ut-flu-volunteer-notice"
+      ],
+      "context": "UT nursing students supported the flu-vaccination event held at this venue.",
+      "historical": true,
+      "startDate": "2020-11-07",
+      "endDate": "2020-11-07",
+      "datePrecision": "day"
+    },
+    {
+      "opportunityId": "aph-mpox-montopolis-2024",
+      "siteId": "montopolis-recreation-center",
+      "sourceIds": [
+        "s2-fox7-mpox-event",
+        "s3-aph-commission-backup"
+      ],
+      "context": "Medical Reserve Corps volunteers supported the mpox clinic held at this venue.",
+      "historical": true,
+      "startDate": "2024-08-24",
+      "endDate": "2024-08-24",
+      "datePrecision": "day"
+    },
+    {
+      "opportunityId": "vamos-rundberg-2021",
+      "siteId": "austin-first-spanish-sda",
+      "sourceIds": [
+        "s4-ut-nursing-vamos"
+      ],
+      "context": "The VAMOS program's outreach, supported by community volunteers, included this church.",
+      "historical": true,
+      "startDate": null,
+      "endDate": null,
+      "datePrecision": "year"
+    }
+  ],
+  "opportunityVaccine": [
+    {
+      "opportunityId": "ut-flu-expo-2020",
+      "vaccineId": "influenza",
+      "sourceIds": [
+        "s1-ut-flu-volunteer-notice"
+      ],
+      "context": "Volunteers supported influenza vaccination and patient education at the event.",
+      "historical": true,
+      "startDate": "2020-11-07",
+      "endDate": "2020-11-07",
+      "datePrecision": "day"
+    },
+    {
+      "opportunityId": "aph-mpox-montopolis-2024",
+      "vaccineId": "mpox",
+      "sourceIds": [
+        "s2-fox7-mpox-event",
+        "s3-aph-commission-backup"
+      ],
+      "context": "Volunteers supported administration of mpox vaccine at the clinic.",
+      "historical": true,
+      "startDate": "2024-08-24",
+      "endDate": "2024-08-24",
+      "datePrecision": "day"
+    },
+    {
+      "opportunityId": "vamos-rundberg-2021",
+      "vaccineId": "covid-19",
+      "sourceIds": [
+        "s4-ut-nursing-vamos"
+      ],
+      "context": "The VAMOS outreach promoted and supported COVID-19 vaccination.",
+      "historical": true,
+      "startDate": null,
+      "endDate": null,
+      "datePrecision": "year"
+    }
+  ]
+}

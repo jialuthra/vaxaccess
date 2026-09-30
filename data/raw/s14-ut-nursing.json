@@ -1,0 +1,19 @@
+{
+  "sourceId": "s14-ut-nursing",
+  "url": "https://nursing.utexas.edu/",
+  "requestUrl": "https://nursing.utexas.edu/",
+  "finalUrl": "https://nursing.utexas.edu/",
+  "retrievedAt": "2026-09-30T20:27:53.482Z",
+  "status": 200,
+  "contentType": "text/html; charset=utf-8",
+  "bodySha256": "f27da17622731e1581d94dd2f82af215901f6625021e20f5ce782c1a6196a997",
+  "title": "Home Page | School of Nursing",
+  "publishedAt": null,
+  "fieldsDerived": "Organizer information for the UT nursing records; not a promise of an available role",
+  "excerpts": [
+    "Home Page | School of Nursing Skip to main content",
+    "Join the UT Austin School of Nursing for the 3rd Annual Endowed Lectureship Symposium on Friday, October 16, 2026, from 8:30 AM – 3:30 PM CDT for a full-day hybrid event exploring the theme “From Discovery to Impact.”",
+    "School of Nursing Hosts First Fall Career Fair",
+    "Kavita Radhakrishnan Named Dean of the School of Nursing"
+  ]
+}

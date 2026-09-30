@@ -1,0 +1,18 @@
+{
+  "sourceId": "s6-montopolis-facility",
+  "url": "https://www.austintexas.gov/parks/locations/montopolis-recreation-and-community-center",
+  "requestUrl": "https://www.austintexas.gov/parks/locations/montopolis-recreation-and-community-center",
+  "finalUrl": "https://www.austintexas.gov/parks/locations/montopolis-recreation-and-community-center",
+  "retrievedAt": "2026-09-30T20:27:49.126Z",
+  "status": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "bodySha256": "95770d59e899d2ee4911c283ad37d4d983e278f35b785b38860447d520008bff",
+  "title": "Montopolis Recreation and Community Center | Austin Parks and Recreation | AustinTexas.gov",
+  "publishedAt": null,
+  "fieldsDerived": "Montopolis address; facility hours are distinct from clinic hours",
+  "excerpts": [
+    "Address : 1200 Montopolis Dr.",
+    "Hours : Monday-Friday 9 a.m. - 9 p.m.; Saturday 10 a.m. - 2 p.m.; Sunday 10 a.m. - 4 p.m.",
+    "Gym Schedule *hours subject to change without notice"
+  ]
+}

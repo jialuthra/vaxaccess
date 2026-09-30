@@ -1,0 +1,200 @@
+[
+  {
+    "id": "s1-ut-flu-volunteer-notice",
+    "title": "UT nursing flu-vaccination volunteer notice",
+    "publisher": "UT Austin School of Nursing Student Services",
+    "url": "https://sites.utexas.edu/sonstudentservices/2020/10/30/volunteer-opportunity-flu-vaccination/",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:46.452Z",
+    "publishedAt": "2020-10-30",
+    "rawPath": "data/raw/s1-ut-flu-volunteer-notice.json",
+    "usedFor": "Flu event date, location and nursing-student participation"
+  },
+  {
+    "id": "s2-fox7-mpox-event",
+    "title": "FOX 7 report on the August 24, 2024 mpox vaccination event",
+    "publisher": "FOX 7 Austin",
+    "url": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:48.563Z",
+    "publishedAt": "2024-08-24",
+    "rawPath": "data/raw/s2-fox7-mpox-event.json",
+    "usedFor": "Mpox event date, venue, Medical Reserve Corps participation and event price"
+  },
+  {
+    "id": "s3-aph-commission-backup",
+    "title": "Austin Public Health presentation in the city commission archive",
+    "publisher": "City of Austin boards and commissions archive",
+    "url": "https://bandc.crccheck.com/lesbian-gay-bisexual-transgender-and-queer-quality-life-advisory-commission/431865-backup/",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:48.732Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s3-aph-commission-backup.json",
+    "usedFor": "Corroborates the planned Medical Reserve Corps and Montopolis vaccination connection"
+  },
+  {
+    "id": "s4-ut-nursing-vamos",
+    "title": "UT nursing report on VAMOS mobile vaccination outreach",
+    "publisher": "UT Austin School of Nursing",
+    "url": "https://nursing.utexas.edu/news/honesto-transparente-y-empatico-mobile-vaccination-clinics-reach-austin-area-hispanic",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:48.936Z",
+    "publishedAt": "2021-10-18",
+    "rawPath": "data/raw/s4-ut-nursing-vamos.json",
+    "usedFor": "VAMOS community outreach, church location and volunteer participation"
+  },
+  {
+    "id": "s5-travis-county-expo",
+    "title": "Travis County Exposition Center facility information",
+    "publisher": "Travis County",
+    "url": "https://www.traviscountytx.gov/exposition-center/rental",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.012Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s5-travis-county-expo.json",
+    "usedFor": "Exposition Center address"
+  },
+  {
+    "id": "s6-montopolis-facility",
+    "title": "Montopolis Recreation and Community Center facility page",
+    "publisher": "City of Austin Parks and Recreation",
+    "url": "https://www.austintexas.gov/parks/locations/montopolis-recreation-and-community-center",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.126Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s6-montopolis-facility.json",
+    "usedFor": "Montopolis address; facility hours are distinct from clinic hours"
+  },
+  {
+    "id": "s7-austin-spanish-first-sda",
+    "title": "Austin Spanish First SDA Church website",
+    "publisher": "Austin Spanish First Seventh-day Adventist Church",
+    "url": "https://austinspanishfirsttx.adventistchurch.org/",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.299Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s7-austin-spanish-first-sda.json",
+    "usedFor": "Church address"
+  },
+  {
+    "id": "s8a-cdc-flu-basics",
+    "title": "CDC flu vaccine basics",
+    "publisher": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/flu/vaccines/index.html",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.503Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s8a-cdc-flu-basics.json",
+    "usedFor": "Influenza population and seasonal schedule"
+  },
+  {
+    "id": "s8b-cdc-flu-key-facts",
+    "title": "CDC flu vaccine formulations",
+    "publisher": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/flu/vaccines/keyfacts.html",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.593Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s8b-cdc-flu-key-facts.json",
+    "usedFor": "Influenza vaccine formulations and administration"
+  },
+  {
+    "id": "s9a-cdc-covid-stay-up-to-date",
+    "title": "CDC COVID-19 vaccination guidance",
+    "publisher": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/covid/vaccines/stay-up-to-date.html",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.632Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s9a-cdc-covid-stay-up-to-date.json",
+    "usedFor": "COVID-19 eligibility and link to current clinical guidance"
+  },
+  {
+    "id": "s9b-cdc-covid-how-they-work",
+    "title": "CDC COVID-19 vaccine types",
+    "publisher": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/covid/vaccines/how-they-work.html",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.660Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s9b-cdc-covid-how-they-work.json",
+    "usedFor": "COVID-19 vaccine types"
+  },
+  {
+    "id": "s10a-cdc-mpox-vaccination",
+    "title": "CDC mpox vaccination",
+    "publisher": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/monkeypox/vaccines/",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.773Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s10a-cdc-mpox-vaccination.json",
+    "usedFor": "Mpox eligibility, administration and two-dose schedule"
+  },
+  {
+    "id": "s10b-mmwr-jynneos",
+    "title": "CDC MMWR report on JYNNEOS",
+    "publisher": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.801Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s10b-mmwr-jynneos.json",
+    "usedFor": "JYNNEOS vaccine type"
+  },
+  {
+    "id": "s11-census-geocoder",
+    "title": "Census Geocoder REST API",
+    "publisher": "U.S. Census Bureau",
+    "url": "https://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.html",
+    "kind": "rest",
+    "retrievedAt": "2026-09-30T20:27:54.132Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s11-census-geocoder.json",
+    "usedFor": "Site coordinates and matched addresses"
+  },
+  {
+    "id": "s12-aph-immunizations",
+    "title": "Austin Public Health immunization resources",
+    "publisher": "Austin Public Health",
+    "url": "https://www.austintexas.gov/health/programs/immunizations",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.867Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s12-aph-immunizations.json",
+    "usedFor": "Current immunization resources and the general educational video"
+  },
+  {
+    "id": "s13a-austin-travis-mrc",
+    "title": "Austin–Travis County Medical Reserve Corps",
+    "publisher": "Austin Public Health",
+    "url": "https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.894Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s13a-austin-travis-mrc.json",
+    "usedFor": "Organizer information; not a promise of an available shift"
+  },
+  {
+    "id": "s13b-ut-mrc",
+    "title": "UT Medical Reserve Corps",
+    "publisher": "The University of Texas at Austin",
+    "url": "https://sites.utexas.edu/utmrc/",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:49.921Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s13b-ut-mrc.json",
+    "usedFor": "Organizer information; not a promise of an available shift"
+  },
+  {
+    "id": "s14-ut-nursing",
+    "title": "UT Austin School of Nursing",
+    "publisher": "The University of Texas at Austin",
+    "url": "https://nursing.utexas.edu/",
+    "kind": "html",
+    "retrievedAt": "2026-09-30T20:27:53.482Z",
+    "publishedAt": null,
+    "rawPath": "data/raw/s14-ut-nursing.json",
+    "usedFor": "Organizer information for the UT nursing records; not a promise of an available role"
+  }
+]

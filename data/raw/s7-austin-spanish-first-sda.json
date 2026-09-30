@@ -1,0 +1,17 @@
+{
+  "sourceId": "s7-austin-spanish-first-sda",
+  "url": "https://austinspanishfirsttx.adventistchurch.org/",
+  "requestUrl": "https://austinspanishfirsttx.adventistchurch.org/",
+  "finalUrl": "https://austinspanishfirsttx.adventistchurch.org/",
+  "retrievedAt": "2026-09-30T20:27:49.299Z",
+  "status": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "bodySha256": "2bd3fbeda32f662751b938daca1530f6cb522c0d37ed1fce0d915342a4bcaf94",
+  "title": "Austin Spanish First SDA Church",
+  "publishedAt": "2025-06-03T17:16:15-04:00",
+  "fieldsDerived": "Church address",
+  "excerpts": [
+    "Map embed address: 100 W Rundberg Ln, Austin, TX",
+    "100 W Rundberg Ln, Austin, TX"
+  ]
+}

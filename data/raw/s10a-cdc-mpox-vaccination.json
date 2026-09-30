@@ -1,0 +1,27 @@
+{
+  "sourceId": "s10a-cdc-mpox-vaccination",
+  "url": "https://www.cdc.gov/monkeypox/vaccines/",
+  "requestUrl": "https://www.cdc.gov/monkeypox/vaccines/",
+  "finalUrl": "https://www.cdc.gov/monkeypox/vaccines/",
+  "retrievedAt": "2026-09-30T20:27:49.773Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "3ade669fda6aeed1c00385acd3168e154f2e92ab21d4ed04fa1357429c8b05a4",
+  "title": "Monkeypox Vaccination | Monkeypox | CDC",
+  "publishedAt": "2026-01-23T15:22:40Z",
+  "fieldsDerived": "Mpox eligibility, administration and two-dose schedule",
+  "excerpts": [
+    "JYNNEOS is a 2-dose vaccine developed to protect against monkeypox and smallpox.",
+    "The second dose should be given 4 weeks after the first dose, but get the 2nd dose even if it's been longer than 4 weeks.",
+    "The second dose should be given 4 weeks (28 days) after the first dose.",
+    "People who are vaccinated should continue to avoid close, skin-to-skin contact with someone who has monkeypox.",
+    "If you've recovered from monkeypox, CDC does not recommend that you get JYNNEOS vaccine doses at this time.",
+    "CDC recommends vaccination if:",
+    "You had a severe allergic reaction (such as anaphylaxis) after getting a previous dose of the JYNNEOS vaccine or to a vaccine component.",
+    "Subcutaneous, which means that the vaccine is injected in the fat layer underneath the skin on the back of your upper arm (the area above the tricep muscle).",
+    "Whether you get the vaccine subcutaneously or intradermally, you should still get 2 doses.",
+    "Although findings suggest that the first dose of JYNNEOS vaccine gives some protection against monkeypox, 2 doses are recommended to provide stronger protection.",
+    "If you are under 18 years of age, you should be given the vaccine subcutaneously.",
+    "When JYNNEOS vaccine is given intradermally, some people have reported less pain after vaccination but more side effects like itching, swelling, redness, thickening of the skin, and skin discoloration at the spot where the vaccine was given."
+  ]
+}

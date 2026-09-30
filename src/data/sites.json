@@ -1,0 +1,116 @@
+[
+  {
+    "id": "travis-county-exposition-center",
+    "name": "Travis County Exposition Center",
+    "summary": "County event venue in east Austin where UT Austin nursing students supported a community flu-vaccination event on November 7, 2020.",
+    "descriptionParagraphs": [
+      "The Travis County Exposition Center is a county-owned event venue on Decker Lane in east Austin. On November 7, 2020, a UT Austin School of Nursing volunteer notice described nursing students, supervised by faculty, supporting a community flu-vaccination event there.",
+      "The notice was written for student volunteers, so it does not describe who could receive a vaccine, what it cost or how to get an appointment. This page records that one documented event; it does not mean the venue offers vaccinations today. For current services, use Austin Public Health's immunization resources."
+    ],
+    "photoId": "site-expo",
+    "sourceIds": ["s1-ut-flu-volunteer-notice", "s5-travis-county-expo", "s11-census-geocoder"],
+    "fieldSources": {
+      "address": ["s5-travis-county-expo"],
+      "populationServed": ["s1-ut-flu-volunteer-notice"],
+      "costPolicy": ["s1-ut-flu-volunteer-notice"],
+      "appointmentMethod": ["s1-ut-flu-volunteer-notice"],
+      "contextLabel": ["s1-ut-flu-volunteer-notice"],
+      "latitude": ["s11-census-geocoder"],
+      "longitude": ["s11-census-geocoder"]
+    },
+    "externalLinks": [
+      { "label": "Travis County Exposition Center", "url": "https://www.traviscountytx.gov/exposition-center/rental" },
+      { "label": "Historical volunteer notice (UT Austin School of Nursing)", "url": "https://sites.utexas.edu/sonstudentservices/2020/10/30/volunteer-opportunity-flu-vaccination/" }
+    ],
+    "verifiedOn": "2026-09-29",
+    "address": {
+      "street": "7311 Decker Lane",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78724"
+    },
+    "populationServed": "Community vaccination participants",
+    "costPolicy": "Not stated in the historical source",
+    "appointmentMethod": "Not stated in the historical source",
+    "latitude": 30.297558,
+    "longitude": -97.62382,
+    "serviceContext": "historical",
+    "contextLabel": "Influenza vaccination event, November 7, 2020"
+  },
+  {
+    "id": "montopolis-recreation-center",
+    "name": "Montopolis Recreation and Community Center",
+    "summary": "City recreation center in southeast Austin that hosted a free Austin Public Health mpox vaccination clinic on August 24, 2024.",
+    "descriptionParagraphs": [
+      "The Montopolis Recreation and Community Center is a City of Austin facility on Montopolis Drive. On August 24, 2024, Austin Public Health held a free mpox vaccination clinic there with support from the Austin–Travis County Medical Reserve Corps, according to a contemporaneous news report and corroborating city material.",
+      "The event report does not establish whether appointments were required. The center's normal operating hours are recreation-center hours, not vaccination hours. This page records the documented clinic; for current vaccination services, use Austin Public Health's immunization resources."
+    ],
+    "photoId": "site-montopolis",
+    "sourceIds": ["s2-fox7-mpox-event", "s3-aph-commission-backup", "s6-montopolis-facility", "s11-census-geocoder"],
+    "fieldSources": {
+      "address": ["s6-montopolis-facility"],
+      "populationServed": ["s2-fox7-mpox-event"],
+      "costPolicy": ["s2-fox7-mpox-event"],
+      "appointmentMethod": ["s2-fox7-mpox-event"],
+      "contextLabel": ["s2-fox7-mpox-event", "s3-aph-commission-backup"],
+      "latitude": ["s11-census-geocoder"],
+      "longitude": ["s11-census-geocoder"]
+    },
+    "externalLinks": [
+      { "label": "Montopolis Recreation and Community Center", "url": "https://www.austintexas.gov/parks/locations/montopolis-recreation-and-community-center" },
+      { "label": "FOX 7 event report", "url": "https://www.fox7austin.com/news/free-mpox-monkeypox-vaccines-austin-public-health" }
+    ],
+    "verifiedOn": "2026-09-29",
+    "address": {
+      "street": "1200 Montopolis Drive",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78741"
+    },
+    "populationServed": "Community members seeking mpox vaccination",
+    "costPolicy": "Free at the documented event",
+    "appointmentMethod": "Not stated in the historical source",
+    "latitude": 30.232316,
+    "longitude": -97.698902,
+    "serviceContext": "historical",
+    "contextLabel": "Mpox vaccination clinic, August 24, 2024"
+  },
+  {
+    "id": "austin-first-spanish-sda",
+    "name": "Austin First Spanish SDA Church",
+    "summary": "North Austin church where the UT Austin nursing VAMOS program conducted COVID-19 vaccination outreach documented in 2021.",
+    "descriptionParagraphs": [
+      "Austin First Spanish SDA Church is on West Rundberg Lane in north Austin. A UT Austin School of Nursing report describes the VAMOS program conducting COVID-19 vaccination outreach at the church in 2021 as part of mobile vaccination efforts reaching Austin-area Hispanic communities.",
+      "The report does not state a price or a formal appointment process, and it does not establish that the church offers vaccinations today. For current services, use Austin Public Health's immunization resources."
+    ],
+    "photoId": "site-rundberg",
+    "sourceIds": ["s4-ut-nursing-vamos", "s7-austin-spanish-first-sda", "s11-census-geocoder"],
+    "fieldSources": {
+      "address": ["s7-austin-spanish-first-sda"],
+      "populationServed": ["s4-ut-nursing-vamos"],
+      "costPolicy": ["s4-ut-nursing-vamos"],
+      "appointmentMethod": ["s4-ut-nursing-vamos"],
+      "contextLabel": ["s4-ut-nursing-vamos"],
+      "latitude": ["s11-census-geocoder"],
+      "longitude": ["s11-census-geocoder"]
+    },
+    "externalLinks": [
+      { "label": "Austin Spanish First SDA Church", "url": "https://austinspanishfirsttx.adventistchurch.org/" },
+      { "label": "UT nursing report on VAMOS outreach", "url": "https://nursing.utexas.edu/news/honesto-transparente-y-empatico-mobile-vaccination-clinics-reach-austin-area-hispanic" }
+    ],
+    "verifiedOn": "2026-09-29",
+    "address": {
+      "street": "100 W Rundberg Lane",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78753"
+    },
+    "populationServed": "Underserved Austin-area residents reached through community outreach",
+    "costPolicy": "Not stated in the historical source",
+    "appointmentMethod": "Not stated in the historical source",
+    "latitude": 30.360963,
+    "longitude": -97.693379,
+    "serviceContext": "historical",
+    "contextLabel": "COVID-19 community outreach documented in 2021"
+  }
+]

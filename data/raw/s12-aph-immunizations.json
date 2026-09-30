@@ -1,0 +1,27 @@
+{
+  "sourceId": "s12-aph-immunizations",
+  "url": "https://www.austintexas.gov/health/programs/immunizations",
+  "requestUrl": "https://www.austintexas.gov/health/programs/immunizations",
+  "finalUrl": "https://www.austintexas.gov/health/programs/immunizations",
+  "retrievedAt": "2026-09-30T20:27:49.867Z",
+  "status": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "bodySha256": "0988ac25132b6fbd213f24b82e414842ce7260fb4369f06bc7d573d7c420a631",
+  "title": "Immunizations | Austin Public Health | AustinTexas.gov",
+  "publishedAt": null,
+  "fieldsDerived": "Current immunization resources and the general educational video",
+  "excerpts": [
+    "Immunizations | Austin Public Health | AustinTexas.gov Skip to main content",
+    "Austin Public Health gives vaccines by appointment only.",
+    "Schedule a vaccine appointment",
+    "Austin Public Health (APH) offers immunizations to children who are uninsured or Medicaid recipients.",
+    "See all vaccines offered and how to schedule an appointment.",
+    "The Mobile Vaccination Program provides immunization services in the community, meeting our populations where they are.",
+    "Shot records are available at the Shots for Tots/Big Shots clinic locations for anyone who received their immunizations at public health clinics in Austin and Travis County, including Shots for Tots/Big Shots and the Mobile Vaccination Program.",
+    "APH Immunizations - Getting Immunized from A to Z",
+    "APH Immunizations - Getting Immunized from A to Z (Spanish)",
+    "APH Immunizations - Getting Immunized from A to Z (Simplified Chinese)",
+    "APH Immunizations - Getting Immunized from A to Z (Vietnamese)",
+    "APH Immunizations - Getting Immunized from A to Z (Arabic)"
+  ]
+}

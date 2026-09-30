@@ -1,0 +1,140 @@
+{
+  "photos": [
+    {
+      "id": "site-expo",
+      "localPath": "/images/site-expo.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Stage_in_the_Banquet_Hall.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/83/Stage_in_the_Banquet_Hall.jpg",
+      "creator": "jonl",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "caption": "Banquet-hall stage at the Travis County Exposition Center. Not a photo of the vaccination event.",
+      "alt": "An empty banquet hall with a low blue stage, steps and a podium",
+      "changes": "Resized from 2272×1704 to 1200×900 and re-encoded as JPEG (quality 80); not cropped. The resized file is shared under the same license.",
+      "width": 1200,
+      "height": 900
+    },
+    {
+      "id": "site-montopolis",
+      "localPath": "/images/site-montopolis.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Colorado_river_montopolis.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Colorado_river_montopolis.jpg",
+      "creator": "Larry D. Moore",
+      "licenseName": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "caption": "Colorado River viewed from Montopolis Bridge. Neighborhood context, not the recreation-center building.",
+      "alt": "The Colorado River winding between tree-covered banks, seen from above on Montopolis Bridge",
+      "changes": "Resized from 2180×1453 to 1200×800 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 800
+    },
+    {
+      "id": "site-rundberg",
+      "localPath": "/images/site-rundberg.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:COVID-19_Vaccination_(20210318-OC-LSC-0001).jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/COVID-19_Vaccination_%2820210318-OC-LSC-0001%29.jpg",
+      "creator": "USDA / Lance Cheung",
+      "licenseName": "Public domain (U.S. government work)",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-USGov",
+      "caption": "Illustrative COVID-19 vaccination in San Antonio. Not the Austin church event.",
+      "alt": "A gloved health worker holding a syringe to a person's upper arm at a vaccination table",
+      "changes": "Resized from 4032×2268 to 1200×675 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "id": "vaccine-influenza",
+      "localPath": "/images/vaccine-influenza.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Influenza_vaccine_(2021)_A.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Influenza_vaccine_%282021%29_A.jpg",
+      "creator": "Rodrigo Chagas / Prefeitura de Pelotas",
+      "licenseName": "Public domain (designated by source)",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "Influenza-vaccination campaign photograph from Pelotas, Brazil. Illustrative.",
+      "alt": "A gloved hand holding a vial of inactivated influenza vaccine with a Portuguese-language label",
+      "changes": "Resized from 3803×2535 to 1200×800 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 800
+    },
+    {
+      "id": "vaccine-covid-19",
+      "localPath": "/images/vaccine-covid-19.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Moderna_COVID-19_vaccine.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Moderna_COVID-19_vaccine.jpg",
+      "creator": "U.S. Air Force / Anna Nolte",
+      "licenseName": "Public domain (U.S. government work)",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-USGov",
+      "caption": "Historical Moderna vaccine vials at Kadena Air Base. Product illustration, not a current formulation or endorsement.",
+      "alt": "Vials of Moderna COVID-19 vaccine on a table",
+      "changes": "Resized from 4312×2875 to 1200×800 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 800
+    },
+    {
+      "id": "vaccine-mpox",
+      "localPath": "/images/vaccine-mpox.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Monkeypox_Virus_(52131590463).jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Monkeypox_Virus_%2852131590463%29.jpg",
+      "creator": "NIAID",
+      "licenseName": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Colorized electron micrograph of mpox virus particles. Not a vaccine image.",
+      "alt": "Colorized microscope image of mpox virus particles, shown in blue on a yellow background",
+      "changes": "Resized from 1792×1670 to 1200×1118 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 1118
+    },
+    {
+      "id": "opportunity-flu",
+      "localPath": "/images/opportunity-flu.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Influenza_vaccine_150929-N-HD638-013.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/Influenza_vaccine_150929-N-HD638-013.jpg",
+      "creator": "U.S. Navy (via DVIDS)",
+      "licenseName": "Public domain (U.S. government work)",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-USGov",
+      "caption": "Illustrative influenza vaccination in San Diego. Not the UT event.",
+      "alt": "A Navy corpsman in a hard hat giving an influenza shot in a sailor's upper arm",
+      "changes": "Resized from 1400×999 to 1200×856 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 856
+    },
+    {
+      "id": "opportunity-mpox",
+      "localPath": "/images/opportunity-mpox.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Austin_Skyline_from_Montopolis_Bridge.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/Austin_Skyline_from_Montopolis_Bridge.jpg",
+      "creator": "Scott218",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "caption": "Austin skyline viewed from Montopolis Bridge. Community context, not event documentation.",
+      "alt": "The downtown Austin skyline beyond trees and the Colorado River, seen from Montopolis Bridge",
+      "changes": "Resized from 6000×4000 to 1200×800 and re-encoded as JPEG (quality 80); not cropped. The resized file is shared under the same license.",
+      "width": 1200,
+      "height": 800
+    },
+    {
+      "id": "opportunity-covid-19",
+      "localPath": "/images/opportunity-covid-19.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:COVID-19_Vaccination_(20210318-OC-LSC-0003).jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/COVID-19_Vaccination_%2820210318-OC-LSC-0003%29.jpg",
+      "creator": "USDA / Lance Cheung",
+      "licenseName": "Public domain (U.S. government work)",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-USGov",
+      "caption": "A separate illustrative vaccination photograph from San Antonio. Not VAMOS outreach.",
+      "alt": "A gloved health worker injecting a COVID-19 vaccine into a person's upper arm",
+      "changes": "Resized from 1280×720 to 1200×675 and re-encoded as JPEG (quality 80); not cropped.",
+      "width": 1200,
+      "height": 675
+    }
+  ],
+  "videos": [
+    {
+      "id": "aph-getting-immunized",
+      "title": "Getting Immunized From A to Z",
+      "publisher": "Austin Public Health",
+      "watchUrl": "https://www.youtube.com/watch?v=-P_lgZFUHTs",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/-P_lgZFUHTs",
+      "caption": "General guidance from Austin Public Health on immunization appointments and visits. Not vaccine-specific clinical guidance or proof of availability."
+    }
+  ]
+}

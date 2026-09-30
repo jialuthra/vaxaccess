@@ -1,0 +1,25 @@
+# AWS Amplify Hosting build for the VaxAccess frontend.
+#
+# Deep links (e.g. /sites/montopolis-recreation-center) also need a rewrite rule
+# in the Amplify console so they are served by index.html with HTTP 200:
+#   Source:  </^[^.]+$|\.(?!(css|gif|ico|jpg|jpeg|js|json|map|mp4|png|svg|txt|webp|woff|woff2)$)([^.]+$)/>
+#   Target:  /index.html
+#   Type:    200 (Rewrite)
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install
+        - nvm use
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

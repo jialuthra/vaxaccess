@@ -1,0 +1,16 @@
+{
+  "sourceId": "s8a-cdc-flu-basics",
+  "url": "https://www.cdc.gov/flu/vaccines/index.html",
+  "requestUrl": "https://www.cdc.gov/flu/vaccines/index.html",
+  "finalUrl": "https://www.cdc.gov/flu/vaccines/index.html",
+  "retrievedAt": "2026-09-30T20:27:49.503Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "b28034891e3dae1f61d11541a9157769b99f65a1919252a0665e9953046820c2",
+  "title": "Seasonal Flu Vaccine Basics | Influenza (Flu) | CDC",
+  "publishedAt": "2026-09-01T17:06:10Z",
+  "fieldsDerived": "Influenza population and seasonal schedule",
+  "excerpts": [
+    "Everyone 6 months and older should get a flu vaccine every season with rare exceptions."
+  ]
+}

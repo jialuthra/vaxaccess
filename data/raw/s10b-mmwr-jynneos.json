@@ -1,0 +1,27 @@
+{
+  "sourceId": "s10b-mmwr-jynneos",
+  "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
+  "requestUrl": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
+  "finalUrl": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7422a3.htm",
+  "retrievedAt": "2026-09-30T20:27:49.801Z",
+  "status": 200,
+  "contentType": "text/html",
+  "bodySha256": "e6366f40ca30766e19b376ea838f847e7ddcecf67e1cec50ce2fc17a6311f6ee",
+  "title": "Use of JYNNEOS (Smallpox and Mpox Vaccine, Live, Nonreplicating) for Persons Aged ≥18 Years at Risk for Mpox During an Mpox Outbreak: Recommendations of the Advisory Committee on Immunization Practices — United States, 2023 | MMWR",
+  "publishedAt": "2025-06-18",
+  "fieldsDerived": "JYNNEOS vaccine type",
+  "excerpts": [
+    "Use of JYNNEOS (Smallpox and Mpox Vaccine, Live, Nonreplicating) for Persons Aged ≥18 Years at Risk for Mpox During an Mpox Outbreak: Recommendations of the Advisory Committee on Immunization Practices — United States, 2023 | MMWR",
+    "Use of JYNNEOS (Smallpox and Mpox Vaccine, Live, Nonreplicating) for Persons Aged ≥18 Years at Risk for Mpox During an Mpox Outbreak: Recommendations of the Advisory Committee on Immunization Practices — United States, 2023",
+    "In 2023, the Advisory Committee on Immunization Practices (ACIP) recommended JYNNEOS (smallpox and mpox vaccine, live, nonreplicating) for persons aged ≥18 years who are at risk for mpox during any mpox outbreak and who are at risk for mpox during the ongoing clade IIb outbreak.",
+    "CDC issues outbreak-specific vaccination recommendations based on the epidemiology at the time specific cases or clusters are identified; however, because of the increased risk for U.S. mpox outbreaks, the Advisory Committee on Immunization Practices (ACIP) reviewed results from a previously performed modified Grading of Recommendations Assessment, Development, and Evaluation of the 2-dose JYNNEO…",
+    "ACAM2000** is a live, replication-competent vaccinia virus vaccine licensed in 2007; JYNNEOS (smallpox and mpox vaccine, live, nonreplicating), †† is a live, replication-deficient vaccinia virus vaccine licensed in 2019.",
+    "After considering the published studies in GRADE, the work group estimated with moderate certainty that the 2-dose JYNNEOS primary series provides a small increase in disease prevention against MPXV compared with that provided by ACAM2000. ††† The work group also had low certainty that fewer serious adverse events occur after the JYNNEOS primary series compared with those after the ACAM2000 prima…",
+    "On February 22, 2023, ACIP voted to recommend the 2-dose JYNNEOS vaccination series**** for persons aged ≥18 years who are considered to be at risk for mpox during an mpox outbreak. †††† On October 25, 2023, ACIP voted to recommend the 2-dose JYNNEOS vaccination series for persons aged ≥18 years who are at risk for acquiring mpox during the ongoing clade IIb outbreak that began in 2022.",
+    "No human data regarding safety of JYNNEOS administration during pregnancy or breastfeeding are available; however, JYNNEOS is a nonreplicating vaccine, and data from animal models, including rats and rabbits, have shown no evidence of harm to a developing fetus ( Table 1 ).",
+    "JYNNEOS is recommended as a 2-dose subcutaneous vaccination series, with the second dose administered 28 days after the first.",
+    "At this time, persons who have been vaccinated with the 2-dose JYNNEOS series do not require an additional dose, nor do they need to be revaccinated during a future outbreak.",
+    "Although the 2-dose JYNNEOS series may not be as effective in severely immunocompromised persons, it is not known whether additional doses will improve effectiveness; in addition, some data have suggested that more than 2 doses may cause increased reactogenicity ( 22 ) and for this reason, additional doses are not recommended.",
+    "Because JYNNEOS behaves like a nonlive virus vaccine and is recommended as a 2-dose series, its role as postexposure prophylaxis is poorly understood; studies are ongoing to understand VE of JYNNEOS postexposure vaccination."
+  ]
+}

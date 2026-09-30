@@ -1,6 +1,6 @@
 # VaxAccess — Phase I Design
 
-**Final design · September 28, 2026**
+**Final design · September 29, 2026**
 
 This is the standalone implementation specification for VaxAccess. It incorporates the team's approved decisions and the supplied eight-page CS 373 IDB1 specification. A new implementer must be able to build the project from this document without the preceding conversation. This document contains instructions, contracts and diagrams, not application code.
 
@@ -22,7 +22,7 @@ The primary journey is Home → Sites or Vaccines → details → the relevant p
 - Implement working filtering and sorting for all five card attributes.
 - Integrate the GitLab API in Phase I for automated About-page statistics.
 - Use real photography with truthful captions and attribution. Do not generate AI images.
-- Use English. Keep interface strings centralized for later localization.
+- Use English. Keep interface strings centralized for later localization. Fixture prose is English-only in Phase I; localizing domain content later will require per-locale fixture fields, not only a new strings file.
 - Keep coordinates and reusable data access contracts for future expansion. Distance search, additional languages, accounts, bookings, internal donations, user submissions and administration are outside Phase I.
 - Prefer resources for people seeking vaccines over ways to volunteer.
 
@@ -50,7 +50,7 @@ The finished site must have all 14 pages, nine connected records, nine distinct 
 | Repository | https://gitlab.com/nifemisoyemi/cs373-fall-2026-18 |
 | Production domain | https://vaxaccess.me |
 
-At implementation time, install mutually compatible stable dependencies and commit the exact npm lockfile. Record the selected Node LTS version in `.nvmrc` and the package engine requirement; use that same version locally, in CI and for the supported Lambda runtime. Do not use floating dependency versions in CI.
+At implementation time, install mutually compatible stable dependencies and commit the exact npm lockfile. Select a Node LTS version that AWS Lambda currently offers as a managed runtime, and record it in `.nvmrc` and the package engine requirement. Use that same version locally, in CI and for the Lambda runtime. Do not use floating dependency versions in CI.
 
 ### Architecture diagram
 
@@ -62,7 +62,7 @@ flowchart TD
     Hosting --> Browser["Browser · exactly 14 pages"]
     Browser -->|"About statistics"| Lambda["Read-only AWS Lambda"]
     Lambda -->|"Authenticated requests"| GitLab["GitLab REST API"]
-    Secret["Server-only GitLab credential"] --> Lambda
+    Secret["Server-only GitLab credential and contributor map"] --> Lambda
 ```
 
 The browser loads bundled domain records and calls Lambda only for statistics. Lambda never accepts an arbitrary repository or upstream URL. No GitLab token belongs in browser code, public configuration, a Postman export or committed files.
@@ -71,7 +71,7 @@ The Postman collection specifies six future domain endpoints. Those endpoints ar
 
 ### Data and extensibility
 
-Page components call the catalog service rather than importing fixtures directly. The catalog service resolves IDs, derives related records and produces the exact display strings used for filtering and sorting. Its interface remains the boundary for a future API implementation.
+Page components call the catalog service rather than importing fixtures directly. The catalog service resolves IDs, derives related records and produces the exact display strings used for filtering and sorting (Section 4.4). Its interface remains the boundary for a future API implementation.
 
 Use one relationship file containing three edge collections: Site–Vaccine, Opportunity–Site and Opportunity–Vaccine. Store each edge once and derive reverse navigation. Sources and media also have stable IDs. Do not duplicate linked records inside other records.
 
@@ -81,7 +81,7 @@ There must be at least three programmatically collectable content sources. The s
 
 Static pages remain usable if GitLab is unavailable. About independently displays loading, current, stale or unavailable statistics. Missing data never becomes a fabricated zero.
 
-Freeze deployed code and domain fixtures after submission until grading. As explicitly directed by the team, live GitLab counts continue refreshing during that freeze. This is the team's interpretation of freeze behavior; do not describe it as an additional instructor ruling.
+Freeze deployed code and domain fixtures after submission until grading. As explicitly directed by the team, live GitLab counts continue refreshing during that freeze. This is the team's interpretation of freeze behavior; do not describe it as an additional instructor ruling. Because the frozen Lambda reads CI output produced by later work, the CI interface it depends on is a cross-phase contract (Section 4.9).
 
 ## 3. Alternatives
 
@@ -96,6 +96,9 @@ Freeze deployed code and domain fixtures after submission until grading. As expl
 | Redirects into existing pages | A separate error/not-found page | Preserves exactly 14 content pages |
 | Centralized English strings | Multilingual UI in Phase I | Supports later localization without expanding this phase |
 | Live statistics with dated failure states | Manually entered or frozen counters | Meets the approved GitLab integration |
+| CORS configured only on the function URL | CORS headers emitted by the handler as well | Duplicate CORS headers cause browsers to reject responses |
+| Latest pipeline whose `unit` job succeeded | Latest fully successful pipeline | Unit counts stay current when an unrelated acceptance job fails |
+| Contributor aliases in Lambda configuration | Aliases committed to the public repository | Avoids publishing a curated identity map |
 
 ## 4. Detailed Implementation
 
@@ -115,7 +118,9 @@ The three slugs in each detail row are the only Phase I instance URLs.
 | `/about` | `src/pages/AboutPage.tsx` | 1 |
 | **Total** | **Eight reusable page components** | **14** |
 
-Unknown paths redirect to Home with history replacement. Unknown instance IDs redirect to their model listing with a visible explanation. These are redirects and page states, not additional content pages. No standalone search, sources, credits, contact, signup, privacy or 404 page is created.
+Unknown paths redirect to Home with history replacement. Unknown instance IDs redirect to their model listing with a visible explanation carried in router navigation state; the explanation is not expected to survive a page refresh. These are redirects and page states, not additional content pages. No standalone search, sources, credits, contact, signup, privacy or 404 page is created.
+
+Because redirects mask broken links, acceptance tests must assert that no internal link on any of the 14 pages triggers a redirect (Section 4.13).
 
 Amplify must rewrite application deep links to `index.html` with HTTP 200 while serving existing static assets normally. Test direct navigation and refresh on all nine detail URLs.
 
@@ -125,13 +130,13 @@ Amplify must rewrite application deep links to `index.html` with HTTP 200 while 
 
 **Home.** In order: global navigation; an introduction beside a real hero photograph; a prominent current-resource link; primary resource navigation to Sites and Vaccines; a visually secondary volunteering section; footer. Heading: “Vaccination resources for Austin communities.” Intro: “Explore vaccine information and community vaccination resources, with a focus on people who are uninsured or underinsured.” Explain that Phase I includes historical examples. Actions: “Browse vaccination sites,” “Explore vaccines,” and “Explore volunteer opportunities.” The first two receive stronger visual emphasis.
 
-**Listings.** Show the model title, a short explanation, total records and pagination information, filter/sort controls, result count and card grid. Initial text must communicate **3 instances · 1 page · Page 1 of 1**. Cards contain a unique photo, linked title, all five labeled attributes and an explicit detail link. Historical badges are additional to the five fields. Use the same cards in related-record sections.
+**Listings.** Show the model title, a short explanation, total records and pagination information, filter/sort controls, result count and card grid. The catalog summary must communicate **3 instances · 1 page · Page 1 of 1**. This summary describes the catalog and does not change when filters are applied; the filtered result is reported separately by the result count. Cards contain a unique photo, linked name, all five labeled attributes and an explicit detail link. Historical badges are additional to the five fields. Use the same cards in related-record sections.
 
 **Site details.** Show historical status prominently, then cost/payment, population/eligibility, appointment method, address/map, vaccine cards, opportunity cards and sources. Historical details describe the documented event, not the building's current services. Provide “Find current vaccination services” linking to APH. A venue's normal operating hours are not vaccination hours.
 
 **Vaccine details.** Explain the disease category, population, type, administration and qualified schedule summary. Follow with the photograph/video, related historical Sites and opportunities, and official medical sources. Say “Sites with documented vaccination activity,” not “Available today.” Include a brief note that individual eligibility and timing must be confirmed with a qualified provider.
 
-**Opportunity details.** Show activity, organization, time/date, requirements, status, media, related Sites and vaccines, source links and organizer information. Completed/archived examples display “Past activity — not accepting signups through this listing.” Replace an application CTA with “View historical source” and “Explore organizer information.” Do not reactivate an old signup form. The reusable template must also support a future ongoing role with no end date.
+**Opportunity details.** Show activity, organization, date, time commitment, requirements, status, media, related Sites and vaccines, source links and organizer information. Completed/archived examples display “Past activity — not accepting signups through this listing.” Replace an application CTA with “View historical source” and “Explore organizer information.” Do not reactivate an old signup form. The reusable template must also support a future ongoing role with no end date.
 
 **About.** In order: purpose and intended users; five team cards; aggregate statistics and their definitions/timestamps; data sources; tools and how each is used; repository and published Postman documentation links. Include all media credits here as well as next to images. Display Jia's Phase I leader role. Member content is managed in JSON, not embedded in the page component.
 
@@ -161,7 +166,7 @@ Store all 55 supplied colors as CSS custom properties in `tokens.css`. Semantic 
 
 ### 4.4 Card fields, filters and sorting
 
-Title and photo do not count toward the five attributes.
+Name and photo do not count toward the five attributes.
 
 | Model | Display label → field key |
 | --- | --- |
@@ -169,11 +174,20 @@ Title and photo do not count toward the five attributes.
 | Vaccine | Diseases prevented → `diseasesPrevented`; Intended age group → `ageGroup`; Vaccine type → `vaccineType`; Administration → `administrationMethod`; Dose/schedule → `scheduleSummary` |
 | VolunteerOpportunity | Organization → `organization`; Activity → `activityType`; Time commitment → `timeCommitment`; Requirements → `requirements`; Supported vaccines → `vaccines` |
 
-The collapsible filter panel has one text input for each field. Trim leading/trailing query whitespace and compare case-insensitive substrings against the same string displayed on the card. All populated filters combine with AND. Arrays become the same comma-separated text used for display. Empty filters match every record.
+**Display strings.** The catalog service produces one display string per field, and cards, filters, sorting and Postman examples all use that same string:
 
-The sort selector contains all five field keys and a direction selector contains A–Z and Z–A. Initial ordering is title A–Z. Use English locale-aware text comparison, then title, then ID as stable tie-breakers. Cost and dose fields sort alphabetically; they are not numerical rankings.
+| Field | Display string |
+| --- | --- |
+| `address` | `street, city, state postalCode`, for example “7311 Decker Lane, Austin, TX 78724” |
+| `vaccines` (Site and VolunteerOpportunity) | The `name` of each related Vaccine, ordered by name A–Z using the comparison below, joined with “, ” |
+| `diseasesPrevented`, `requirements` | Array items in stored order, joined with “, ” |
+| All other fields | The stored string unchanged |
 
-Filtering precedes sorting. Show “Showing N of 3 sites/vaccines/opportunities”; retain the total catalog page count. Zero matches show an inline message and Clear filters. Clear filters empties all filter inputs; sort remains as selected. No results are hidden behind additional pages. There is no Phase I distance filter or global search.
+The collapsible filter panel has one text input for each field. Trim leading/trailing query whitespace and compare case-insensitive substrings against the display string. All populated filters combine with AND. Empty filters match every record.
+
+The sort selector contains **Name** followed by the five field keys, so users can always return to the default ordering. A direction selector contains A–Z and Z–A. Initial ordering is Name A–Z. Use English locale-aware text comparison, then name, then ID as stable tie-breakers. Cost and dose fields sort alphabetically; they are not numerical rankings.
+
+Filtering precedes sorting. Show “Showing N of 3 sites/vaccines/opportunities”; the catalog summary from Section 4.2 stays unchanged. Zero matches show an inline message and Clear filters. Clear filters empties all filter inputs; sort remains as selected. No results are hidden behind additional pages. There is no Phase I distance filter or global search.
 
 Keep control state in the current listing component. Navigating away and returning initializes the controls again. Preserve ordinary browser navigation and route history.
 
@@ -194,6 +208,8 @@ Implement these contracts as TypeScript types and JSON validation. Required stri
 | Team member | `name`, `username`, `phaseRole`; nullable `bio` and `photoId`; `responsibilities` array |
 | External link | `label` and absolute HTTPS `url` |
 | Field provenance | Map from a factual field key to one or more source IDs |
+
+`timeCommitment` describes the expected duration or cadence of participation, such as a single-day event or a recurring weekly shift. It never contains the calendar date; dates belong only in `startDate`, `endDate` and `dateLabel`.
 
 Related `vaccines`, `sites` and `opportunities` are derived from relationship edges, not stored as duplicated arrays in model fixtures. Unknown historical facts display “Not stated in the historical source.” That is a documented absence, not an invitation to invent a price, eligibility rule, shift duration or qualification.
 
@@ -229,15 +245,15 @@ Keep these as categories even when explaining a product used at an event. For CO
 
 **Volunteer opportunities**
 
-| ID / title | Organization and activity | Time / requirements / status |
-| --- | --- | --- |
-| `ut-flu-expo-2020` — UT nursing flu-vaccination support at the Expo Center | UT Austin School of Nursing; supervised vaccination and patient education | November 7, 2020; shift duration not stated; nursing students supervised by faculty; past event |
-| `aph-mpox-montopolis-2024` — Austin–Travis County MRC mpox-clinic support | Austin–Travis County Medical Reserve Corps / Austin Public Health; vaccination-clinic support | August 24, 2024; duration and event-specific volunteer qualifications not stated in the event report; past event |
-| `vamos-rundberg-2021` — VAMOS community COVID-19 outreach at Rundberg | UT Austin School of Nursing / VAMOS with community volunteers; vaccination outreach and support | Wednesday outreach documented in 2021; exact shift and event-specific prerequisites not stated; archived ongoing-program example, status past |
+| ID / name | Organization and activity | Date label / time commitment | Requirements / status / organizer link |
+| --- | --- | --- | --- |
+| `ut-flu-expo-2020` — UT nursing flu-vaccination support at the Expo Center | UT Austin School of Nursing; supervised vaccination and patient education | November 7, 2020 / Single-day event; shift length not stated in the historical source | Nursing students supervised by faculty; past event; organizer link S14 |
+| `aph-mpox-montopolis-2024` — Austin–Travis County MRC mpox-clinic support | Austin–Travis County Medical Reserve Corps / Austin Public Health; vaccination-clinic support | August 24, 2024 / Single-day event; shift length not stated in the historical source | Event-specific volunteer qualifications not stated in the event report; past event; organizer link S13 (Austin–Travis County MRC) |
+| `vamos-rundberg-2021` — VAMOS community COVID-19 outreach at Rundberg | UT Austin School of Nursing / VAMOS with community volunteers; vaccination outreach and support | Historical outreach documented in 2021 / Recurring Wednesday outreach; shift length not stated in the historical source | Event-specific prerequisites not stated; archived ongoing-program example, status past; organizer link S14 |
 
 For the third record, `kind` is ongoing, `status` is past, `datePrecision` is year and `dateLabel` is “Historical outreach documented in 2021.” Do not invent a last operating date. For the two dated events, start and end dates equal the documented calendar date with day precision; do not invent start/end times.
 
-The source confirms volunteer participation in the VAMOS program and outreach at the church. Describe the opportunity as support for that outreach; do not claim a specific person or every listed program role was assigned to that particular location. The MRC's present recruitment information is a separate organizer link, not proof of the historical event's admission requirements.
+The source confirms volunteer participation in the VAMOS program and outreach at the church. Describe the opportunity as support for that outreach; do not claim a specific person or every listed program role was assigned to that particular location. The MRC's present recruitment information is a separate organizer link, not proof of the historical event's admission requirements. Likewise, the UT School of Nursing organizer link identifies the organizer; it is not evidence of a current opening.
 
 | Site | Vaccine | Opportunity | Evidence |
 | --- | --- | --- | --- |
@@ -264,8 +280,11 @@ Create the three typed edges for each row: Site–Vaccine, Opportunity–Site an
 | S11 | [Census Geocoder API documentation](https://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.html) | REST collection of Site geographic attributes |
 | S12 | [APH immunization resources](https://www.austintexas.gov/health/programs/immunizations) | Current-resource link and general educational video |
 | S13 | [Austin–Travis County MRC](https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps) and [UT MRC](https://sites.utexas.edu/utmrc/) | Organizer information; no promise of an available shift |
+| S14 | [UT Austin School of Nursing](https://nursing.utexas.edu/) | Organizer information for the two UT nursing records; confirm the landing page during collection; no promise of an available role |
 
 Create `scripts/collect-data.ts` to fetch the selected HTML sources and the Census REST endpoint. Extract bounded, relevant content into source evidence; write original summaries rather than copying articles. Store request URL, retrieval time, response status, source publication date when known and fields derived. Keep compact evidence excerpts and the actual JSON responses under `data/raw/`; exclude personal contact data unrelated to the project.
+
+Official clinical pages (S8–S10) may move or change after collection. Fixtures remain tied to the dated evidence retained in `data/raw/`. If a cited URL later moves or its guidance changes, update the fixture, its `verifiedOn` date and the source record deliberately in a reviewed commit. Never let a changed page silently alter published clinical text.
 
 For each selected Site, request `https://geocoding.geo.census.gov/geocoder/locations/onelineaddress` using its full address, `benchmark=Public_AR_Current` and `format=json`. Read `result.addressMatches`. Accept only a match consistent with the source address; use `coordinates.x` as longitude and `coordinates.y` as latitude. Store the matched address and benchmark with the raw response. Do not guess coordinates or accept an unrelated first match. If one-line matching fails, use the documented structured-address endpoint with the same source address.
 
@@ -317,7 +336,7 @@ The team will fill biographies, portraits and major responsibilities manually, i
 | --- | --- |
 | Commits | Unique commit SHAs reachable from the actual default branch, including merges; attribute to the recorded author |
 | Issues | Open and closed project issues created by the member; use author identity, not assignee |
-| Unit tests | Distinct executed unit cases reported by the latest successful default-branch pipeline; count parameterized cases separately; report skipped cases separately |
+| Unit tests | Distinct executed unit cases in the selected unit-test snapshot (below); count parameterized cases separately; report skipped cases separately |
 | Totals | Project-wide counts using the same definitions; explain unattributed/non-roster contributions separately so totals reconcile |
 
 Do not count merge requests as issues, assertions as tests, browser acceptance cases as unit tests, or commit appearances more than once. Do not sum per-member numbers and silently omit other contributors from a project total.
@@ -325,31 +344,35 @@ Do not count merge requests as issues, assertions as tests, browser acceptance c
 **GitLab acquisition**
 
 1. Resolve `nifemisoyemi/cs373-fall-2026-18` through `GET /api/v4/projects/:urlEncodedPath`. Read the numeric ID and default branch from the response.
-2. Resolve the exact roster usernames to GitLab user IDs. Maintain verified commit-author email/name aliases in the server-only contributor mapping. Do not infer identity from approximate display-name matches.
+2. Resolve the exact roster usernames to GitLab user IDs. Maintain verified commit-author email/name aliases in the server-only contributor map (`CONTRIBUTOR_MAP`, Section 4.14). Do not infer identity from approximate display-name matches.
 3. Read `/projects/:id/repository/commits` with `ref_name` set to the discovered default branch. Do not use all-branches mode.
 4. Read `/projects/:id/issues` with `scope=all` and `state=all`; aggregate by author ID.
-5. Find the latest successful default-branch pipeline through `/projects/:id/pipelines`, sorted by descending pipeline ID. Fetch its `/test_report`.
+5. Select the unit-test snapshot: list default-branch pipelines through `/projects/:id/pipelines` with `ref` set to the default branch, sorted by descending pipeline ID. For each, read `/projects/:id/pipelines/:pipeline_id/jobs` and choose the first pipeline whose `unit` job finished with status success, examining at most the 20 most recent pipelines. Fetch that pipeline's `/test_report`. An unrelated failed job, such as acceptance tests, does not disqualify the pipeline.
 6. Exhaust every paginated response using GitLab's continuation headers. Never rely on a total-count header being present. If any required page fails, that metric is incomplete and must not be presented as a complete total.
 
-**Unit-test attribution.** Maintain one roster username for every unit-test file in `tests/test-owners.json`. Assign owners as the team actually develops the tests. CI emits JUnit XML and normalizes each test case's classname to include its repository-relative file path and suite name. The ownership script also produces `unit-test-owners.json` as a CI artifact. Lambda downloads that artifact from the same pipeline's `unit` job and maps the report's file prefix to its owner. This avoids using an ownership map from a different commit. Missing or malformed ownership makes the per-member unit metric unavailable; do not guess.
+**Unit-test attribution.** Maintain one roster username for every unit-test file in `tests/test-owners.json`. Assign owners as the team actually develops the tests. CI emits JUnit XML and normalizes each test case's classname to include its repository-relative file path and suite name. The ownership script also produces `unit-test-owners.json` as a CI artifact. Lambda downloads that artifact from the selected pipeline's `unit` job and maps the report's file prefix to its owner. This avoids using an ownership map from a different commit.
 
-The ownership artifact contains the pipeline ID, commit SHA and an `owners` map from relative unit-test file paths to roster usernames. Validate its pipeline and SHA against the selected report. Publish only the unit job's normalized JUnit into the pipeline test report; Playwright retains its own acceptance artifacts and does not contribute unit counts.
+The ownership artifact contains `schemaVersion` (1), the pipeline ID, the commit SHA and an `owners` map from relative unit-test file paths to roster usernames. Validate its schema version, pipeline and SHA against the selected report. A missing, malformed or mismatched artifact makes the per-member unit metric unavailable; do not guess. Test cases whose file does not appear in the `owners` map still count toward the project total and are reported under `unattributed`, so a single unowned file does not hide every member's count. Publish only the unit job's normalized JUnit into the pipeline test report; Playwright retains its own acceptance artifacts and does not contribute unit counts.
 
 Use a normalized identity of file path + suite name + test name to deduplicate report cases. Require unique names within each suite, including parameter labels. Mark missing reports as unavailable. A real, successfully retrieved zero-case report is distinct from a missing report.
 
+**Cross-phase CI contract.** Production code is frozen after submission while later phases keep changing the repository, and the frozen Lambda keeps reading new pipelines. Through Phase I grading, later work must therefore preserve these interfaces: a default-branch job named `unit`; the `unit-test-owners.json` artifact at schema version 1; the JUnit classname format containing the repository-relative file path and suite name; and an entry in `tests/test-owners.json` for every new unit-test file. Document this contract in README and the CI file. Changing any part of it requires deploying a compatible Lambda, which is not permitted during the freeze.
+
 **Service response.** Return JSON containing `projectPath`, `generatedAt`, `defaultBranch`, nullable `pipeline` (ID, SHA, URL), `members`, `totals` and `unattributed`. Each metric group has `status` = current, stale or unavailable; nullable `asOf`; nullable `value`; and nullable safe `message`. Unit-test groups additionally carry `skipped`. A stale value retains its original timestamp. Include the metric definitions in About text.
 
-The `members` array contains exactly the five roster entries, each with `name`, `username`, `commits`, `issues` and `unitTests`. `totals` and `unattributed` use those same three metric keys. Values are nonnegative integers when available and null when unavailable. All timestamps are ISO UTC strings. The pipeline metadata always belongs to the displayed unit-test snapshot, including when that snapshot is stale. Return HTTP 200 for a valid statistics envelope even when upstream metric groups are unavailable; malformed methods/paths and service-level failures use appropriate error statuses. The client must also handle a non-JSON network/service error.
+The `members` array contains exactly the five roster entries, each with `name`, `username`, `commits`, `issues` and `unitTests`. `totals` and `unattributed` use those same three metric keys. Values are nonnegative integers when available and null when unavailable. All timestamps are ISO UTC strings. The pipeline metadata always belongs to the displayed unit-test snapshot, including when that snapshot is stale. Return HTTP 200 for a valid statistics envelope even when upstream metric groups are unavailable; malformed methods/paths and service-level failures use appropriate error statuses. The client must also handle a non-JSON network/service error and treats a throttled (429) or 5xx response as unavailable.
 
 **Caching and errors.** Keep successful metric snapshots in the Lambda execution environment for five minutes. This is an in-memory cache, not durable storage: cold starts may have no previous value. Coalesce concurrent refreshes within an instance. On upstream failure, return a clearly stale prior value when one exists; otherwise return unavailable. Do not claim a globally shared cache or guaranteed stale data after a cold start.
 
 The browser requests statistics on About entry, then at five-minute intervals while About is visible, and cancels timers/requests on unmount. Show loading before the first response and offer a Retry action after failure. Preserve usable static About content throughout.
 
-Lambda accepts GET for the statistics resource and OPTIONS for CORS; reject other methods and unknown paths. Its function URL exposes only this fixed read-only output. Configure CORS for the exact production origin and explicit development/preview origins used by the team; CORS is not authentication. Set bounded request timeouts, obey GitLab rate-limit responses and return safe unavailable states. Never log tokens or return raw credential-bearing upstream errors.
+**CORS and methods.** Configure CORS only in the function URL's CORS settings, allowing GET from the exact production origin and explicitly named development origins and fixed-branch Amplify domains. The handler emits no CORS headers of its own, because duplicate headers cause browsers to reject the response; the function URL answers preflight requests itself. Amplify pull-request preview domains are generated dynamically and are not allowlisted, so previews show statistics as unavailable. The handler accepts GET for the statistics resource and rejects other methods and unknown paths. CORS is not authentication.
 
-Use a least-privilege GitLab read credential in Lambda's server environment. Public frontend variables contain only the endpoint URL. Verify actual repository visibility, API permission, pipeline access and test-artifact access during setup; this design does not claim those accounts have already been configured.
+Its function URL exposes only this fixed read-only output. Set bounded request timeouts, obey GitLab rate-limit responses and return safe unavailable states. Never log tokens or return raw credential-bearing upstream errors.
 
-Technical references: [GitLab REST/pagination](https://docs.gitlab.com/api/rest/), [commits](https://docs.gitlab.com/api/commits/), [issues](https://docs.gitlab.com/api/issues/), [pipelines/test reports](https://docs.gitlab.com/api/pipelines/), [JUnit reports](https://docs.gitlab.com/ci/testing/unit_test_reports/) and [job artifacts](https://docs.gitlab.com/api/job_artifacts/).
+**Credential.** Use a read-only credential with only the `read_api` scope in Lambda's server environment. Prefer a project or group access token if the project's GitLab.com tier offers one. Otherwise use a personal access token on a team member's account, limited to `read_api`, with an expiry date after grading; record the owning member and expiry in deployment records. A public project's endpoints may also be readable anonymously; the token is still used for authenticated rate limits and to avoid depending on visibility settings. Public frontend variables contain only the endpoint URL. Verify actual repository visibility, token availability for the tier, API permission, pipeline access and test-artifact access during setup; this design does not claim those accounts have already been configured.
+
+Technical references: [GitLab REST/pagination](https://docs.gitlab.com/api/rest/), [commits](https://docs.gitlab.com/api/commits/), [issues](https://docs.gitlab.com/api/issues/), [pipelines/test reports](https://docs.gitlab.com/api/pipelines/), [jobs](https://docs.gitlab.com/api/jobs/), [JUnit reports](https://docs.gitlab.com/ci/testing/unit_test_reports/) and [job artifacts](https://docs.gitlab.com/api/job_artifacts/).
 
 ### 4.10 Postman domain API contract
 
@@ -364,15 +387,15 @@ Create and publish `VaxAccess Phase I API` with six requests. Set collection var
 | GET `/api/v1/opportunities` | Paginated opportunity collection |
 | GET `/api/v1/opportunities/{id}` | One opportunity |
 
-**List query contract:** `page` is an integer ≥1, default 1; `pageSize` is 1–100, default 3. Each field from Section 4.4 has a `filter[fieldKey]` query parameter. `sort` is one of the five keys or `name`, default name; `order` is asc or desc, default asc. Use the same display-text matching and stable sorting semantics as the frontend. Reject unknown filters/sort fields, duplicate scalar parameters and invalid pagination values with HTTP 400.
+**List query contract:** `page` is an integer ≥1, default 1; `pageSize` is 1–100, default 3. Each field from Section 4.4 has a `filter[fieldKey]` query parameter. `sort` is one of the five keys or `name`, default name; `order` is asc or desc, default asc. Use the same display strings (Section 4.4), matching and stable sorting semantics as the frontend. Reject unknown filters/sort fields, duplicate scalar parameters and invalid pagination values with HTTP 400.
 
-**Response contract:** list responses contain `data` and `meta`. Meta includes page, pageSize, totalItems, filteredItems and totalPages. Calculate totalPages from filteredItems; an empty filtered collection has totalPages 0. A valid page beyond the available results returns HTTP 200 with empty data and unchanged counts. This API metadata does not add pagination routes to the Phase I website.
+**Response contract:** list responses contain `data` and `meta`. Meta includes page, pageSize, totalItems, filteredItems and totalPages. Calculate totalPages from filteredItems; an empty filtered collection has totalPages 0. A valid page beyond the available results returns HTTP 200 with empty data and unchanged counts. API pagination describes the filtered result, whereas the website's catalog summary (Section 4.2) describes the unfiltered catalog; the two are intentionally different quantities. This API metadata does not add pagination routes to the Phase I website.
 
 Detail responses contain `data` using the model contract, plus derived `relationships` with related IDs grouped by model. Both list and detail envelopes additionally include `included.sources` and `included.media`, containing the source and media objects referenced by their returned records. Related records are identified by ID and retrieved through the six specified endpoints. Clients must not scrape rendered text to reconstruct relationships.
 
 Errors contain an `error` object with `code`, `message` and optional `details`. Use 400 for invalid query syntax/values, 404 for unknown record IDs and a documented 500 example for server failure. A valid empty list is 200.
 
-Save list examples for the full three-record result, filtering, reverse sorting, pageSize 1 and zero matches. Save detail examples for all nine IDs and missing IDs. Include error examples and schema/assertion tests covering counts, required fields and relationships. Saved examples are the Phase I demonstration; deploying a domain API or mock server is not part of this scope. Publish the public documentation URL and insert it into About before release.
+Save list examples for the full three-record result, filtering, reverse sorting, pageSize 1 and zero matches. Save detail examples for all nine IDs and missing IDs. Include error examples. Write schema/assertion test scripts covering counts, required fields and relationships. Postman test scripts execute only against a responding server, and Phase I deploys neither a domain API nor a mock server; these scripts are therefore authored, reviewed and documented as ready for a future server, and must not be reported as passing. Saved examples are the Phase I demonstration. Publish the public documentation URL and insert it into About before release.
 
 ### 4.11 File creation map
 
@@ -392,17 +415,17 @@ All paths are relative to the repository root. No file in this table creates an 
 | `src/types/domain.ts`, `src/types/stats.ts` | Contracts from Sections 4.5 and 4.9 |
 | `src/data/sites.json`, `vaccines.json`, `opportunities.json` | Exactly three records each |
 | `src/data/relationships.json`, `sources.json`, `media.json`, `team.json` | Canonical edges, provenance, assets and roster |
-| `src/services/catalog.ts`, `listing.ts`, `statsClient.ts` | Data access, shared filter/sort functions, Lambda client |
+| `src/services/catalog.ts`, `listing.ts`, `statsClient.ts` | Data access and display strings, shared filter/sort functions, Lambda client |
 | `src/config/site.ts`, `src/content/en.ts` | Public links/environment values and English UI copy |
 | `src/styles/tokens.css`, `global.css`, `components.css` | Exact palette, Bootstrap integration and responsive styling |
 | `public/images/` | Nine selected photos and team-supplied portraits |
-| `server/stats/handler.ts`, `gitlabClient.ts`, `aggregate.ts`, `cache.ts` | Lambda routing, upstream pagination, metrics and cache |
-| `server/config/contributors.json` | Server-only verified aliases and roster GitLab IDs |
+| `server/stats/handler.ts`, `gitlabClient.ts`, `aggregate.ts`, `cache.ts` | Lambda routing, upstream pagination, snapshot selection, metrics and cache |
+| `server/config/contributors.example.json` | Committed, secret-free example of the `CONTRIBUTOR_MAP` shape; real aliases live only in Lambda configuration |
 | `server/tsconfig.json` | Lambda TypeScript compilation |
 | `scripts/collect-data.ts`, `validate-data.ts`, `validate-release.ts` | Collection/provenance, fixture integrity and release-input gates |
 | `scripts/report-unit-tests.ts`, `build-stats.ts` | Normalize actual JUnit output, produce ownership artifact, bundle Lambda |
 | `tests/unit/`, `tests/setup.ts`, `tests/test-owners.json` | Unit/component tests, shared setup, real ownership |
-| `tests/acceptance/` | Playwright workflows and route checks |
+| `tests/acceptance/` | Playwright workflows, route checks and internal-link crawl |
 | `postman/VaxAccess.postman_collection.json`, `VaxAccess.postman_environment.json` | Collection/examples and public, secret-free variable template |
 | `data/raw/`, `data/collection-manifest.json` | Compact source evidence, real REST responses and collection provenance |
 | `.gitlab-ci.yml`, `Makefile`, `amplify.yml` | CI jobs, local entry points and hosting build |
@@ -412,7 +435,7 @@ All paths are relative to the repository root. No file in this table creates an 
 
 Directory shorthand in a row inherits its leading directory; for example, `vaccines.json` in the data row means `src/data/vaccines.json`.
 
-Track necessary source, assets, tests, lockfiles, configuration templates, collection evidence, API exports and rubric documents. Ignore `node_modules/`, `dist/`, Lambda bundles, coverage, generated test reports, browser traces, caches, logs other than required `IDB1.log.txt`, editor/OS files, local environment files and credentials. Keep the tracked example environment files. Do not use an ignore rule that hides required application source.
+Track necessary source, assets, tests, lockfiles, configuration templates, collection evidence, API exports and rubric documents. Ignore `node_modules/`, `dist/`, Lambda bundles, coverage, generated test reports, browser traces, caches, logs other than required `IDB1.log.txt`, editor/OS files, local environment files, any real `server/config/contributors.json` and credentials. Keep the tracked example environment and contributor files. Do not use an ignore rule that hides required application source.
 
 ### 4.12 Implementation order and local tasks
 
@@ -434,19 +457,19 @@ Inline comments explain non-obvious behavior, especially historical relationship
 
 ### 4.13 CI and meaningful verification
 
-GitLab CI stages run lint/typecheck/data validation, unit tests, production build/Lambda bundle and acceptance tests. Use a `unit` job so Lambda can locate its ownership artifact consistently. Publish normalized JUnit and ownership artifacts even when unit tests fail; the job must still fail on test failures. Keep reports accessible through grading. Cache dependency downloads, not stale build output. Real upstream credentials are not required for deterministic CI tests.
+GitLab CI stages run lint/typecheck/data validation, unit tests, production build/Lambda bundle and acceptance tests. Use a job named exactly `unit` so Lambda can locate its ownership artifact consistently. Publish normalized JUnit and ownership artifacts even when unit tests fail; the job must still fail on test failures. Set `expire_in` on the JUnit and ownership artifacts to a duration that extends beyond the end of the semester, and enable the project setting that keeps artifacts from the most recent successful jobs, so reports remain accessible through grading. Cache dependency downloads, not stale build output. Real upstream credentials are not required for deterministic CI tests.
 
 | Test area | Required checks |
 | --- | --- |
-| Data integrity | Three records per model; unique IDs; nine distinct card photos; valid source/media references; every record connects to both other models; no dangling/duplicate edges; source evidence retained |
+| Data integrity | Three records per model; unique IDs; nine distinct card photos; valid source/media references; every record connects to both other models; no dangling/duplicate edges; source evidence retained; `timeCommitment` contains no date |
 | Historical behavior | Past activities visibly labeled; no signup CTA; archived ongoing record accepts null dates; provider hours never become event hours |
-| Listings | Each of five filters works for each model; AND matching; case-insensitivity; all five sort keys in both directions; deterministic ties; reset and zero matches; instance/page counts |
-| Routing | All 14 URLs render; card links and related links resolve; unknown paths/IDs redirect correctly; no extra content page |
-| GitLab aggregation | Multi-page results; duplicate commits; author versus assignee; non-roster reconciliation; skipped/parameterized tests; missing report/owner; same-pipeline ownership |
-| Statistics UI/cache | Loading, successful zero, unavailable, stale timestamps, expiry, retry and abort behavior; no secret in public output |
+| Listings | Each of five filters works for each model against the defined display strings; AND matching; case-insensitivity; Name and all five sort keys in both directions; deterministic ties; reset and zero matches; catalog summary unchanged by filtering |
+| Routing | All 14 URLs render; card links and related links resolve; a crawl of every internal link on all 14 pages triggers no redirect; unknown paths/IDs redirect correctly; no extra content page |
+| GitLab aggregation | Multi-page results; duplicate commits; author versus assignee; non-roster reconciliation; skipped/parameterized tests; missing report/owner artifact; unowned test files counted as unattributed; same-pipeline ownership; snapshot selection skips pipelines whose `unit` job failed but accepts ones where only acceptance failed |
+| Statistics UI/cache | Loading, successful zero, unavailable, stale timestamps, expiry, retry, throttled responses and abort behavior; no secret in public output |
 | Media/accessibility | Required second media on every detail; image decoding; caption/credit presence; keyboard controls; focus; readable contrast |
 | Responsive/browser | Small-screen navigation and single-column layout, tablet two-column layout, desktop three-column layout; no horizontal overflow; Chromium, Firefox and WebKit smoke checks |
-| Production | HTTPS, direct deep links, API CORS, live stats, published Postman link, external resource links and playback/maps |
+| Production | HTTPS, direct deep links, API CORS with a single set of CORS headers, live stats, published Postman link, external resource links and playback/maps |
 
 Automated tests mock GitLab responses and simulate failure; a separate production check establishes actual connectivity. Do not claim mock tests prove API authorization or live embed behavior. Record any genuine production failure and correct it before submission.
 
@@ -457,12 +480,13 @@ Automated tests mock GitLab responses and simulate failure; a separate productio
 | `VITE_STATS_URL` | Public frontend environment | Actual deployed Lambda function URL |
 | `VITE_POSTMAN_URL` | Public frontend environment | Actual published Postman documentation |
 | Site/domain/repo labels | `src/config/site.ts` | VaxAccess, vaxaccess.me and the supplied repository |
-| `GITLAB_TOKEN` | Lambda server environment only | Read credential; never commit or expose |
+| `GITLAB_TOKEN` | Lambda server environment only | `read_api` credential per Section 4.9; never commit or expose; record owner and expiry |
 | `GITLAB_PROJECT_PATH` | Lambda server configuration | Fixed supplied namespace/project |
-| `ALLOWED_ORIGINS` | Lambda configuration | Actual production and explicitly used dev/preview origins |
+| `CONTRIBUTOR_MAP` | Lambda server environment only | JSON mapping roster usernames to GitLab user IDs and verified commit-author aliases; shape matches `contributors.example.json` |
+| Function-URL CORS allowlist | Lambda function URL configuration | Actual production origin plus explicitly used development and fixed-branch origins |
 | AWS account/owner and region | Team deployment records | Team supplies before provisioning; record who manages costs/access |
 | Domain/DNS access | Team deployment records | Verify/register vaxaccess.me and configure certificate/DNS |
-| Member IDs/author aliases | Server contributor mapping | Verify from GitLab and teammate-provided aliases |
+| Member IDs/author aliases | `CONTRIBUTOR_MAP` | Verify from GitLab and teammate-provided aliases |
 | Bios/photos/responsibilities | `team.json` and portrait files | Team enters manually before submission |
 | EIDs/time records | README/time log | Team supplies real values; do not assume usernames are EIDs |
 
@@ -470,11 +494,11 @@ Missing public links render plain “Not configured” text in local development
 
 Use an AWS owner with authorized account access and available course credits. Check actual remaining credits and expected usage before provisioning; configure monitoring and bounded service concurrency/usage. Alerts alone are not a spending cap. Keep resource use within the course's credit limit.
 
-Deploy Lambda with its supported Node runtime, server-only environment and required function-URL invocation policy. The URL is public because the site has no user login, but it exposes only sanitized project statistics. Use the current AWS function-URL permission requirements.
+Deploy Lambda with the same Node runtime recorded in `.nvmrc`, server-only environment and required function-URL invocation policy. The URL is public because the site has no user login, but it exposes only sanitized project statistics. Use the current AWS function-URL permission requirements.
 
 Configure Amplify to install from the lockfile, validate and build, and serve `dist/`. Set public frontend variables; configure SPA rewrites and the custom domain certificate. Confirm apex HTTPS and canonicalize any configured www alias to the apex. Do not assume domain ownership or successful AWS setup from the chosen name.
 
-Freeze automatic production deployments after submission; continuing GitLab activity must not change the deployed frontend or Lambda code until grading. The deployed statistics service continues reading live GitLab data. Keep the selected successful pipeline's reports/artifacts available during grading.
+Freeze automatic production deployments after submission; continuing GitLab activity must not change the deployed frontend or Lambda code until grading. The deployed statistics service continues reading live GitLab data, subject to the cross-phase CI contract in Section 4.9. Keep the selected pipeline's reports/artifacts available during grading.
 
 References: [Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-configuration.html), [Amplify rewrites](https://docs.aws.amazon.com/amplify/latest/userguide/redirects.html), and [Amplify custom domains](https://docs.aws.amazon.com/amplify/latest/userguide/custom-domains.html).
 
@@ -484,18 +508,20 @@ Use the same public repository for all four phases; grant the TAs Developer acce
 
 Create at least 30 rubric implementation issues and at least five additional genuine bug/optimization issues. Record estimates before work and actual time afterward; link commits/MRs to issues and close them as work is completed. Do not invent completed work or artificial defects. Provide at least five customer user stories in the assigned developer team's repository using the existing lowercase `customer` label.
 
-| Required label | Color |
-| --- | --- |
-| build_files | Blue-gray |
-| unit_tests | Green-cyan |
-| restful_api | Crimson |
-| acceptance_tests | Dark sea green |
-| website | Titanium Yellow |
-| continuous_integration | Carrot orange |
-| documentation | Lavender |
-| ai_design | Dark coral |
-| ai_criteria | Dark coral |
-| customer | Deep violet |
+The color names are GitLab's preset label colors; select each by name in GitLab's label color picker. The hex values below are those presets.
+
+| Required label | Color | Hex |
+| --- | --- | --- |
+| build_files | Blue-gray | #6699CC |
+| unit_tests | Green-cyan | #009966 |
+| restful_api | Crimson | #DC143C |
+| acceptance_tests | Dark sea green | #8FBC8F |
+| website | Titanium Yellow | #EEE600 |
+| continuous_integration | Carrot orange | #ED9121 |
+| documentation | Lavender | #E6E6FA |
+| ai_design | Dark coral | #CD5B45 |
+| ai_criteria | Dark coral | #CD5B45 |
+| customer | Deep violet | #330066 |
 
 The issue backlog must cover build setup, data collection/provenance, each model's fixtures, relationships, media, shared shell, Home, three listings, three detail templates, About profiles, GitLab transport, aggregation, test attribution, caching/error states, Postman, unit tests, acceptance tests, CI, AWS/domain, accessibility, documentation and release verification. Split that work into at least 30 concrete issues; the five additional bug/optimization issues are separate.
 
@@ -523,17 +549,17 @@ The supplied specification's page references below refer to `IDB1_spec.pdf`. “
 | Comments, Git log, SHA and README metadata | 7 | Sections 4.12 and 4.16 |
 | Four-section standalone DESIGN and assigned reading | 7–8 | This document; reading confirmed by team |
 | Combined README + DESIGN PDF to Canvas | 8 | Section 4.16 submission procedure |
-| Production freeze | 1–2 | Fixed code/content; live statistics per team instruction |
+| Production freeze | 1–2 | Fixed code/content; live statistics per team instruction, under the Section 4.9 CI contract |
 
 ### 4.16 Release and submission procedure
 
 1. Complete all required implementation issues, factual data collection, team profiles, public links and account configuration. Record real contributions and times.
 2. Pass local/CI checks and production acceptance. Confirm the public site has exactly 14 content pages, all nine records link both ways across models, and each detail has two working media types.
-3. Confirm GitLab statistics derive from actual API responses and reconcile with the configured counting rules. Verify no token is present in the frontend bundle, repository, logs or exported API environment.
+3. Confirm GitLab statistics derive from actual API responses and reconcile with the configured counting rules. Verify no token or contributor alias map is present in the frontend bundle, repository, logs or exported API environment.
 4. Ensure About explains each used tool's purpose: React UI, TypeScript contracts, Vite build, Bootstrap styling, React Router navigation, AWS hosting/statistics, GitLab collaboration/metrics/CI, Postman API design, Vitest/RTL unit tests, Playwright browser tests, Census geographic collection, OpenStreetMap, YouTube and Wikimedia media.
-5. Complete README with Full Name, EID, GitLab ID, GitLab URL, GitLab Pipeline, Git SHA, estimated completion time, actual completion time and comments. Include prerequisites, local tasks, setup values, deployment URL, Postman URL and the historical-data explanation.
+5. Complete README with Full Name, EID, GitLab ID, GitLab URL, GitLab Pipeline, Git SHA, estimated completion time, actual completion time and comments. Include prerequisites, local tasks, setup values, deployment URL, Postman URL, the historical-data explanation and the cross-phase CI contract.
 6. Generate `IDB1.log.txt` from actual `git log` and record the implementation revision from `git rev-parse HEAD`. Label the implementation/deployed revision clearly; a subsequent documentation-only commit must not be misrepresented as that deployment. Do not fabricate a self-referential final commit SHA inside its own committed content.
 7. Create one PDF containing README followed by DESIGN. Render the architecture diagram and inspect page breaks, tables and links; do not leave raw Mermaid syntax as the diagram. Submit that PDF to Canvas according to the course deadline and instructions.
-8. Record the deployed frontend revision, Lambda version/configuration and successful pipeline. Freeze production deployments through grading while live GitLab statistics continue. Preserve reports and source evidence.
+8. Record the deployed frontend revision, Lambda version/configuration and selected unit-test pipeline. Freeze production deployments through grading while live GitLab statistics continue. Preserve reports and source evidence.
 
 No unresolved product or architecture choice is delegated to the implementer. Team-supplied content and deployment values are explicit inputs, and source/API/media retrieval, testing and publication are explicit implementation tasks.
