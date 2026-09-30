@@ -6,6 +6,7 @@
   - `catalog.test.ts`: data access, relationships, display strings, every filter and sort key
   - `routes.test.tsx`: all 14 URLs and the redirects
   - `components.test.tsx`: cards, listing controls, related cards
+  - `VaccinesPage.test.tsx`: Vaccines listing header, cards and filtering
 - `test-owners.json`: maps each unit-test file to the GitLab username of the member who wrote it. The About page's per-member unit-test counts depend on it, so **add every new test file**.
 
 ## Still to do

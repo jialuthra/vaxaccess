@@ -74,6 +74,11 @@ export const en = {
     photoSource: 'Photo source',
   },
 
+  vaccinesPage: {
+    intro:
+      'Each vaccine category summarizes who it is generally for, how it is given and its dose schedule, based on CDC guidance. Details link to the CDC sources and to the historical Austin sites and volunteer activities where that vaccine was offered.',
+  },
+
   related: {
     noneDocumented: (noun: string) => `No related ${noun} are documented.`,
   },
