@@ -97,3 +97,199 @@
   border: 1px solid var(--dry-sage-300);
   border-radius: var(--va-radius);
 }
+
+/*
+ * Friendly finish: soft, rounded shapes and gentle motion using only the palette.
+ * Motion is disabled under prefers-reduced-motion (global.css).
+ */
+
+/* Soft two-tone wash behind every page */
+body {
+  background-image:
+    radial-gradient(40rem 24rem at 100% 0%, var(--powder-blue-50), transparent 70%),
+    radial-gradient(36rem 22rem at 0% 100%, var(--dry-sage-50), transparent 70%);
+  background-attachment: fixed;
+}
+
+/* Page heading with a small two-color underline mark */
+main h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+main h1::after {
+  content: '';
+  display: block;
+  width: 3.5rem;
+  height: 0.35rem;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--va-accent-mark) 0 60%, var(--va-support-mark) 60% 100%);
+}
+
+main .lead {
+  color: var(--ink-black-800);
+}
+
+/* Section headings get a small rounded accent bar */
+main h2.h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+main h2.h4::before {
+  content: '';
+  flex: none;
+  width: 0.3rem;
+  height: 1.1em;
+  border-radius: 999px;
+  background-color: var(--va-accent-mark);
+}
+
+/* Rounded, pill-shaped buttons */
+.btn {
+  border-radius: 999px;
+  padding-inline: 1.1rem;
+  font-weight: 500;
+}
+
+.btn-sm {
+  padding-inline: 0.85rem;
+}
+
+.btn-primary {
+  box-shadow: 0 2px 6px rgb(52 72 101 / 0.25);
+}
+
+.btn-link {
+  padding-inline: 0.25rem;
+}
+
+/* Pill badges with a small dot */
+.badge {
+  border-radius: 999px;
+  padding: 0.35em 0.75em;
+  font-weight: 600;
+}
+
+.badge.text-bg-secondary::before {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin-right: 0.4em;
+  border-radius: 50%;
+  background-color: currentColor;
+  vertical-align: 0.1em;
+}
+
+/* Cards: rounder, and they lift gently on hover or keyboard focus */
+.card {
+  --bs-card-border-radius: var(--va-radius-lg);
+  --bs-card-inner-border-radius: var(--va-radius-lg);
+}
+
+.model-card {
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.model-card:hover,
+.model-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: var(--va-shadow-lift);
+  border-color: var(--powder-blue-200);
+}
+
+.model-card .card-img-top {
+  transition: transform 0.35s ease;
+}
+
+.model-card:hover .card-img-top {
+  transform: scale(1.03);
+}
+
+.model-card figcaption {
+  background-color: var(--porcelain-50);
+  padding-bottom: 0.5rem;
+}
+
+.model-card .card-title a {
+  color: var(--ink-black-900);
+  text-decoration: none;
+}
+
+.model-card .card-title a:hover {
+  color: var(--va-link);
+  text-decoration: underline;
+}
+
+.model-card dt,
+.detail-facts dt {
+  color: var(--yale-blue-600);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Filter panel: a soft blue tray */
+.card.card-body:has(> .row input[type='search']),
+section.card:has(input[type='search']) {
+  background-color: var(--va-accent-bg);
+  border-color: var(--va-accent-border);
+  box-shadow: none;
+}
+
+.form-control,
+.form-select {
+  border-radius: 0.65rem;
+  background-color: var(--va-surface);
+}
+
+/* "Showing N of 3" reads as a small chip */
+p[role='status'].fw-semibold {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--va-support-bg);
+  color: var(--dry-sage-900);
+}
+
+/* Callouts, fact lists and media frames share the rounder shape */
+.historical-notice,
+.current-resources,
+.detail-facts,
+.media-frame {
+  border-radius: var(--va-radius-lg);
+}
+
+.detail-facts > div + div,
+.detail-facts dd + dt {
+  margin-top: 0.75rem;
+}
+
+.media-frame {
+  box-shadow: var(--va-shadow);
+}
+
+/* Sources as a tidy list with small sage markers */
+.source-list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.source-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background-color: var(--va-support-mark);
+}
+

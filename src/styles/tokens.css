@@ -87,6 +87,10 @@
   --va-historical-bg: var(--yale-blue-100);
   --va-historical-text: var(--yale-blue-800);
 
-  --va-radius: 0.75rem;
+  --va-radius: 1rem;
+  --va-radius-lg: 1.25rem;
   --va-shadow: 0 1px 2px rgb(15 27 36 / 0.06), 0 2px 8px rgb(15 27 36 / 0.06);
+  --va-shadow-lift: 0 4px 10px rgb(30 70 123 / 0.1), 0 12px 28px rgb(30 70 123 / 0.12);
+  --va-accent-mark: var(--powder-blue-400);
+  --va-support-mark: var(--dry-sage-400);
 }
