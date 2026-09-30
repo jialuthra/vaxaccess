@@ -262,6 +262,7 @@ p[role='status'].fw-semibold {
 /* Callouts, fact lists and media frames share the rounder shape */
 .historical-notice,
 .current-resources,
+.home-volunteer,
 .detail-facts,
 .media-frame {
   border-radius: var(--va-radius-lg);

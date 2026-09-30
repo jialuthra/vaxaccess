@@ -105,8 +105,30 @@ export const en = {
   currentResources: {
     heading: 'Looking for a vaccine now?',
     body: 'The sites below are dated historical examples of community vaccination work, not a current appointment directory. For current clinics, eligibility and costs, use Austin Public Health.',
+    homeBody:
+      'VaxAccess sites and volunteer activities are dated historical examples, not a current appointment directory. For current clinics, eligibility and costs, use Austin Public Health.',
     link: "Austin Public Health's current immunization resources",
     detailLink: 'Find current vaccination services',
+  },
+
+  /** Home splash page (DESIGN.md §4.2). */
+  home: {
+    heading: 'Vaccination resources for Austin communities.',
+    intro:
+      'Explore vaccine information and community vaccination resources, with a focus on people who are uninsured or underinsured.',
+    historicalNote:
+      'Phase I includes historical examples: the sites and volunteer opportunities show community vaccination work that already happened in Austin and Travis County, not services available today.',
+    primaryHeading: 'Find vaccination resources',
+    sitesHeading: 'Vaccination sites',
+    sitesBlurb: 'See where community vaccination events took place, who they served and what they cost.',
+    sitesAction: 'Browse vaccination sites',
+    vaccinesHeading: 'Vaccines',
+    vaccinesBlurb: 'Learn what each vaccine prevents, who it is for and how it is given, based on CDC guidance.',
+    vaccinesAction: 'Explore vaccines',
+    volunteerHeading: 'Want to help?',
+    volunteerBody:
+      'Read about past volunteer efforts that supported community vaccination in Austin, and find the organizers behind them.',
+    volunteerAction: 'Explore volunteer opportunities',
   },
 
   sitesPage: {
