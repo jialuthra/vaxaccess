@@ -3,5 +3,6 @@
   "tests/unit/catalog.test.ts": "lukeyawn",
   "tests/unit/components.test.tsx": "lukeyawn",
   "tests/unit/listing.test.ts": "lukeyawn",
-  "tests/unit/routes.test.tsx": "lukeyawn"
+  "tests/unit/routes.test.tsx": "lukeyawn",
+  "tests/unit/validate-data.test.ts": "atb2923"
 }

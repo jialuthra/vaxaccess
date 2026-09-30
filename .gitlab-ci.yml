@@ -27,6 +27,7 @@ check:
   script:
     - npm run lint
     - npm run typecheck
+    - npm run validate-data
 
 unit:
   stage: test

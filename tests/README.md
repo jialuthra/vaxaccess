@@ -7,10 +7,11 @@
   - `routes.test.tsx`: all 14 URLs and the redirects
   - `components.test.tsx`: cards, listing controls, related cards
   - `VaccinesPage.test.tsx`: Vaccines listing header, cards and filtering
+  - `validate-data.test.ts`: fixture integrity rules in `scripts/lib/dataValidation.ts` (also run on the real files by `npm run validate-data` in the CI `check` job)
 - `test-owners.json`: maps each unit-test file to the GitLab username of the member who wrote it. The About page's per-member unit-test counts depend on it, so **add every new test file**.
 
 ## Still to do
 
 - Tests for each page and component as it is built (all page owners)
-- Data validation tests (Alex, #29) and statistics tests (Enzo, #35)
+- Statistics tests (Enzo, #35)
 - `acceptance/`: Playwright browser tests (Alex, #30)
