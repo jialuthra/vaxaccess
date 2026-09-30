@@ -8,10 +8,16 @@
   - `components.test.tsx`: cards, listing controls, related cards
   - `VaccinesPage.test.tsx`: Vaccines listing header, cards and filtering
   - `validate-data.test.ts`: fixture integrity rules in `scripts/lib/dataValidation.ts` (also run on the real files by `npm run validate-data` in the CI `check` job)
-- `test-owners.json`: maps each unit-test file to the GitLab username of the member who wrote it. The About page's per-member unit-test counts depend on it, so **add every new test file**.
+- `acceptance/`: Playwright browser tests, run with `npm run test-acceptance` (it builds the site and serves it with `vite preview`) and by the CI `acceptance` job. Run `npx playwright install` once first. The full suite runs in Chromium; tests tagged `@smoke` also run in Firefox and WebKit.
+  - `pages.ts`: the 14 pages and their headings
+  - `routes.spec.ts`: direct navigation and refresh on all 14 URLs, unknown path/ID redirects
+  - `links.spec.ts`: crawls every internal link on all 14 pages and fails on any redirect or extra page
+  - `listings.spec.ts`: cards, decoded unique photos, sorting, filtering, zero matches and Clear filters on each listing
+  - `responsive.spec.ts`: 1/2/3 card columns on phone/tablet/desktop, no horizontal overflow
+- `test-owners.json`: maps each unit-test file (not the acceptance specs, which are not unit tests) to the GitLab username of the member who wrote it. The About page's per-member unit-test counts depend on it, so **add every new test file**.
 
 ## Still to do
 
 - Tests for each page and component as it is built (all page owners)
 - Statistics tests (Enzo, #35)
-- `acceptance/`: Playwright browser tests (Alex, #30)
+- Acceptance tests for the Home, detail and About pages as they are built (page owners)
