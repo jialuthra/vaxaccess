@@ -15,13 +15,24 @@ export const en = {
     opportunities: 'Volunteer opportunities',
     about: 'About',
     skipToContent: 'Skip to main content',
+    label: 'Main',
+    menu: 'Menu',
+  },
+
+  footer: {
+    navLabel: 'Footer',
+    explore: 'Explore',
+    project: 'Project',
+    repository: 'Source code on GitLab',
+    tagline: 'Vaccine information and historical community vaccination examples for Austin and Travis County.',
   },
 
   models: {
     sites: { title: 'Vaccination sites', singular: 'site', plural: 'sites' },
     vaccines: { title: 'Vaccines', singular: 'vaccine', plural: 'vaccines' },
-    opportunities: { title: 'Volunteer opportunities', singular: 'opportunity', plural: 'opportunities' },
-  } satisfies Record<ModelKind, { title: string; singular: string; plural: string }>,
+    opportunities: { title: 'Volunteer opportunities', singular: 'opportunity', 
+                    plural: 'opportunities', description: 'Ways to volunteer with vaccine access programs!'}
+  } satisfies Record<ModelKind, { title: string; singular: string; plural: string; description?: string}>,
 
   /** Card attribute labels (DESIGN.md §4.4). */
   fieldLabels: {
