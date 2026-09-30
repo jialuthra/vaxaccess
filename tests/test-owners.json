@@ -1,5 +1,5 @@
 {
-  "tests/unit/App.test.tsx": "lukeyawn",
   "tests/unit/catalog.test.ts": "lukeyawn",
-  "tests/unit/listing.test.ts": "lukeyawn"
+  "tests/unit/listing.test.ts": "lukeyawn",
+  "tests/unit/routes.test.tsx": "lukeyawn"
 }
