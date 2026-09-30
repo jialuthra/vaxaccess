@@ -15,6 +15,5 @@ Unknown facts are written as "Not stated in the historical source."; never fill 
 
 - Coordinates (`latitude`/`longitude`) are `null` until Census Geocoder collection runs (Alex, #25, #26)
 - `retrievedAt` and `rawPath` on sources are `null` until collection (Alex, #25)
-- Photo `originalUrl`, `width`, `height` and `changes` are `null`/empty until the images are downloaded; check the alt text against the real images (Alex, #28)
 - Verify the vaccine clinical text against the cited CDC pages (Alex, #27)
 - `team.json` with member profiles (Jia, #42)

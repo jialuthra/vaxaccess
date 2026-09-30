@@ -4,7 +4,8 @@ Served at `/images/…`. The nine card photos use the file names in DESIGN.md §
 
 `site-expo.jpg`, `site-montopolis.jpg`, `site-rundberg.jpg`, `vaccine-influenza.jpg`, `vaccine-covid-19.jpg`, `vaccine-mpox.jpg`, `opportunity-flu.jpg`, `opportunity-mpox.jpg`, `opportunity-covid-19.jpg`
 
+Each was downloaded from the Wikimedia original in `media.json` (`originalUrl`) and resized to 1200 px wide as a quality-80 JPEG, without cropping; `changes`, `width` and `height` record the result.
+
 ## Still to do
 
-- Download and optimize the nine photos from the Wikimedia sources in `media.json`, and record any resizing/cropping in each photo's `changes` field (Alex, #28)
 - Team portraits (Jia, #42)
