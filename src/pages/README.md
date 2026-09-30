@@ -6,12 +6,12 @@ Every page has exactly one `<h1>`. The routing tests in `tests/unit/routes.test.
 
 ## Still to do
 
-All eight files are placeholders:
+Still placeholders unless noted:
 
 | File | Owner | Issue |
 | --- | --- | --- |
 | `HomePage.tsx` | Jia | #23 |
-| `SitesPage.tsx`, `SiteDetailPage.tsx` | Nifemi | #17, #20 |
+| `SitesPage.tsx`, `SiteDetailPage.tsx` (done) | Nifemi | #17, #20 |
 | `VaccinesPage.tsx`, `VaccineDetailPage.tsx` | Alex | #18, #21 |
 | `OpportunitiesPage.tsx`, `OpportunityDetailPage.tsx` | Enzo | #19, #22 |
 | `AboutPage.tsx` | Enzo | #34 |

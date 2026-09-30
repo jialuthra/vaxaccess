@@ -49,8 +49,9 @@
   overflow: hidden;
 }
 
+/* Contain rather than crop, so meaningful image content is preserved. */
 .media-frame img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .media-frame iframe {
