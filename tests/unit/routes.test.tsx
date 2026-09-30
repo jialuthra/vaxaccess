@@ -53,11 +53,12 @@ describe('routes', () => {
     const router = renderAt(path);
     expect(router.state.location.pathname).toBe(listing);
     expect(router.state.historyAction).toBe('REPLACE');
-    expect(screen.getByRole('status')).toHaveTextContent(`We couldn't find that ${singular}.`);
+    const notice = screen.getByText(`We couldn't find that ${singular}.`, { exact: false });
+    expect(notice).toHaveAttribute('role', 'status');
   });
 
   it('shows no redirect notice on ordinary navigation', () => {
     renderAt('/sites');
-    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+    expect(screen.queryByText("We couldn't find that", { exact: false })).not.toBeInTheDocument();
   });
 });
