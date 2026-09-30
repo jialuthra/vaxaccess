@@ -1,0 +1,92 @@
+/*
+ * VaxAccess palette (DESIGN.md §4.3). All 55 supplied colors, unchanged.
+ * Components use the semantic variables at the bottom rather than raw shades, and
+ * no shade is assumed to have suitable contrast just because of its name.
+ */
+:root {
+  --ink-black-50: #edf3f8;
+  --ink-black-100: #dbe7f0;
+  --ink-black-200: #b6cee2;
+  --ink-black-300: #92b6d3;
+  --ink-black-400: #6d9dc5;
+  --ink-black-500: #4985b6;
+  --ink-black-600: #3a6a92;
+  --ink-black-700: #2c506d;
+  --ink-black-800: #1d3549;
+  --ink-black-900: #0f1b24;
+  --ink-black-950: #0a131a;
+
+  --yale-blue-50: #eef2f6;
+  --yale-blue-100: #dde4ee;
+  --yale-blue-200: #bcc9dc;
+  --yale-blue-300: #9aaecb;
+  --yale-blue-400: #7894ba;
+  --yale-blue-500: #5779a8;
+  --yale-blue-600: #456187;
+  --yale-blue-700: #344865;
+  --yale-blue-800: #233043;
+  --yale-blue-900: #111822;
+  --yale-blue-950: #0c1118;
+
+  --powder-blue-50: #eaf1fa;
+  --powder-blue-100: #d6e3f5;
+  --powder-blue-200: #adc8eb;
+  --powder-blue-300: #84ace1;
+  --powder-blue-400: #5b91d7;
+  --powder-blue-500: #3275cd;
+  --powder-blue-600: #285ea4;
+  --powder-blue-700: #1e467b;
+  --powder-blue-800: #142f52;
+  --powder-blue-900: #0a1729;
+  --powder-blue-950: #07101d;
+
+  --porcelain-50: #f1f5f0;
+  --porcelain-100: #e3eae1;
+  --porcelain-200: #c6d6c2;
+  --porcelain-300: #aac1a4;
+  --porcelain-400: #8dac86;
+  --porcelain-500: #719867;
+  --porcelain-600: #5a7953;
+  --porcelain-700: #445b3e;
+  --porcelain-800: #2d3d29;
+  --porcelain-900: #171e15;
+  --porcelain-950: #10150e;
+
+  --dry-sage-50: #f5f7ee;
+  --dry-sage-100: #eaeedd;
+  --dry-sage-200: #d6deba;
+  --dry-sage-300: #c1cd98;
+  --dry-sage-400: #acbd75;
+  --dry-sage-500: #97ac53;
+  --dry-sage-600: #798a42;
+  --dry-sage-700: #5b6732;
+  --dry-sage-800: #3d4521;
+  --dry-sage-900: #1e2211;
+  --dry-sage-950: #15180c;
+
+  /* Semantic roles */
+  --va-page-bg: var(--porcelain-50);
+  --va-text: var(--ink-black-900);
+  --va-text-muted: var(--ink-black-700);
+  --va-surface: #ffffff;
+  --va-border: var(--porcelain-200);
+  --va-support-bg: var(--dry-sage-100);
+  --va-accent-bg: var(--powder-blue-50);
+  --va-accent-border: var(--powder-blue-200);
+
+  --va-primary: var(--yale-blue-700);
+  --va-primary-hover: var(--yale-blue-800);
+  --va-primary-active: var(--yale-blue-900);
+  --va-on-primary: #ffffff;
+
+  /* Links stay dark enough to read on white, porcelain and sage surfaces. */
+  --va-link: var(--powder-blue-700);
+  --va-link-hover: var(--powder-blue-800);
+
+  --va-focus-ring: var(--powder-blue-500);
+  --va-historical-bg: var(--yale-blue-100);
+  --va-historical-text: var(--yale-blue-800);
+
+  --va-radius: 0.75rem;
+  --va-shadow: 0 1px 2px rgb(15 27 36 / 0.06), 0 2px 8px rgb(15 27 36 / 0.06);
+}

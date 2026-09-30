@@ -1,0 +1,135 @@
+/*
+ * Bootstrap integration. Loaded after bootstrap.min.css so these variables and
+ * overrides take precedence; Bootstrap components then pick up the palette.
+ */
+:root {
+  --bs-body-bg: var(--va-page-bg);
+  --bs-body-color: var(--va-text);
+  --bs-secondary-color: var(--va-text-muted);
+  --bs-border-color: var(--va-border);
+  --bs-link-color: var(--va-link);
+  --bs-link-color-rgb: 30, 70, 123;
+  --bs-link-hover-color: var(--va-link-hover);
+  --bs-link-hover-color-rgb: 20, 47, 82;
+  --bs-primary: var(--va-primary);
+  --bs-primary-rgb: 52, 72, 101;
+  --bs-border-radius: 0.5rem;
+  --bs-card-border-radius: var(--va-radius);
+  --bs-font-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background-color: var(--va-page-bg);
+  color: var(--va-text);
+  overflow-x: hidden;
+}
+
+/* Bootstrap's secondary text is too pale on porcelain; keep it readable. */
+.text-body-secondary {
+  color: var(--va-text-muted) !important;
+}
+
+a {
+  color: var(--va-link);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--va-link-hover);
+}
+
+/* Readable paragraph width inside the full-width container. */
+.prose p,
+.lead {
+  max-width: 70ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--ink-black-900);
+}
+
+/* Visible keyboard focus on every interactive element. */
+:focus-visible {
+  outline: 3px solid var(--va-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 3px solid var(--va-focus-ring);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--powder-blue-500);
+  box-shadow: 0 0 0 0.2rem rgb(50 117 205 / 0.25);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--va-on-primary);
+  --bs-btn-bg: var(--va-primary);
+  --bs-btn-border-color: var(--va-primary);
+  --bs-btn-hover-color: var(--va-on-primary);
+  --bs-btn-hover-bg: var(--va-primary-hover);
+  --bs-btn-hover-border-color: var(--va-primary-hover);
+  --bs-btn-active-color: var(--va-on-primary);
+  --bs-btn-active-bg: var(--va-primary-active);
+  --bs-btn-active-border-color: var(--va-primary-active);
+  --bs-btn-disabled-color: var(--va-on-primary);
+  --bs-btn-disabled-bg: var(--yale-blue-400);
+  --bs-btn-disabled-border-color: var(--yale-blue-400);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--va-primary);
+  --bs-btn-border-color: var(--va-primary);
+  --bs-btn-hover-color: var(--va-on-primary);
+  --bs-btn-hover-bg: var(--va-primary);
+  --bs-btn-hover-border-color: var(--va-primary);
+  --bs-btn-active-color: var(--va-on-primary);
+  --bs-btn-active-bg: var(--va-primary-hover);
+  --bs-btn-active-border-color: var(--va-primary-hover);
+  --bs-btn-disabled-color: var(--yale-blue-400);
+  --bs-btn-disabled-border-color: var(--yale-blue-300);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--ink-black-800);
+  --bs-btn-border-color: var(--ink-black-600);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--ink-black-700);
+  --bs-btn-hover-border-color: var(--ink-black-700);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--ink-black-800);
+  --bs-btn-active-border-color: var(--ink-black-800);
+}
+
+.btn-link {
+  --bs-btn-color: var(--va-link);
+  --bs-btn-hover-color: var(--va-link-hover);
+}
+
+.alert-info {
+  --bs-alert-bg: var(--va-accent-bg);
+  --bs-alert-border-color: var(--va-accent-border);
+  --bs-alert-color: var(--powder-blue-900);
+}
+
+/* Visually secondary support sections, e.g. volunteering on Home. */
+.bg-support {
+  background-color: var(--va-support-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

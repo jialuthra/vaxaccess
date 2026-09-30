@@ -1,0 +1,98 @@
+/* Styles for shared components. Colors come from the semantic variables in tokens.css. */
+
+.card {
+  --bs-card-bg: var(--va-surface);
+  --bs-card-border-color: var(--va-border);
+  --bs-card-border-radius: var(--va-radius);
+  box-shadow: var(--va-shadow);
+}
+
+/* Listing and related-record cards */
+.model-card .card-img-top {
+  border-top-left-radius: var(--va-radius);
+  border-top-right-radius: var(--va-radius);
+}
+
+.model-card dt {
+  font-weight: 600;
+}
+
+.model-card dd {
+  overflow-wrap: anywhere;
+}
+
+/* Status badges: the text carries meaning; the color is a secondary cue. */
+.badge.text-bg-secondary {
+  background-color: var(--va-historical-bg) !important;
+  color: var(--va-historical-text) !important;
+  border: 1px solid var(--yale-blue-300);
+}
+
+/* Prominent historical-context notice on detail pages */
+.historical-notice {
+  background-color: var(--va-accent-bg);
+  border: 1px solid var(--va-accent-border);
+  border-left: 0.35rem solid var(--va-primary);
+  border-radius: var(--va-radius);
+  color: var(--va-text);
+}
+
+/* Media: consistent landscape frame for photos, maps and videos */
+.media-block {
+  margin: 0;
+}
+
+.media-frame {
+  background-color: var(--porcelain-100);
+  border: 1px solid var(--va-border);
+  border-radius: var(--va-radius);
+  overflow: hidden;
+}
+
+.media-frame img {
+  object-fit: cover;
+}
+
+.media-frame iframe {
+  border: 0;
+}
+
+.media-block figcaption {
+  color: var(--va-text-muted);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Detail-page fact list */
+.detail-facts {
+  background-color: var(--va-surface);
+  border: 1px solid var(--va-border);
+  border-radius: var(--va-radius);
+  box-shadow: var(--va-shadow);
+}
+
+.detail-facts dt {
+  font-weight: 600;
+  color: var(--ink-black-800);
+}
+
+.detail-facts dd {
+  overflow-wrap: anywhere;
+}
+
+/* Sources and provenance */
+.source-list li + li {
+  margin-top: 0.75rem;
+}
+
+.source-list .source-meta {
+  color: var(--va-text-muted);
+  font-size: 0.875rem;
+}
+
+/* Current-resource callout linking to Austin Public Health */
+.current-resources {
+  background-color: var(--va-support-bg);
+  border: 1px solid var(--dry-sage-300);
+  border-radius: var(--va-radius);
+}
