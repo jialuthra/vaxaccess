@@ -6,10 +6,10 @@
     "bio": "Hi, I'm Jia! I'm a Junior at UT Austin majoring in Computer Science. I'm passionate about healthcare technology and building software that makes things simpler and more accessible. In my free time, I enjoy painting, listening to music, and reading. A fun fact about me is that I thread eyebrows as a side hustle!",
     "photoId": "team-jia",
     "responsibilities": [
-      "Phase I group leader",
-      "Shared navbar, footer and page layout",
-      "Home (splash) page",
-      "README and team data"
+      "Phase I leader",
+      "Navbar, footer and layout",
+      "Home page",
+      "README and submission"
     ]
   },
   {
@@ -18,7 +18,12 @@
     "phaseRole": "Team member",
     "bio": "I'm majoring in Computer Science, I'm a Junior! My interests include trying new foods, playing video games, and spending time with my friends :) Fun Fact: I love playing tennis.",
     "photoId": "team-alex",
-    "responsibilities": ["TODO: responsibilities from Alex"]
+    "responsibilities": [
+      "Vaccine pages",
+      "Data collection and geocoding",
+      "Photos and data validation",
+      "Acceptance tests"
+    ]
   },
   {
     "name": "Enzo Sagun",
@@ -27,8 +32,10 @@
     "bio": "Hello! I'm Enzo, a junior studying Computer Science with a Business minor! I like to dance, eat hot pot, and try different cafes and bakeries. A fun fact about me is that I was born in Portland, Oregon!",
     "photoId": "team-enzo",
     "responsibilities": [
-      "Opportunities page and detail pages",
-      "About page with member stats"
+      "Opportunity pages",
+      "GitLab stats Lambda",
+      "About page",
+      "CI test reporting"
     ]
   },
   {
@@ -37,14 +44,24 @@
     "phaseRole": "Team member",
     "bio": "Hi I'm Nifemi and I'm a junior here at UT studying computer science! My interests include thrifting, film watching, and volleyball. Fun fact: I've played guitar for 7+ years.",
     "photoId": "team-nifemi",
-    "responsibilities": ["TODO: responsibilities from Nifemi"]
+    "responsibilities": [
+      "Visual design and styles",
+      "Site pages",
+      "Postman API",
+      "AWS deployment and domain"
+    ]
   },
   {
     "name": "Luke Yan",
     "username": "lukeyawn",
     "phaseRole": "Team member",
-    "bio": "TODO: bio from Luke",
-    "photoId": null,
-    "responsibilities": ["TODO: responsibilities from Luke"]
+    "bio": "I'm a sophomore at UT Austin double majoring in Computer Science and Math! I'm interested in contest math, hiking, and learning about AI safety!",
+    "photoId": "team-luke",
+    "responsibilities": [
+      "Project setup and CI",
+      "Data types and catalog service",
+      "Routing and reusable components",
+      "Unit tests"
+    ]
   }
 ]

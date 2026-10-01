@@ -9,7 +9,3 @@ Each was downloaded from the Wikimedia original in `media.json` (`originalUrl`) 
 ## Team headshots
 
 `team/` holds headshots provided by each member and used with their permission (`teamPhotos` in `media.json`). They were resized to at most 400 px square (Alex's is the original 192 px) and re-encoded as quality-80 JPEG. `team-placeholder.svg` stands in for a member whose `photoId` is null; it is not a member photo for release.
-
-## Still to do
-
-- Luke's headshot (#42)

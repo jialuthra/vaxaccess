@@ -13,7 +13,3 @@ Bundled JSON fixtures, matching the types in `src/types/domain.ts`. The data is 
 Site coordinates come from the Census Geocoder responses in `data/raw/s11-census-geocoder.json` (rounded to six decimal places), and each source's `retrievedAt`/`rawPath` points at its evidence in `data/raw/` (see `data/README.md`).
 
 Unknown facts are written as "Not stated in the historical source."; never fill them with guesses.
-
-## Still to do
-
-- Remaining `TODO:` text in `team.json`: responsibilities from Alex and Nifemi, and Luke's bio, responsibilities and headshot (#42). Release must have no `TODO:` text
