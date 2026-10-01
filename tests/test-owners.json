@@ -12,6 +12,9 @@
   "tests/unit/shell.test.tsx": "jiakl",
   "tests/unit/validate-data.test.ts": "atb2923",
   "tests/unit/opportunity-detail.test.tsx": "j.enzosagun",
+  "tests/unit/server/aggregate.test.ts": "j.enzosagun",
+  "tests/unit/server/contributors.test.ts": "j.enzosagun",
   "tests/unit/server/gitlabClient.test.ts": "j.enzosagun",
-  "tests/unit/server/handler.test.ts": "j.enzosagun"
+  "tests/unit/server/handler.test.ts": "j.enzosagun",
+  "tests/unit/server/service.test.ts": "j.enzosagun"
 }

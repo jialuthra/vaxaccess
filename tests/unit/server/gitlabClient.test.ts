@@ -107,6 +107,39 @@ describe('GitLabClient requests', () => {
   });
 });
 
+describe('GitLabClient artifact download', () => {
+  it('reads a JSON artifact file from a job', async () => {
+    const { fetch, calls } = fakeFetch(() => json({ schemaVersion: 1 }));
+    expect(await client(fetch).getJobArtifactJson(42, 7, 'reports/unit-test-owners.json')).toEqual({ schemaVersion: 1 });
+    expect(calls[0]?.url.pathname).toBe('/api/v4/projects/42/jobs/7/artifacts/reports/unit-test-owners.json');
+    expect(calls[0]?.init.redirect).toBe('manual');
+  });
+
+  it('follows one redirect to object storage without sending the token there', async () => {
+    const { fetch, calls } = fakeFetch(
+      () => new Response(null, { status: 302, headers: { Location: 'https://storage.example/signed?sig=1' } }),
+      () => json({ owners: {} }),
+    );
+    expect(await client(fetch).getJobArtifactJson(42, 7, 'reports/unit-test-owners.json')).toEqual({ owners: {} });
+    expect(calls[1]?.url.host).toBe('storage.example');
+    expect(JSON.stringify(calls[1]?.init.headers ?? {})).not.toContain(TOKEN);
+    expect(calls[1]?.init.redirect).toBe('error');
+  });
+
+  it('refuses a non-HTTPS redirect', async () => {
+    const { fetch, calls } = fakeFetch(
+      () => new Response(null, { status: 302, headers: { Location: 'http://storage.example/plain' } }),
+    );
+    await expect(client(fetch).getJobArtifactJson(42, 7, 'a.json')).rejects.toMatchObject({ kind: 'invalid_response' });
+    expect(calls).toHaveLength(1);
+  });
+
+  it('reports a missing artifact as a 404', async () => {
+    const { fetch } = fakeFetch(() => json({ message: '404 Not Found' }, {}, 404));
+    await expect(client(fetch).getJobArtifactJson(42, 7, 'a.json')).rejects.toMatchObject({ kind: 'http', status: 404 });
+  });
+});
+
 describe('GitLabClient pagination', () => {
   it('follows Link rel="next" until it disappears, without relying on total headers', async () => {
     const page = (n: number) => `${API}/projects/42/issues?page=${n}&per_page=100&scope=all&state=all`;

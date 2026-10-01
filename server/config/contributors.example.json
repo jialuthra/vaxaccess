@@ -1,0 +1,27 @@
+{
+  "jiakl": {
+    "userId": null,
+    "emails": ["jiakl@example.com"],
+    "names": ["Example Name One"]
+  },
+  "atb2923": {
+    "userId": null,
+    "emails": ["atb2923@example.com"],
+    "names": ["Example Name Two"]
+  },
+  "j.enzosagun": {
+    "userId": null,
+    "emails": ["j.enzosagun@example.com"],
+    "names": ["Example Name Three"]
+  },
+  "nifemisoyemi": {
+    "userId": null,
+    "emails": ["nifemisoyemi@example.com"],
+    "names": ["Example Name Four"]
+  },
+  "lukeyawn": {
+    "userId": null,
+    "emails": ["lukeyawn@example.com"],
+    "names": ["Example Name Five"]
+  }
+}

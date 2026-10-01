@@ -4,8 +4,9 @@
 // itself, which also answers preflight requests, so this handler must not emit any
 // Access-Control-* header: duplicates make browsers reject the response.
 
-import { ConfigError } from './config.ts';
-import { GitLabError } from './gitlabClient.ts';
+import { readServerConfig } from './config.ts';
+import { describeError } from './logging.ts';
+import { createStatsService, type StatsService } from './service.ts';
 
 /** The subset of the function URL (payload v2.0) event this handler reads. */
 export interface FunctionUrlEvent {
@@ -42,11 +43,14 @@ export function createHandler(loadStats: StatsLoader) {
   };
 }
 
-function describeError(err: unknown): Record<string, unknown> {
-  if (err instanceof GitLabError) return { name: err.name, kind: err.kind, endpoint: err.endpoint, status: err.status };
-  if (err instanceof ConfigError) return { name: err.name, message: err.message };
-  return { name: err instanceof Error ? err.name : typeof err };
-}
+// One service per execution environment, so its cache survives across warm invocations.
+let service: StatsService | undefined;
+
+/** Lambda entry point. Configuration is read on first use so a missing variable becomes a logged 500. */
+export const handler = createHandler(() => {
+  service ??= createStatsService({ config: readServerConfig() });
+  return service.load();
+});
 
 function errorResponse(
   statusCode: number,
