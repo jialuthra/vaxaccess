@@ -1,10 +1,10 @@
 # VaxAccess — Phase I Design
 
-**Final design · September 29, 2026**
+**Final design · September 29, 2026 · updated September 30, 2026 to match the implementation**
 
 This is the standalone implementation specification for VaxAccess. It incorporates the team's approved decisions and the supplied eight-page CS 373 IDB1 specification. A new implementer must be able to build the project from this document without the preceding conversation. This document contains instructions, contracts and diagrams, not application code.
 
-The design is final; implementation, external account setup and submission have not been performed. The team will manually supply member biographies, portraits and actual responsibilities during implementation. Account identifiers, credentials, the Postman publication URL and deployment outputs are also implementation inputs. Their handling is specified below; they do not require reopening the design.
+**Implementation status (September 30, 2026).** The frontend (all 14 pages), the nine fixtures with collected evidence, the card photos, team profiles and headshots, the statistics Lambda source, CI unit-test reporting and the Postman collection are implemented on the default branch. Still outstanding: the release-validation script (`scripts/validate-release.ts`), publication of the Postman documentation, and the AWS deployment (Amplify, the statistics Lambda, and HTTPS at vaxaccess.me). Account identifiers, credentials, the Postman publication URL and deployment outputs are implementation inputs. Their handling is specified below; they do not require reopening the design.
 
 ## 1. The Problem
 
@@ -50,7 +50,7 @@ The finished site must have all 14 pages, nine connected records, nine distinct 
 | Repository | https://gitlab.com/nifemisoyemi/cs373-fall-2026-18 |
 | Production domain | https://vaxaccess.me |
 
-At implementation time, install mutually compatible stable dependencies and commit the exact npm lockfile. Select a Node LTS version that AWS Lambda currently offers as a managed runtime, and record it in `.nvmrc` and the package engine requirement. Use that same version locally, in CI and for the Lambda runtime. Do not use floating dependency versions in CI.
+At implementation time, install mutually compatible stable dependencies and commit the exact npm lockfile. Select a Node LTS version that AWS Lambda currently offers as a managed runtime, and record it in `.nvmrc` and the package engine requirement. Use that same version locally, in CI and for the Lambda runtime. The project uses Node 24: `.nvmrc` is `24`, `engines.node` is `>=24 <25`, CI uses the `node:24` image and the Lambda runtime is `nodejs24.x`. Do not use floating dependency versions in CI.
 
 ### Architecture diagram
 
@@ -205,7 +205,8 @@ Implement these contracts as TypeScript types and JSON validation. Required stri
 | Source | `id`, `title`, `publisher`, `url`, `kind` = html or rest; `retrievedAt`; nullable `publishedAt`; `rawPath`; `usedFor` |
 | Photograph | `id`, `localPath`, `sourcePageUrl`, `originalUrl`, `creator`, `licenseName`, `licenseUrl`, `caption`, `alt`, `changes`, `width`, `height` |
 | Video | `id`, `title`, `publisher`, `watchUrl`, `embedUrl`, `caption` |
-| Team member | `name`, `username`, `phaseRole`; nullable `bio` and `photoId`; `responsibilities` array |
+| Team member | `name`, `username`, `phaseRole`; nullable `bio` and `photoId` (a Team photo ID); `responsibilities` array |
+| Team photo | `id`, `localPath` under `/images/team/`, `credit` reading “Provided by <name>, used with permission”, `alt`, `width`, `height`. Stored in `media.json` as `teamPhotos`, separate from licensed Photographs because a team-provided headshot has no public source page or license URL |
 | External link | `label` and absolute HTTPS `url` |
 | Field provenance | Map from a factual field key to one or more source IDs |
 
@@ -282,6 +283,8 @@ Create the three typed edges for each row: Site–Vaccine, Opportunity–Site an
 | S13 | [Austin–Travis County MRC](https://www.austintexas.gov/health/austin-travis-county-medical-reserve-corps) and [UT MRC](https://sites.utexas.edu/utmrc/) | Organizer information; no promise of an available shift |
 | S14 | [UT Austin School of Nursing](https://nursing.utexas.edu/) | Organizer information for the two UT nursing records; confirm the landing page during collection; no promise of an available role |
 
+In `src/data/sources.json` each source has a slug ID prefixed with its number, for example `s1-ut-flu-volunteer-notice`. S8, S9, S10 and S13 cite two URLs each, so they are split into `a`/`b` entries (`s8a-cdc-flu-basics`, `s8b-cdc-flu-key-facts`, and so on), giving 18 source records in all. Each has its own evidence file in `data/raw/`.
+
 Create `scripts/collect-data.ts` to fetch the selected HTML sources and the Census REST endpoint. Extract bounded, relevant content into source evidence; write original summaries rather than copying articles. Store request URL, retrieval time, response status, source publication date when known and fields derived. Keep compact evidence excerpts and the actual JSON responses under `data/raw/`; exclude personal contact data unrelated to the project.
 
 Official clinical pages (S8–S10) may move or change after collection. Fixtures remain tied to the dated evidence retained in `data/raw/`. If a cited URL later moves or its guidance changes, update the fixture, its `verifiedOn` date and the source record deliberately in a reviewed commit. Never let a changed page silently alter published clinical text.
@@ -308,13 +311,13 @@ Download the following selected originals or provider-generated photographic der
 | MRC mpox opportunity — `opportunity-mpox.jpg` | [Austin Skyline from Montopolis Bridge](https://commons.wikimedia.org/wiki/File:Austin_Skyline_from_Montopolis_Bridge.jpg) | Scott218; CC BY-SA 4.0 | Austin skyline viewed from Montopolis Bridge; community context, not event documentation. |
 | VAMOS opportunity — `opportunity-covid-19.jpg` | [COVID-19 Vaccination, OC-LSC-0003](https://commons.wikimedia.org/wiki/File:COVID-19_Vaccination_(20210318-OC-LSC-0003).jpg) | USDA / Lance Cheung; U.S. public domain | A separate illustrative vaccination photograph from San Antonio; not VAMOS outreach. |
 
-The hero reuses the Austin skyline photograph, with its actual caption and credit. Each of the nine cards still has a distinct source photograph. Team portraits are separate team-provided assets.
+The hero reuses the Austin skyline photograph, with its actual caption and credit. Each of the nine cards still has a distinct source photograph. Team portraits are separate team-provided assets: `public/images/team/team-<first name>.jpg`, resized to at most 400 px square, recorded as `teamPhotos` in `media.json` (Section 4.5) and credited “Provided by <name>, used with permission.”
 
 Credit links must include the photographer or organization, source page and license. Record resizing/cropping in `changes`; preserve applicable share-alike licensing for modified images. Source dates with inconsistent metadata must not become invented captions. No source's presence on the web grants automatic reuse permission; use the licenses recorded above.
 
 **Site and opportunity media:** each of these six details has its assigned photo plus an embedded OpenStreetMap centered on the linked Site's collected coordinates. Use OpenStreetMap's export/embed format, preserving provider attribution, with a marker and a small surrounding bounding box. Show the text address and external map link outside the iframe. Label historical maps as event-location context.
 
-**Vaccine media:** each of these three details has its assigned photo plus APH's English educational video, [Getting Immunized From A to Z](https://www.youtube.com/watch?v=-P_lgZFUHTs). Embed its video ID `-P_lgZFUHTs` through YouTube's privacy-enhanced embed host. Caption it as general guidance on APH appointments and visits; it is not vaccine-specific clinical guidance or proof of stock. The same video may appear on all three Vaccine pages; the unique-image requirement applies to card photographs.
+**Vaccine media:** each of these three details has its assigned photo plus APH's English educational video, [Getting Immunized From A to Z](https://www.youtube.com/watch?v=-P_lgZFUHTs). Embed its video ID `-P_lgZFUHTs` through YouTube's privacy-enhanced embed host (`https://www.youtube-nocookie.com/embed/-P_lgZFUHTs`). Its `media.json` video ID is `aph-getting-immunized`, which each Vaccine's `videoId` references. Caption it as general guidance on APH appointments and visits; it is not vaccine-specific clinical guidance or proof of stock. The same video may appear on all three Vaccine pages; the unique-image requirement applies to card photographs.
 
 This assigns **photo + map** to six detail pages and **photo + video** to three. External source links and text alone do not count as the second embedded media type. Verify image decoding, licenses, embed playback and map markers before release.
 
@@ -328,7 +331,7 @@ This assigns **photo + map** to six detail pages and **photo + video** to three.
 | Nifemi Soyemi | `nifemisoyemi` | Team member |
 | Luke Yan | `lukeyawn` | Team member |
 
-The team will fill biographies, portraits and major responsibilities manually, including responsibilities after completing issues. All may describe development work when truthful; do not invent distinct assignments. During development, use a neutral initials placeholder and explicit missing-profile text. Before submission, replace every placeholder with the required real information. A placeholder graphic is not a substitute for the rubric's member photo.
+The team fills biographies, portraits and major responsibilities manually in `src/data/team.json`, including responsibilities after completing issues. All may describe development work when truthful; do not invent distinct assignments. Pages read the team through the catalog's `getTeam()` and `getTeamPhoto()`. A member whose `photoId` is null shows the neutral silhouette `public/images/team-placeholder.svg`, and a null `bio` shows explicit missing-profile text. `npm run validate-data` also checks the team data (`validateTeam` in `scripts/lib/dataValidation.ts`): required fields, unique usernames, known and unshared photo IDs, the permission credit and the image file. Before submission, replace every placeholder with the required real information. A placeholder graphic is not a substitute for the rubric's member photo.
 
 **Metric definitions**
 
@@ -408,29 +411,32 @@ All paths are relative to the repository root. No file in this table creates an 
 | `eslint.config.js`, `vitest.config.ts`, `playwright.config.ts` | Lint, unit and acceptance configuration |
 | `src/main.tsx`, `src/App.tsx`, `src/routes.tsx` | Mount app, shared shell, approved routes and redirects |
 | Eight `src/pages/` files in Section 4.1 | Page composition and content hierarchy |
-| `src/components/Navbar.tsx`, `Footer.tsx`, `PageLayout.tsx` | Shared shell, responsive navigation, landmarks |
-| `src/components/ModelCard.tsx`, `ListingControls.tsx`, `RelatedCards.tsx` | Reused five-attribute cards, filters, sort and counts |
+| `src/components/Navbar.tsx`, `Footer.tsx`, `PageLayout.tsx`, `navItems.ts` | Shared shell, responsive navigation, landmarks; `navItems.ts` lists the sections shared by navbar and footer |
+| `src/components/ModelCard.tsx`, `ModelListing.tsx`, `ListingControls.tsx`, `RelatedCards.tsx` | Reused five-attribute cards; `ModelListing` holds control state, result count and the card grid |
 | `src/components/MediaBlock.tsx`, `SourceList.tsx`, `StatusBadge.tsx` | Captioned images/embeds, provenance and historical state |
+| `src/components/CurrentResourcesLink.tsx`, `RedirectNotice.tsx` | Prominent APH current-resources link; the notice shown after an unknown-ID redirect |
 | `src/components/TeamCard.tsx`, `StatsPanel.tsx` | Manual profile content and live metric states |
 | `src/types/domain.ts`, `src/types/stats.ts` | Contracts from Sections 4.5 and 4.9 |
 | `src/data/sites.json`, `vaccines.json`, `opportunities.json` | Exactly three records each |
-| `src/data/relationships.json`, `sources.json`, `media.json`, `team.json` | Canonical edges, provenance, assets and roster |
+| `src/data/relationships.json`, `sources.json`, `media.json`, `team.json` | Canonical edges, provenance, assets (including `teamPhotos`) and roster |
 | `src/services/catalog.ts`, `listing.ts`, `statsClient.ts` | Data access and display strings, shared filter/sort functions, Lambda client |
-| `src/config/site.ts`, `src/content/en.ts` | Public links/environment values and English UI copy |
+| `src/config/site.ts`, `src/content/en.ts`, `src/content/format.ts` | Public links/environment values, English UI copy and date formatting |
 | `src/styles/tokens.css`, `global.css`, `components.css` | Exact palette, Bootstrap integration and responsive styling |
-| `public/images/` | Nine selected photos and team-supplied portraits |
-| `server/stats/handler.ts`, `gitlabClient.ts`, `aggregate.ts`, `cache.ts` | Lambda routing, upstream pagination, snapshot selection, metrics and cache |
-| `server/config/contributors.example.json` | Committed, secret-free example of the `CONTRIBUTOR_MAP` shape; real aliases live only in Lambda configuration |
+| `public/images/` | Nine selected photos, `team-placeholder.svg`, and team-supplied portraits in `public/images/team/` |
+| `server/stats/handler.ts`, `service.ts`, `gitlabClient.ts`, `aggregate.ts`, `cache.ts` | Lambda routing, refresh orchestration, upstream pagination, snapshot selection, metrics and cache |
+| `server/stats/config.ts`, `contributors.ts`, `roster.ts`, `logging.ts` | Server environment parsing, `CONTRIBUTOR_MAP` parsing, the fixed five-member roster and token-safe logging |
+| `server/config/contributors.example.json`, `server/.env.example` | Committed, secret-free examples of the `CONTRIBUTOR_MAP` shape and server environment; real values live only in Lambda configuration |
 | `server/tsconfig.json` | Lambda TypeScript compilation |
-| `scripts/collect-data.ts`, `validate-data.ts`, `validate-release.ts` | Collection/provenance, fixture integrity and release-input gates |
-| `scripts/report-unit-tests.ts`, `build-stats.ts` | Normalize actual JUnit output, produce ownership artifact, bundle Lambda |
-| `tests/unit/`, `tests/setup.ts`, `tests/test-owners.json` | Unit/component tests, shared setup, real ownership |
-| `tests/acceptance/` | Playwright workflows, route checks and internal-link crawl |
+| `scripts/collect-data.ts`, `validate-data.ts`, `validate-release.ts`, `lib/dataValidation.ts` | Collection/provenance, fixture and team integrity (rules in `lib/dataValidation.ts`) and release-input gates. `validate-release.ts` is not yet implemented |
+| `scripts/report-unit-tests.ts`, `lib/unitTestReport.ts`, `build-stats.ts` | Normalize actual JUnit output, produce ownership artifact, bundle Lambda into `server/dist/stats-lambda.zip` |
+| `tests/unit/`, `tests/unit/server/`, `tests/setup.ts`, `tests/test-owners.json` | Unit/component tests (Lambda tests under `server/`), shared setup, real ownership |
+| `tests/acceptance/`, `tsconfig.acceptance.json` | Playwright workflows, route checks and internal-link crawl; `pages.ts` lists the 14 URLs |
 | `postman/VaxAccess.postman_collection.json`, `VaxAccess.postman_environment.json` | Collection/examples and public, secret-free variable template |
 | `data/raw/`, `data/collection-manifest.json` | Compact source evidence, real REST responses and collection provenance |
 | `.gitlab-ci.yml`, `Makefile`, `amplify.yml` | CI jobs, local entry points and hosting build |
 | `.gitignore`, `.env.example`, `server/.env.example` | Exclusions and separated public/server configuration templates |
 | `README.md`, `DESIGN.md`, `IDB1.log.txt` | Required course documentation and generated history |
+| `README.md` in most directories, `TODO.md` | What each directory contains and its remaining work; Phase I task owners |
 | `docs/deployment.md`, `docs/time-log.md` | Actual setup/runbook and estimated/actual time records |
 
 Directory shorthand in a row inherits its leading directory; for example, `vaccines.json` in the data row means `src/data/vaccines.json`.
@@ -451,13 +457,13 @@ Track necessary source, assets, tests, lockfiles, configuration templates, colle
 10. Deploy Lambda and Amplify, connect vaxaccess.me and HTTPS, then perform production acceptance checks.
 11. Complete documentation, issue/time evidence, Git history and the combined submission PDF; freeze code/content deployments.
 
-Expose npm tasks and matching Makefile targets for install, dev, lint, typecheck, collect-data, validate-data, test-unit, test-acceptance, build, build-stats and validate-release. Install uses the lockfile. Build performs type checking and emits the frontend to `dist/`. The Lambda build produces a separately deployable artifact. Collection is explicit and never part of routine frontend startup.
+Expose npm tasks and matching Makefile targets for install, dev, lint, typecheck, collect-data, validate-data, test-unit, test-acceptance, build, build-stats and validate-release. npm also provides `report-unit-tests` (run by the CI `unit` job), `test-watch` and `preview`. Install uses the lockfile. Build performs type checking and emits the frontend to `dist/`. The Lambda build produces a separately deployable artifact. Collection is explicit and never part of routine frontend startup.
 
 Inline comments explain non-obvious behavior, especially historical relationships, test attribution, pagination and unavailable-state handling. Do not replace understandable structure with redundant comments.
 
 ### 4.13 CI and meaningful verification
 
-GitLab CI stages run lint/typecheck/data validation, unit tests, production build/Lambda bundle and acceptance tests. Use a job named exactly `unit` so Lambda can locate its ownership artifact consistently. Publish normalized JUnit and ownership artifacts even when unit tests fail; the job must still fail on test failures. Set `expire_in` on the JUnit and ownership artifacts to a duration that extends beyond the end of the semester, and enable the project setting that keeps artifacts from the most recent successful jobs, so reports remain accessible through grading. Cache dependency downloads, not stale build output. Real upstream credentials are not required for deterministic CI tests.
+GitLab CI stages run lint/typecheck/data validation, unit tests, production build/Lambda bundle and acceptance tests. In `.gitlab-ci.yml` these are the stages `check`, `test`, `build` and `acceptance`, with jobs `check`, `unit`, `build` and `acceptance`. The `unit` job runs `npm run report-unit-tests` after Vitest and then exits with Vitest's status. The `acceptance` job uses `needs: []`, so it starts without waiting for the earlier stages. Use a job named exactly `unit` so Lambda can locate its ownership artifact consistently. Publish normalized JUnit and ownership artifacts even when unit tests fail; the job must still fail on test failures. Set `expire_in` on the JUnit and ownership artifacts to a duration that extends beyond the end of the semester, and enable the project setting that keeps artifacts from the most recent successful jobs, so reports remain accessible through grading. Cache dependency downloads, not stale build output. Real upstream credentials are not required for deterministic CI tests.
 
 | Test area | Required checks |
 | --- | --- |

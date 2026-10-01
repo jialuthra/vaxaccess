@@ -233,14 +233,14 @@ VaxAccess points residents to vaccination resources and shows concrete ways comm
 | GitLab ID | jiakl |
 | Estimated completion time | 10 hours |
 | Actual completion time | 4 hours |
-| Comments | TODO |
+| Comments | After project 1, I am more confident in the elephant-goldfish workflow. My partners ended up being a good match, which helped us communicate well and work more efficiently. Overall, phase 1 went by smoothly. |
 
 ### Alex Bui
 
 | Field | Value |
 |---|---|
 | Full name | Alex Bui |
-| EID | TODO |
+| EID | atb2923 |
 | GitLab ID | atb2923 |
 | Estimated completion time | 10 hours |
 | Actual completion time | 4 hours |
@@ -273,8 +273,8 @@ VaxAccess points residents to vaccination resources and shows concrete ways comm
 | Field | Value |
 |---|---|
 | Full name | Luke Yan |
-| EID | TODO |
+| EID | ljy267 |
 | GitLab ID | lukeyawn |
-| Estimated completion time | TODO |
-| Actual completion time | TODO |
-| Comments | TODO |
+| Estimated completion time | 10 hours |
+| Actual completion time | 6 hours |
+| Comments | Phase 1 went well! We were all pretty good with communication. |

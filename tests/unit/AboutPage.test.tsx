@@ -2,6 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { siteConfig } from '../../src/config/site.ts';
+import TeamCard from '../../src/components/TeamCard.tsx';
 import AboutPage from '../../src/pages/AboutPage.tsx';
 import { getPhotos, getSources, getTeam } from '../../src/services/catalog.ts';
 
@@ -48,15 +49,15 @@ describe('AboutPage', () => {
     );
 
     const jia = cards[0]!;
-    expect(within(jia).getByText('Phase I leader')).toBeInTheDocument();
+    expect(within(jia).getByText('Phase I leader', { selector: '.team-role' })).toBeInTheDocument();
     expect(within(jia).getByRole('img', { name: 'Headshot of Jia Luthra' })).toHaveAttribute('src', '/images/team/team-jia.jpg');
     expect(within(jia).getByRole('link', { name: 'GitLab: @jiakl' })).toHaveAttribute('href', 'https://gitlab.com/jiakl');
   });
 
   it('uses the placeholder for a member without a photo or bio', () => {
-    renderPage();
-    const luke = within(section('Team')).getAllByRole('article')[4]!;
-    expect(within(luke).getByRole('img', { name: 'Luke Yan has not provided a photo yet' })).toHaveAttribute(
+    // Every member in team.json now has a photo, so render a card for one without.
+    render(<TeamCard member={{ ...getTeam()[4]!, photoId: null, bio: null }} />);
+    expect(within(screen.getByRole('article')).getByRole('img', { name: 'Luke Yan has not provided a photo yet' })).toHaveAttribute(
       'src',
       '/images/team-placeholder.svg',
     );

@@ -169,6 +169,14 @@
       "alt": "Headshot of Nifemi Soyemi",
       "width": 400,
       "height": 400
+    },
+    {
+      "id": "team-luke",
+      "localPath": "/images/team/team-luke.jpg",
+      "credit": "Provided by Luke Yan, used with permission",
+      "alt": "Headshot of Luke Yan",
+      "width": 400,
+      "height": 400
     }
   ]
 }
