@@ -14,6 +14,12 @@
   "tests/unit/validate-data.test.ts": "atb2923",
   "tests/unit/opportunity-detail.test.tsx": "j.enzosagun",
   "tests/unit/report-unit-tests.test.ts": "j.enzosagun",
+  "tests/unit/AboutPage.test.tsx": "j.enzosagun",
+  "tests/unit/StatsPanel.test.tsx": "j.enzosagun",
+  "tests/unit/statsClient.test.ts": "j.enzosagun",
+  "tests/unit/server/aggregate.test.ts": "j.enzosagun",
+  "tests/unit/server/contributors.test.ts": "j.enzosagun",
   "tests/unit/server/gitlabClient.test.ts": "j.enzosagun",
-  "tests/unit/server/handler.test.ts": "j.enzosagun"
+  "tests/unit/server/handler.test.ts": "j.enzosagun",
+  "tests/unit/server/service.test.ts": "j.enzosagun"
 }

@@ -43,10 +43,10 @@ Runbook and record for AWS Amplify, vaxaccess.me and the statistics Lambda (DESI
 
 ## 3. Statistics Lambda (#40)
 
-Enzo's code in `server/stats/` (#31, #32) must be merged first. `npm run build-stats` produces the deployable bundle.
+Enzo's code in `server/stats/` (#31, #32) must be merged first. `npm run build-stats` produces the deployable bundle, `server/dist/stats-lambda.zip` (one self-contained `index.mjs`, no `node_modules` needed). The CI `build` job also publishes it as an artifact, so you can download it from the pipeline for the exact commit you deploy.
 
 1. **GitLab token**: prefer a project access token with only `read_api` (Settings → Access tokens) if the tier offers it; otherwise a personal access token limited to `read_api`, expiring after grading. Record the type, owner and expiry above.
-2. **Lambda → Create function**: Node.js runtime matching `.nvmrc` (`nodejs24.x`), same region as above. Upload the `build-stats` bundle; set the handler to the one documented by the build.
+2. **Lambda → Create function**: Node.js runtime matching `.nvmrc` (`nodejs24.x`), same region as above. Upload `server/dist/stats-lambda.zip` (**Code → Upload from → .zip file**); under **Runtime settings** set the handler to `index.handler`.
 3. **Configuration → General**: timeout of about 15 s; memory 256 MB. **Concurrency**: set reserved concurrency to a small number (e.g. 5) to bound usage.
 4. **Configuration → Environment variables** (server-only): `GITLAB_TOKEN`, `GITLAB_PROJECT_PATH=nifemisoyemi/cs373-fall-2026-18`, `CONTRIBUTOR_MAP` (JSON in the shape of `server/config/contributors.example.json`).
 5. **Configuration → Function URL → Create**: auth type `NONE`. Under **CORS**, allow method `GET` and origins `https://vaxaccess.me`, the Amplify `main` branch domain and `http://localhost:5173`. The handler emits no CORS headers of its own; configure CORS only here. Make sure the resource policy grants the public URL invocation permissions AWS currently requires for `NONE` auth (the console adds them when it creates the URL).

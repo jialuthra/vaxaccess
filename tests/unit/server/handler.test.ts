@@ -72,9 +72,10 @@ describe('statistics handler', () => {
 
 describe('server configuration', () => {
   it('reads the token and project path from the server environment', () => {
-    expect(readServerConfig({ GITLAB_TOKEN: ' glpat-x ', GITLAB_PROJECT_PATH: 'a/b' })).toEqual({
+    expect(readServerConfig({ GITLAB_TOKEN: ' glpat-x ', GITLAB_PROJECT_PATH: 'a/b', CONTRIBUTOR_MAP: '{}' })).toEqual({
       gitlabToken: 'glpat-x',
       gitlabProjectPath: 'a/b',
+      contributorMap: '{}',
     });
   });
 

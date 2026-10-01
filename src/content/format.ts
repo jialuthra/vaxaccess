@@ -13,3 +13,14 @@ const localDate = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone
 export function formatDate(iso: string): string {
   return DATE_ONLY.test(iso) ? calendarDate.format(new Date(`${iso}T00:00:00Z`)) : localDate.format(new Date(iso));
 }
+
+const localDateTime = new Intl.DateTimeFormat('en-US', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+  timeZone: 'America/Chicago',
+});
+
+/** Formats an ISO timestamp in Austin time, e.g. "Sep 30, 2026, 7:05 AM CT". */
+export function formatDateTime(iso: string): string {
+  return `${localDateTime.format(new Date(iso))} CT`;
+}

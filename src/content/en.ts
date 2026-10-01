@@ -169,6 +169,7 @@ export const en = {
     retrieved: (date: string) => `Retrieved ${date}`,
     restApi: 'REST API',
     verifiedOn: (date: string) => `Facts on this page verified ${date}.`,
+    usedFor: (use: string) => `Used for: ${use}`,
   },
 
   related: {
@@ -194,6 +195,107 @@ export const en = {
     locationHeading: 'Location',
     relatedSites: 'Related sites',
     relatedVaccines: 'Related vaccines',
+  },
+
+  /** About page (DESIGN.md §4.2, §4.9). */
+  about: {
+    heading: 'About VaxAccess',
+    purposeHeading: 'Purpose',
+    purpose:
+      'VaxAccess helps uninsured and underinsured people in Austin and Travis County understand their vaccination options and find resources. It also shows how community members have supported vaccine access. Phase I is an informational directory: it does not book appointments, accept payments, register volunteers or collect health information.',
+    usersHeading: 'Who it is for',
+    users: [
+      'Residents, especially people who are uninsured or underinsured, looking for vaccine information and where to get vaccinated.',
+      'Community members, students and volunteers who want to see how others have supported local vaccination efforts.',
+    ],
+    historicalNote:
+      'The sites and volunteer opportunities are dated historical examples, not a current appointment directory.',
+
+    teamHeading: 'Team',
+    gitlabProfile: (username: string) => `GitLab: @${username}`,
+    responsibilities: 'Responsibilities',
+    missingBio: 'Bio not provided yet.',
+    missingPhotoAlt: (name: string) => `${name} has not provided a photo yet`,
+
+    statsHeading: 'Repository statistics',
+    definitionsHeading: 'How these numbers are counted',
+    definitions: [
+      {
+        term: 'Commits',
+        text: 'Unique commits reachable from the default branch, including merge commits, credited to each commit’s recorded author.',
+      },
+      {
+        term: 'Issues',
+        text: 'Open and closed project issues, credited to the member who created them rather than the assignee. Merge requests are not issues.',
+      },
+      {
+        term: 'Unit tests',
+        text: 'Distinct unit test cases executed in the most recent default-branch pipeline whose unit job passed. Parameterized cases count separately, skipped cases are shown separately, and browser acceptance tests are not included.',
+      },
+      {
+        term: 'Totals and other contributors',
+        text: 'Project totals use the same rules. Contributions from outside the team, or whose author could not be matched, are listed separately so the rows add up to the total.',
+      },
+      {
+        term: 'Freshness',
+        text: 'Numbers are read live from GitLab and may be up to five minutes old. If GitLab cannot be reached, the last successful values are shown, marked stale, with the time they were retrieved.',
+      },
+    ],
+
+    sourcesHeading: 'Data sources',
+    toolsHeading: 'Tools',
+    tools: [
+      { name: 'React, TypeScript and Vite', use: 'Build the single-page site from reusable, type-checked components.' },
+      { name: 'React Router', use: 'Defines the 14 page routes and the redirects for unknown pages and records.' },
+      { name: 'Bootstrap', use: 'Responsive grid, navigation and form styling, extended with the project palette.' },
+      { name: 'Vitest and React Testing Library', use: 'Unit and component tests, run in the CI unit job.' },
+      { name: 'Playwright', use: 'Browser acceptance tests in Chromium, Firefox and WebKit.' },
+      { name: 'Postman', use: 'Designs and documents the future domain API, with saved request examples.' },
+      { name: 'GitLab and GitLab CI', use: 'Source control, issue tracking, and the lint, test and build pipeline.' },
+      { name: 'GitLab REST API', use: 'Supplies the commit, issue and unit-test statistics on this page.' },
+      { name: 'AWS Lambda', use: 'Runs the read-only statistics service that queries GitLab, so no token reaches the browser.' },
+      { name: 'AWS Amplify', use: 'Builds and hosts the site at vaxaccess.me over HTTPS.' },
+      { name: 'U.S. Census Geocoder API', use: 'Provided the coordinates and geographic details of each site during data collection.' },
+      { name: 'OpenStreetMap and YouTube', use: 'Embedded maps on site and opportunity pages, and the Austin Public Health video on vaccine pages.' },
+    ],
+
+    creditsHeading: 'Media credits',
+    photosHeading: 'Photographs',
+    videoHeading: 'Video',
+    teamPhotosHeading: 'Team photos',
+    mapsHeading: 'Maps',
+    mapCredit: 'Map data and embeds',
+
+    linksHeading: 'Project links',
+    repository: 'GitLab repository',
+    postman: 'Postman API documentation',
+  },
+
+  /** Statistics panel states (DESIGN.md §4.9). */
+  stats: {
+    loading: 'Loading repository statistics…',
+    retry: 'Retry',
+    failures: {
+      'not-configured': 'Repository statistics are not configured for this build.',
+      throttled: 'The statistics service is busy right now. Please try again in a moment.',
+      unavailable: 'Repository statistics are unavailable right now.',
+      network: 'Could not reach the statistics service.',
+      invalid: 'The statistics service returned an unexpected response.',
+    },
+    refreshFailed: (time: string) => `Could not refresh the statistics. Showing the values retrieved ${time}.`,
+    caption: 'Commits, issues and unit tests per team member',
+    member: 'Member',
+    commits: 'Commits',
+    issues: 'Issues',
+    unitTests: 'Unit tests',
+    unattributed: 'Other contributors',
+    total: 'Project total',
+    unavailable: 'Unavailable',
+    stale: 'Stale',
+    skipped: (count: number) => `${count} skipped`,
+    asOf: (metric: string, time: string) => `${metric} as of ${time}`,
+    pipeline: (id: number, sha: string) => `Unit tests from pipeline #${id} (commit ${sha.slice(0, 8)})`,
+    notesHeading: 'Notes',
   },
 
   notConfigured: 'Not configured',

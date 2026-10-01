@@ -5,6 +5,11 @@ export interface ServerConfig {
   /** `read_api` credential. Pass it only to GitLabClient; never log or return it. */
   gitlabToken: string;
   gitlabProjectPath: string;
+  /**
+   * Raw CONTRIBUTOR_MAP JSON. Optional at this level: when missing or invalid, only per-member
+   * commit attribution becomes unavailable (see contributors.ts), not the whole service.
+   */
+  contributorMap: string | undefined;
 }
 
 /** Errors name the missing variable but never echo any configured value. */
@@ -16,6 +21,7 @@ export function readServerConfig(env: Record<string, string | undefined> = proce
   return {
     gitlabToken: required(env, 'GITLAB_TOKEN'),
     gitlabProjectPath: required(env, 'GITLAB_PROJECT_PATH'),
+    contributorMap: env.CONTRIBUTOR_MAP,
   };
 }
 
