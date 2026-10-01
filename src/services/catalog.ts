@@ -7,6 +7,7 @@ import opportunitiesJson from '../data/opportunities.json';
 import relationshipsJson from '../data/relationships.json';
 import sitesJson from '../data/sites.json';
 import sourcesJson from '../data/sources.json';
+import teamJson from '../data/team.json';
 import vaccinesJson from '../data/vaccines.json';
 import type {
   Address,
@@ -15,6 +16,8 @@ import type {
   Relationships,
   Site,
   Source,
+  TeamMember,
+  TeamPhoto,
   Vaccine,
   Video,
   VolunteerOpportunity,
@@ -29,6 +32,7 @@ const opportunities = opportunitiesJson as VolunteerOpportunity[];
 const relationships = relationshipsJson as Relationships;
 const sources = sourcesJson as Source[];
 const media = mediaJson as MediaCatalog;
+const team = teamJson as TeamMember[];
 
 export type ModelKind = 'sites' | 'vaccines' | 'opportunities';
 
@@ -215,6 +219,19 @@ export function getPhoto(id: string): Photograph | undefined {
 
 export function getVideo(id: string): Video | undefined {
   return findById(media.videos, id);
+}
+
+// ---------------------------------------------------------------------------
+// Team (About page)
+
+/** The five team members in roster order (DESIGN.md §4.9). */
+export function getTeam(): TeamMember[] {
+  return [...team];
+}
+
+/** A member's headshot; undefined when `photoId` is null or unknown, so the page shows the placeholder. */
+export function getTeamPhoto(id: string | null): TeamPhoto | undefined {
+  return id === null ? undefined : findById(media.teamPhotos, id);
 }
 
 // ---------------------------------------------------------------------------

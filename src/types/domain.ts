@@ -153,9 +153,25 @@ export interface Video {
   caption: string;
 }
 
+/**
+ * A team-supplied headshot. Unlike `Photograph` there is no public source page or license
+ * URL: the member provided it and agreed to its use, which `credit` records.
+ */
+export interface TeamPhoto {
+  id: string;
+  /** Public path, e.g. /images/team/team-jia.jpg */
+  localPath: string;
+  /** "Provided by <name>, used with permission" */
+  credit: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 export interface MediaCatalog {
   photos: Photograph[];
   videos: Video[];
+  teamPhotos: TeamPhoto[];
 }
 
 export interface TeamMember {
@@ -163,6 +179,7 @@ export interface TeamMember {
   username: string;
   phaseRole: string;
   bio: string | null;
+  /** A `TeamPhoto` ID; null shows the neutral placeholder. */
   photoId: string | null;
   responsibilities: string[];
 }

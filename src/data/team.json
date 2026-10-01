@@ -3,32 +3,40 @@
     "name": "Jia Luthra",
     "username": "jiakl",
     "phaseRole": "Phase I leader",
-    "bio": "TODO: bio from Jia",
-    "photoId": null,
-    "responsibilities": ["TODO: responsibilities from Jia"]
+    "bio": "Hi, I'm Jia! I'm a Junior at UT Austin majoring in Computer Science. I'm passionate about healthcare technology and building software that makes things simpler and more accessible. In my free time, I enjoy painting, listening to music, and reading. A fun fact about me is that I thread eyebrows as a side hustle!",
+    "photoId": "team-jia",
+    "responsibilities": [
+      "Phase I group leader",
+      "Shared navbar, footer and page layout",
+      "Home (splash) page",
+      "README and team data"
+    ]
   },
   {
     "name": "Alex Bui",
     "username": "atb2923",
     "phaseRole": "Team member",
-    "bio": "TODO: bio from Alex",
-    "photoId": null,
+    "bio": "I'm majoring in Computer Science, I'm a Junior! My interests include trying new foods, playing video games, and spending time with my friends :) Fun Fact: I love playing tennis.",
+    "photoId": "team-alex",
     "responsibilities": ["TODO: responsibilities from Alex"]
   },
   {
     "name": "Enzo Sagun",
     "username": "j.enzosagun",
     "phaseRole": "Team member",
-    "bio": "TODO: bio from Enzo",
-    "photoId": null,
-    "responsibilities": ["TODO: responsibilities from Enzo"]
+    "bio": "Hello! I'm Enzo, a junior studying Computer Science with a Business minor! I like to dance, eat hot pot, and try different cafes and bakeries. A fun fact about me is that I was born in Portland, Oregon!",
+    "photoId": "team-enzo",
+    "responsibilities": [
+      "Opportunities page and detail pages",
+      "About page with member stats"
+    ]
   },
   {
     "name": "Nifemi Soyemi",
     "username": "nifemisoyemi",
     "phaseRole": "Team member",
-    "bio": "TODO: bio from Nifemi",
-    "photoId": null,
+    "bio": "Hi I'm Nifemi and I'm a junior here at UT studying computer science! My interests include thrifting, film watching, and volleyball. Fun fact: I've played guitar for 7+ years.",
+    "photoId": "team-nifemi",
     "responsibilities": ["TODO: responsibilities from Nifemi"]
   },
   {

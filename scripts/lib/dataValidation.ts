@@ -8,6 +8,8 @@ import type {
   Relationships,
   Site,
   Source,
+  TeamMember,
+  TeamPhoto,
   Vaccine,
   VolunteerOpportunity,
 } from '../../src/types/domain.ts';
@@ -43,6 +45,7 @@ const SITE_STRINGS = ['populationServed', 'costPolicy', 'appointmentMethod', 'co
 const VACCINE_STRINGS = ['ageGroup', 'vaccineType', 'administrationMethod', 'scheduleSummary', 'videoId'] as const;
 const OPPORTUNITY_STRINGS = ['organization', 'activityType', 'timeCommitment', 'dateLabel'] as const;
 const PHOTO_STRINGS = ['creator', 'licenseName', 'caption', 'alt', 'changes'] as const;
+const TEAM_CREDIT = /^Provided by .+, used with permission$/;
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
@@ -308,5 +311,45 @@ function validateDates(at: string, value: DatedEvidence): string[] {
   if (isIsoDate(value.startDate) && isIsoDate(value.endDate) && value.startDate > value.endDate) {
     errors.push(`${at}: startDate is after endDate`);
   }
+  return errors;
+}
+
+/**
+ * Team profiles and their headshots (DESIGN.md §4.9). Kept apart from `validateFixtures`
+ * because headshots are team-provided rather than licensed from a public source, so they
+ * have a credit instead of source/license URLs. `TODO:` placeholders are accepted here;
+ * rejecting them is a release gate, not a development check.
+ */
+export function validateTeam(team: readonly TeamMember[], teamPhotos: readonly TeamPhoto[], options: ValidationOptions): string[] {
+  const errors: string[] = [];
+  const error = (message: string) => errors.push(message);
+
+  for (const id of duplicates(teamPhotos.map((photo) => photo.id))) error(`media: duplicate team photo ID "${id}"`);
+  for (const photo of teamPhotos) {
+    const at = `media/teamPhotos/${photo.id}`;
+    if (!SLUG.test(photo.id)) error(`${at}: ID is not a lowercase slug`);
+    if (!isNonEmptyString(photo.alt)) error(`${at}: alt is required`);
+    if (!TEAM_CREDIT.test(photo.credit ?? '')) error(`${at}: credit must read "Provided by <name>, used with permission"`);
+    if (!isPositiveInteger(photo.width) || !isPositiveInteger(photo.height)) error(`${at}: width and height must be positive integers`);
+    if (!/^\/images\/team\/[\w.-]+$/.test(photo.localPath) || !options.fileExists(`public${photo.localPath}`)) {
+      error(`${at}: image file public${photo.localPath} is missing`);
+    }
+  }
+
+  const photoIds = new Set(teamPhotos.map((photo) => photo.id));
+  for (const username of duplicates(team.map((member) => member.username))) error(`team: duplicate username "${username}"`);
+  for (const member of team) {
+    const at = `team/${member.username}`;
+    for (const key of ['name', 'username', 'phaseRole'] as const) {
+      if (!isNonEmptyString(member[key])) error(`${at}: ${key} is required`);
+    }
+    if (member.bio !== null && !isNonEmptyString(member.bio)) error(`${at}: bio must be null or a nonempty string`);
+    if (!isNonEmptyStringArray(member.responsibilities)) error(`${at}: responsibilities must be nonempty strings`);
+    if (member.photoId !== null && !photoIds.has(member.photoId)) error(`${at}: unknown team photo "${member.photoId}"`);
+  }
+  for (const photoId of duplicates(team.flatMap((member) => (member.photoId === null ? [] : [member.photoId])))) {
+    error(`team: photo "${photoId}" is used by more than one member`);
+  }
+
   return errors;
 }
