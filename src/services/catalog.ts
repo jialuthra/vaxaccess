@@ -221,6 +221,15 @@ export function getVideo(id: string): Video | undefined {
   return findById(media.videos, id);
 }
 
+/** Every photograph, for the About page's media credits. */
+export function getPhotos(): Photograph[] {
+  return [...media.photos];
+}
+
+export function getVideos(): Video[] {
+  return [...media.videos];
+}
+
 // ---------------------------------------------------------------------------
 // Team (About page)
 
@@ -232,6 +241,10 @@ export function getTeam(): TeamMember[] {
 /** A member's headshot; undefined when `photoId` is null or unknown, so the page shows the placeholder. */
 export function getTeamPhoto(id: string | null): TeamPhoto | undefined {
   return id === null ? undefined : findById(media.teamPhotos, id);
+}
+
+export function getTeamPhotos(): TeamPhoto[] {
+  return [...media.teamPhotos];
 }
 
 // ---------------------------------------------------------------------------
