@@ -220,9 +220,9 @@ VaxAccess points residents to vaccination resources and shows concrete ways comm
 
 | Field | Value |
 |---|---|
-| GitLab pipeline URL | TODO |
-| Git SHA | TODO |
-| Postman URL | TODO |
+| GitLab pipeline URL | https://gitlab.com/nifemisoyemi/cs373-fall-2026-18/-/pipelines/2899729323 |
+| Git SHA | 5f04a2e4c57e16546814fa2bac8f3e66cacd2ace |
+| Postman URL | https://documenter.getpostman.com/view/58645380/2sBYHNVhYZ |
 
 ### Jia Luthra
 
