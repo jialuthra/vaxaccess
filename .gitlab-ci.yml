@@ -3,8 +3,13 @@
 # Cross-phase contract (DESIGN.md §4.9): the frozen Phase I statistics Lambda reads
 # pipelines produced by later work, so through Phase I grading keep
 #   - a default-branch job named exactly `unit`,
-#   - its JUnit report at reports/junit.xml published as the pipeline test report,
+#   - its normalized JUnit report at reports/junit.xml published as the pipeline test report,
+#     with each test case's classname containing the repository-relative file path and suite
+#     name ("tests/unit/a.test.ts > Suite"),
+#   - its reports/unit-test-owners.json artifact at schema version 1
+#     ({ schemaVersion, pipelineId, sha, owners }),
 #   - an entry in tests/test-owners.json for every unit-test file.
+# Changing any of these requires deploying a compatible Lambda, which the freeze does not allow.
 
 default:
   image: node:24
@@ -33,7 +38,11 @@ check:
 unit:
   stage: test
   script:
-    - npm run test-unit
+    # Record the test result instead of stopping, so the report step runs even after failures;
+    # the final line then fails the job with Vitest's exit status.
+    - npm run test-unit && TEST_STATUS=0 || TEST_STATUS=$?
+    - npm run report-unit-tests
+    - exit $TEST_STATUS
   artifacts:
     # Publish reports even when tests fail; the job itself still fails.
     when: always

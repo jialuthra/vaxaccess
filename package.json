@@ -12,6 +12,7 @@
     "typecheck": "tsc -b",
     "test-unit": "vitest run",
     "test-watch": "vitest",
+    "report-unit-tests": "tsx scripts/report-unit-tests.ts",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "collect-data": "tsx scripts/collect-data.ts",

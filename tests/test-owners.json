@@ -13,6 +13,7 @@
   "tests/unit/team.test.ts": "jiakl",
   "tests/unit/validate-data.test.ts": "atb2923",
   "tests/unit/opportunity-detail.test.tsx": "j.enzosagun",
+  "tests/unit/report-unit-tests.test.ts": "j.enzosagun",
   "tests/unit/AboutPage.test.tsx": "j.enzosagun",
   "tests/unit/StatsPanel.test.tsx": "j.enzosagun",
   "tests/unit/statsClient.test.ts": "j.enzosagun",

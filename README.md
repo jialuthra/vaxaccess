@@ -180,7 +180,7 @@ GitLab CI ([.gitlab-ci.yml](.gitlab-ci.yml)) runs four stages on every pipeline:
 | Job | Runs |
 |---|---|
 | `check` | Lint, typecheck and fixture validation |
-| `unit` | Vitest; publishes `reports/junit.xml` as the pipeline test report |
+| `unit` | Vitest, then `npm run report-unit-tests`; publishes the normalized `reports/junit.xml` as the pipeline test report and `reports/unit-test-owners.json` as an artifact, even when tests fail (the job still fails) |
 | `build` | Production build |
 | `acceptance` | Playwright: full suite in Chromium, `@smoke` tests in Firefox and WebKit |
 
@@ -188,9 +188,10 @@ GitLab CI ([.gitlab-ci.yml](.gitlab-ci.yml)) runs four stages on every pipeline:
 
 The About page's unit-test statistics come from the deployed statistics Lambda, which reads the latest default-branch pipeline. Production code is frozen after Phase I submission, but the frozen Lambda keeps reading pipelines produced by later work. **Through Phase I grading, all later changes must preserve:**
 
-- a default-branch job named exactly `unit`;
-- the `unit-test-owners.json` artifact produced by that job, at schema version 1;
-- the JUnit test-case classname format containing the repository-relative file path and suite name;
+- a default-branch job named exactly `unit`, whose normalized JUnit report is the pipeline test report;
+- the `reports/unit-test-owners.json` artifact produced by that job, at schema version 1: `{ "schemaVersion": 1, "pipelineId": <CI_PIPELINE_ID>, "sha": "<CI_COMMIT_SHA>", "owners": { "<test file>": "<username>" } }`, with `owners` copied from `tests/test-owners.json`;
+- the JUnit test-case classname format containing the repository-relative file path and suite name, e.g. `classname="tests/unit/listing.test.ts > sortItems"` with `name` holding the test title, produced by [scripts/report-unit-tests.ts](scripts/report-unit-tests.ts);
+- unique test names within each suite, including parameter labels (the report step fails the job otherwise);
 - an entry in [tests/test-owners.json](tests/test-owners.json) for **every new unit-test file**, mapping it to the GitLab username of the member who wrote it.
 
 Changing any of these requires deploying a compatible Lambda, which is not allowed during the freeze. See DESIGN.md §4.9.
