@@ -15,7 +15,7 @@
   {
     "name": "Alex Bui",
     "username": "atb2923",
-    "phaseRole": "Team member",
+    "phaseRole": "Developer",
     "bio": "I'm majoring in Computer Science, I'm a Junior! My interests include trying new foods, playing video games, and spending time with my friends :) Fun Fact: I love playing tennis.",
     "photoId": "team-alex",
     "responsibilities": [
@@ -28,7 +28,7 @@
   {
     "name": "Enzo Sagun",
     "username": "j.enzosagun",
-    "phaseRole": "Team member",
+    "phaseRole": "Developer",
     "bio": "Hello! I'm Enzo, a junior studying Computer Science with a Business minor! I like to dance, eat hot pot, and try different cafes and bakeries. A fun fact about me is that I was born in Portland, Oregon!",
     "photoId": "team-enzo",
     "responsibilities": [
@@ -41,7 +41,7 @@
   {
     "name": "Nifemi Soyemi",
     "username": "nifemisoyemi",
-    "phaseRole": "Team member",
+    "phaseRole": "Developer",
     "bio": "Hi I'm Nifemi and I'm a junior here at UT studying computer science! My interests include thrifting, film watching, and volleyball. Fun fact: I've played guitar for 7+ years.",
     "photoId": "team-nifemi",
     "responsibilities": [
@@ -54,7 +54,7 @@
   {
     "name": "Luke Yan",
     "username": "lukeyawn",
-    "phaseRole": "Team member",
+    "phaseRole": "Developer",
     "bio": "I'm a sophomore at UT Austin double majoring in Computer Science and Math! I'm interested in contest math, hiking, and learning about AI safety!",
     "photoId": "team-luke",
     "responsibilities": [

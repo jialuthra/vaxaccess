@@ -211,10 +211,10 @@ VaxAccess points residents to vaccination resources and shows concrete ways comm
 | Name | GitLab username | Phase I role |
 |---|---|---|
 | Jia Luthra | jiakl | Phase I leader |
-| Alex Bui | atb2923 | Team member |
-| Enzo Sagun | j.enzosagun | Team member |
-| Nifemi Soyemi | nifemisoyemi | Team member |
-| Luke Yan | lukeyawn | Team member |
+| Alex Bui | atb2923 | Developer |
+| Enzo Sagun | j.enzosagun | Developer |
+| Nifemi Soyemi | nifemisoyemi | Developer |
+| Luke Yan | lukeyawn | Developer |
 
 ## Submission info
 
