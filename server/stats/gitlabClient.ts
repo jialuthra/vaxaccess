@@ -203,6 +203,13 @@ export class GitLabClient {
     return body as unknown as GitLabTestReport;
   }
 
+  /** Downloads one JSON file from a job's artifacts, e.g. the unit job's ownership artifact. */
+  async getJobArtifactJson(projectId: number, jobId: number, artifactPath: string): Promise<unknown> {
+    const encodedPath = artifactPath.split('/').map(encodeURIComponent).join('/');
+    const url = this.#url(`/projects/${projectId}/jobs/${jobId}/artifacts/${encodedPath}`);
+    return (await this.#request(url, true)).body;
+  }
+
   async #getJson(url: URL): Promise<unknown> {
     return (await this.#request(url)).body;
   }
@@ -221,10 +228,10 @@ export class GitLabClient {
   }
 
   /** Retries 429s after the wait GitLab asks for, within the configured limits. */
-  async #request(url: URL): Promise<{ body: unknown; headers: Headers }> {
+  async #request(url: URL, followStorageRedirect = false): Promise<{ body: unknown; headers: Headers }> {
     const endpoint = this.#endpoint(url);
     for (let attempt = 0; ; attempt += 1) {
-      const result = await this.#attempt(url, endpoint);
+      const result = await this.#attempt(url, endpoint, followStorageRedirect);
       if (result.status === 429) {
         const waitMs = retryDelayMs(result.headers, this.#now());
         if (attempt >= this.#maxRateLimitRetries || waitMs > this.#maxRateLimitWaitMs) {
@@ -242,17 +249,28 @@ export class GitLabClient {
     }
   }
 
-  async #attempt(url: URL, endpoint: string): Promise<{ status: number; headers: Headers; body?: unknown }> {
+  async #attempt(
+    url: URL,
+    endpoint: string,
+    followStorageRedirect: boolean,
+  ): Promise<{ status: number; headers: Headers; body?: unknown }> {
     const timeout = AbortSignal.timeout(this.#requestTimeoutMs);
     const signal = this.#signal ? AbortSignal.any([this.#signal, timeout]) : timeout;
     try {
-      const response = await this.#fetch(url, {
+      let response = await this.#fetch(url, {
         method: 'GET',
         headers: { 'PRIVATE-TOKEN': this.#token, Accept: 'application/json' },
-        // Never follow redirects: a redirect could carry the token header to another host.
-        redirect: 'error',
+        // Never let fetch follow redirects: it would forward the token header to another host.
+        redirect: followStorageRedirect ? 'manual' : 'error',
         signal,
       });
+      if (followStorageRedirect && response.status >= 300 && response.status < 400) {
+        // Artifact downloads may redirect once to pre-signed object storage, fetched without the token.
+        const target = redirectTarget(response.headers.get('location'), url);
+        await response.body?.cancel().catch(() => undefined);
+        if (!target) throw new GitLabError('invalid_response', endpoint, response.status);
+        response = await this.#fetch(target, { method: 'GET', redirect: 'error', signal });
+      }
       if (!response.ok) {
         // The error body is discarded unread; upstream error text is never surfaced.
         await response.body?.cancel().catch(() => undefined);
@@ -308,6 +326,16 @@ export class GitLabClient {
     return url.pathname.startsWith(this.#base.pathname)
       ? url.pathname.slice(this.#base.pathname.length) || '/'
       : url.pathname;
+  }
+}
+
+function redirectTarget(location: string | null, base: URL): URL | null {
+  if (!location) return null;
+  try {
+    const target = new URL(location, base);
+    return target.protocol === 'https:' ? target : null;
+  } catch {
+    return null;
   }
 }
 
