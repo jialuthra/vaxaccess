@@ -392,3 +392,50 @@ main:focus {
 .va-footer li + li {
   margin-top: 0.25rem;
 }
+
+/* About: team cards */
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--porcelain-100);
+  border-top-left-radius: var(--va-radius-lg);
+  border-top-right-radius: var(--va-radius-lg);
+}
+
+.team-role {
+  background-color: var(--va-historical-bg);
+  color: var(--va-historical-text);
+}
+
+/* About: statistics and definition lists */
+.stats-table caption {
+  color: var(--va-text-muted);
+}
+
+.stats-table .stats-total > * {
+  border-top: 2px solid var(--va-border);
+  font-weight: 700;
+}
+
+.stats-stale {
+  background-color: var(--va-support-bg);
+  color: var(--va-text);
+  border: 1px solid var(--dry-sage-300);
+}
+
+.stats-alert {
+  background-color: var(--va-accent-bg);
+  border: 1px solid var(--va-accent-border);
+  border-radius: var(--va-radius);
+  padding: 0.75rem 1rem;
+}
+
+.stats-definitions dt {
+  font-weight: 600;
+  color: var(--ink-black-800);
+}
+
+.stats-definitions dd {
+  margin-bottom: 0.75rem;
+}

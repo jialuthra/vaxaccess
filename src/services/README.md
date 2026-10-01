@@ -6,7 +6,4 @@ Data access and shared logic. Pages read data only through these modules, never 
 | --- | --- |
 | `catalog.ts` | Record lookups (`getSite`, `getVaccine`, …), related records in both directions (`getVaccinesForSite`, `getSitesForOpportunity`, …), sources and media (`getSourcesByIds`, `getPhoto`, `getVideo`), the display strings used by cards and filters, and card data (`getSiteCards`, `siteCard`, …). |
 | `listing.ts` | Filter and sort rules (DESIGN.md §4.4): trimmed, case-insensitive substring filters combined with AND; sort by name or any field, A–Z/Z–A, with name/ID tie-breakers. |
-
-## Still to do
-
-- `statsClient.ts`: client for the statistics Lambda (Enzo, #34)
+| `statsClient.ts` | `fetchStats(url, signal)` for the statistics Lambda (DESIGN.md §4.9). Returns the validated envelope or a failure reason (`not-configured`, `throttled` for 429, `unavailable` for other HTTP errors, `network`, `invalid`); only an abort throws. |

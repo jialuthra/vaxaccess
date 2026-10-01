@@ -9,10 +9,12 @@ interface SourceListProps {
   /** The record's `verifiedOn` date. */
   verifiedOn?: string;
   heading?: string;
+  /** Also say what each source was used for (About's data-source list). */
+  showUsage?: boolean;
 }
 
 /** Provenance section for detail pages: each source with its publisher and dates. */
-export default function SourceList({ sourceIds, verifiedOn, heading = en.sources.heading }: SourceListProps) {
+export default function SourceList({ sourceIds, verifiedOn, heading = en.sources.heading, showUsage = false }: SourceListProps) {
   const headingId = useId();
   const sources = getSourcesByIds(sourceIds);
   return (
@@ -34,6 +36,7 @@ export default function SourceList({ sourceIds, verifiedOn, heading = en.sources
                 .filter(Boolean)
                 .join(' · ')}
             </span>
+            {showUsage && <span className="d-block">{en.sources.usedFor(source.usedFor)}</span>}
           </li>
         ))}
       </ul>

@@ -17,7 +17,5 @@ Reusable UI pieces shared across pages.
 | `Footer.tsx` | Section links and the repository link. Credits stay on About and in media captions. |
 | `navItems.ts` | The five section links shared by `Navbar` and `Footer`. |
 | `RedirectNotice.tsx` | Shows the message carried by an unknown-ID redirect. Rendered once in `App.tsx`. |
-
-## Still to do
-
-- `TeamCard.tsx`, `StatsPanel.tsx`: Enzo (#34)
+| `TeamCard.tsx` | One member's About card from `team.json`: headshot (or the neutral placeholder), phase role, GitLab profile, bio and responsibilities. |
+| `StatsPanel.tsx` | Live GitLab statistics: loading, current, stale and unavailable states, Retry, a five-minute refresh while the page is visible, and cancellation on unmount. `<StatsPanel url={siteConfig.statsUrl} />`. |
