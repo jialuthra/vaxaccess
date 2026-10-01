@@ -8,4 +8,4 @@ Each was downloaded from the Wikimedia original in `media.json` (`originalUrl`) 
 
 ## Still to do
 
-- Team portraits (Jia, #42)
+- Team portraits (#42). Until then `team-placeholder.svg` is a neutral stand-in for members whose `photoId` is null in `src/data/team.json`; it is not a member photo for release.
