@@ -394,10 +394,14 @@ main:focus {
 }
 
 /* About: team cards */
+/* height: auto overrides the img height attribute, which would otherwise fix the height and
+   ignore aspect-ratio (Alex's 192 px headshot rendered shorter than the 400 px ones). */
 .team-photo {
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center;
   background-color: var(--porcelain-100);
   border-top-left-radius: var(--va-radius-lg);
   border-top-right-radius: var(--va-radius-lg);

@@ -326,10 +326,10 @@ This assigns **photo + map** to six detail pages and **photo + video** to three.
 | Name | GitLab username | Fixed phase role |
 | --- | --- | --- |
 | Jia Luthra | `jiakl` | Phase I leader |
-| Alex Bui | `atb2923` | Team member |
-| Enzo Sagun | `j.enzosagun` | Team member |
-| Nifemi Soyemi | `nifemisoyemi` | Team member |
-| Luke Yan | `lukeyawn` | Team member |
+| Alex Bui | `atb2923` | Developer |
+| Enzo Sagun | `j.enzosagun` | Developer |
+| Nifemi Soyemi | `nifemisoyemi` | Developer |
+| Luke Yan | `lukeyawn` | Developer |
 
 The team fills biographies, portraits and major responsibilities manually in `src/data/team.json`, including responsibilities after completing issues. All may describe development work when truthful; do not invent distinct assignments. Pages read the team through the catalog's `getTeam()` and `getTeamPhoto()`. A member whose `photoId` is null shows the neutral silhouette `public/images/team-placeholder.svg`, and a null `bio` shows explicit missing-profile text. `npm run validate-data` also checks the team data (`validateTeam` in `scripts/lib/dataValidation.ts`): required fields, unique usernames, known and unshared photo IDs, the permission credit and the image file. Before submission, replace every placeholder with the required real information. A placeholder graphic is not a substitute for the rubric's member photo.
 
