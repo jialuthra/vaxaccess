@@ -4,7 +4,8 @@
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { validateFixtures, type Fixtures } from './lib/dataValidation.ts';
+import { validateFixtures, validateTeam, type Fixtures } from './lib/dataValidation.ts';
+import type { TeamMember } from '../src/types/domain.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 
@@ -20,10 +21,10 @@ const fixtures: Fixtures = {
   sources: await readJson('src/data/sources.json'),
   media: await readJson('src/data/media.json'),
 };
+const team: TeamMember[] = await readJson('src/data/team.json');
 
-const errors = validateFixtures(fixtures, {
-  fileExists: (relativePath) => existsSync(path.join(ROOT, relativePath)),
-});
+const options = { fileExists: (relativePath: string) => existsSync(path.join(ROOT, relativePath)) };
+const errors = [...validateFixtures(fixtures, options), ...validateTeam(team, fixtures.media.teamPhotos, options)];
 
 if (errors.length === 0) {
   console.log('Data validation passed.');

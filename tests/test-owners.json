@@ -10,6 +10,7 @@
   "tests/unit/media.test.tsx": "nifemisoyemi",
   "tests/unit/routes.test.tsx": "lukeyawn",
   "tests/unit/shell.test.tsx": "jiakl",
+  "tests/unit/team.test.ts": "jiakl",
   "tests/unit/validate-data.test.ts": "atb2923",
   "tests/unit/opportunity-detail.test.tsx": "j.enzosagun"
 }

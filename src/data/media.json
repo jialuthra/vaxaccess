@@ -136,5 +136,39 @@
       "embedUrl": "https://www.youtube-nocookie.com/embed/-P_lgZFUHTs",
       "caption": "General guidance from Austin Public Health on immunization appointments and visits. Not vaccine-specific clinical guidance or proof of availability."
     }
+  ],
+  "teamPhotos": [
+    {
+      "id": "team-jia",
+      "localPath": "/images/team/team-jia.jpg",
+      "credit": "Provided by Jia Luthra, used with permission",
+      "alt": "Headshot of Jia Luthra",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "id": "team-alex",
+      "localPath": "/images/team/team-alex.jpg",
+      "credit": "Provided by Alex Bui, used with permission",
+      "alt": "Headshot of Alex Bui",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "id": "team-enzo",
+      "localPath": "/images/team/team-enzo.jpg",
+      "credit": "Provided by Enzo Sagun, used with permission",
+      "alt": "Headshot of Enzo Sagun",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "id": "team-nifemi",
+      "localPath": "/images/team/team-nifemi.jpg",
+      "credit": "Provided by Nifemi Soyemi, used with permission",
+      "alt": "Headshot of Nifemi Soyemi",
+      "width": 400,
+      "height": 400
+    }
   ]
 }

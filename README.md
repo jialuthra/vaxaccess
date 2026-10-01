@@ -228,10 +228,10 @@ VaxAccess points residents to vaccination resources and shows concrete ways comm
 | Field | Value |
 |---|---|
 | Full name | Jia Luthra |
-| EID | TODO |
+| EID | jkl2767 |
 | GitLab ID | jiakl |
-| Estimated completion time | TODO |
-| Actual completion time | TODO |
+| Estimated completion time | 10 hours |
+| Actual completion time | 4 hours |
 | Comments | TODO |
 
 ### Alex Bui
@@ -241,31 +241,31 @@ VaxAccess points residents to vaccination resources and shows concrete ways comm
 | Full name | Alex Bui |
 | EID | TODO |
 | GitLab ID | atb2923 |
-| Estimated completion time | TODO |
-| Actual completion time | TODO |
-| Comments | TODO |
+| Estimated completion time | 10 hours |
+| Actual completion time | 4 hours |
+| Comments | I think phase 1 went really well, and we coordinated well. |
 
 ### Enzo Sagun
 
 | Field | Value |
 |---|---|
 | Full name | Enzo Sagun |
-| EID | TODO |
+| EID | jas26938 |
 | GitLab ID | j.enzosagun |
-| Estimated completion time | TODO |
-| Actual completion time | TODO |
-| Comments | TODO |
+| Estimated completion time | 4 hours |
+| Actual completion time | 4+ hours |
+| Comments | Phase 1 was alright but definitely put me in check since I had originally underestimated how much time I needed for it. The team for the project is great, I feel like I connected with them well, so it definitely helped with carrying out tasks! |
 
 ### Nifemi Soyemi
 
 | Field | Value |
 |---|---|
 | Full name | Nifemi Soyemi |
-| EID | TODO |
+| EID | aas6996 |
 | GitLab ID | nifemisoyemi |
-| Estimated completion time | TODO |
-| Actual completion time | TODO |
-| Comments | TODO |
+| Estimated completion time | 7 hours |
+| Actual completion time | 6 hours |
+| Comments | Phase 1 went a lot more smoothly than I expected. We were able to break down a good chunk of the overall project all at once and it was great to be able to successfully connect with the team. |
 
 ### Luke Yan
 
