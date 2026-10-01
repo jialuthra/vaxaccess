@@ -130,6 +130,24 @@ describe('StatsPanel states', () => {
     expect(screen.getByText(note)).toBeInTheDocument();
   });
 
+  it('shows a successful zero-case report as 0, distinct from unavailable', async () => {
+    const zero = metrics(0, 0, 0);
+    const { fetcher } = fetcherReturning(
+      ok(
+        envelope({
+          members: [{ name: 'Jia Luthra', username: 'jiakl', ...zero }],
+          unattributed: zero,
+          totals: zero,
+        }),
+      ),
+    );
+    render(<StatsPanel url={URL} fetcher={fetcher} />);
+
+    await screen.findByRole('table');
+    expect(within(row('Project total')).getAllByRole('cell').map((cell) => cell.textContent)).toEqual(['0', '0', '0']);
+    expect(screen.queryByText('Unavailable')).not.toBeInTheDocument();
+  });
+
   it('says statistics are not configured, without a Retry button', async () => {
     const { fetcher } = fetcherReturning({ ok: false, reason: 'not-configured' });
     render(<StatsPanel url={null} fetcher={fetcher} />);
@@ -203,6 +221,29 @@ describe('StatsPanel refresh', () => {
     expect(signals[0]?.aborted).toBe(true);
     await act(() => vi.advanceTimersByTimeAsync(3 * FIVE_MINUTES));
     expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  it('aborts a request that a newer refresh supersedes and ignores its late answer', async () => {
+    const signals: AbortSignal[] = [];
+    let resolveFirst!: (result: StatsResult) => void;
+    const fetcher = vi.fn<StatsFetcher>((_url, signal) => {
+      signals.push(signal!);
+      // The first request hangs; the refresh five minutes later answers at once.
+      if (signals.length === 1) return new Promise((resolve) => (resolveFirst = resolve));
+      return Promise.resolve(ok());
+    });
+    render(<StatsPanel url={URL} fetcher={fetcher} />);
+    expect(screen.getByText('Loading repository statistics…')).toBeInTheDocument();
+
+    await act(() => vi.advanceTimersByTimeAsync(FIVE_MINUTES));
+    expect(signals[0]?.aborted).toBe(true);
+    expect(await screen.findByRole('table')).toBeInTheDocument();
+
+    // The superseded request finally answers with a failure; it must change nothing on screen.
+    await act(async () => resolveFirst({ ok: false, reason: 'unavailable' }));
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.queryByText(/Could not refresh/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Retry' })).not.toBeInTheDocument();
   });
 
   it('does not poll when statistics are not configured', async () => {

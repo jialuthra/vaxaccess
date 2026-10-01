@@ -21,5 +21,6 @@
   "tests/unit/server/contributors.test.ts": "j.enzosagun",
   "tests/unit/server/gitlabClient.test.ts": "j.enzosagun",
   "tests/unit/server/handler.test.ts": "j.enzosagun",
+  "tests/unit/server/integration.test.ts": "j.enzosagun",
   "tests/unit/server/service.test.ts": "j.enzosagun"
 }
