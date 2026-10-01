@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Jia Luthra",
+    "username": "jiakl",
+    "phaseRole": "Phase I leader",
+    "bio": "TODO: bio from Jia",
+    "photoId": null,
+    "responsibilities": ["TODO: responsibilities from Jia"]
+  },
+  {
+    "name": "Alex Bui",
+    "username": "atb2923",
+    "phaseRole": "Team member",
+    "bio": "TODO: bio from Alex",
+    "photoId": null,
+    "responsibilities": ["TODO: responsibilities from Alex"]
+  },
+  {
+    "name": "Enzo Sagun",
+    "username": "j.enzosagun",
+    "phaseRole": "Team member",
+    "bio": "TODO: bio from Enzo",
+    "photoId": null,
+    "responsibilities": ["TODO: responsibilities from Enzo"]
+  },
+  {
+    "name": "Nifemi Soyemi",
+    "username": "nifemisoyemi",
+    "phaseRole": "Team member",
+    "bio": "TODO: bio from Nifemi",
+    "photoId": null,
+    "responsibilities": ["TODO: responsibilities from Nifemi"]
+  },
+  {
+    "name": "Luke Yan",
+    "username": "lukeyawn",
+    "phaseRole": "Team member",
+    "bio": "TODO: bio from Luke",
+    "photoId": null,
+    "responsibilities": ["TODO: responsibilities from Luke"]
+  }
+]
