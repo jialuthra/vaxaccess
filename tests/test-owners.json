@@ -11,5 +11,7 @@
   "tests/unit/routes.test.tsx": "lukeyawn",
   "tests/unit/shell.test.tsx": "jiakl",
   "tests/unit/validate-data.test.ts": "atb2923",
-  "tests/unit/opportunity-detail.test.tsx": "j.enzosagun"
+  "tests/unit/opportunity-detail.test.tsx": "j.enzosagun",
+  "tests/unit/server/gitlabClient.test.ts": "j.enzosagun",
+  "tests/unit/server/handler.test.ts": "j.enzosagun"
 }
