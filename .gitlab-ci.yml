@@ -47,10 +47,12 @@ build:
   stage: build
   script:
     - npm run build
+    - npm run build-stats
   artifacts:
     expire_in: 1 week
     paths:
       - dist/
+      - server/dist/stats-lambda.zip
 
 # Playwright browser tests against the production build (served by `vite preview`).
 # Full suite in Chromium, @smoke tests in Firefox and WebKit. Results stay in this job's
