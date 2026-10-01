@@ -19,5 +19,6 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["src", "tests/unit", "tests/setup.ts"]
+  "include": ["src", "tests/unit", "tests/setup.ts"],
+  "exclude": ["tests/unit/server"]
 }
