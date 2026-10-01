@@ -1,0 +1,905 @@
+commit 5f04a2e4c57e16546814fa2bac8f3e66cacd2ace
+Merge: d4ec2c1 f1e114f
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 04:36:53 2026 +0000
+
+    Merge branch 'jia-final-docs' into 'main'
+    
+    Refs #42: Square team headshots and rename role to Developer
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!16
+
+commit f1e114f5646bf69683ad1f58da66536473278095
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 23:28:24 2026 -0500
+
+    Refs #42: Square team headshots and rename role to Developer
+    
+    The img height attribute fixed each team photo's height, so aspect-ratio was
+    ignored (354x192 for Alex's 192 px headshot, 354x400 for the others). height:
+    auto makes every photo square.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit d4ec2c13ec4cd6ccee74f885789a8f9a82e92b8b
+Merge: 852b8b8 260b6eb
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 04:17:13 2026 +0000
+
+    Merge branch 'jia-final-docs' into 'main'
+    
+    Closes #42 #43 #45, Refs #41 #46: Final team data, time log and DESIGN.md update
+    
+    Closes #42, #43, and #45
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!15
+
+commit 260b6eb25b23d0039a166d087662d7fb57b95a53
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 23:12:45 2026 -0500
+
+    Closes #43 #45, Refs #46: Add time log and update DESIGN.md
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit d3ffe13a0b0af2f455670e16c84e75dac10ca429
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 23:10:53 2026 -0500
+
+    Closes #42, Refs #41: Complete team bios, photos and README member info
+    
+    Adds Luke's headshot and bio, sets every member's responsibilities and fills
+    the remaining README member fields. AboutPage tests no longer rely on a member
+    lacking a photo, and match Jia's role badge rather than the same text in her
+    responsibilities.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 852b8b88a93c9ea7d49b1b3cb0d52d72c7afd6fa
+Merge: 1689605 7d40895
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 03:14:39 2026 +0000
+
+    Merge branch 'enzo-35-stats-tests' into 'main'
+    
+    Refs #35: Add end-to-end statistics test and remaining UI state tests
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!14
+
+commit 7d4089554f6d36627113b43756ea6bd2277005a8
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 22:11:53 2026 -0500
+
+    Refs #35: Add end-to-end statistics test and remaining UI state tests
+    
+    - tests/unit/server/integration.test.ts: real GitLabClient + aggregation +
+      service against a scripted GitLab: commits paginated with a duplicate SHA
+      across pages, issues paginated with a 429 mid-read and an issue assigned
+      to (but not authored by) a member, pipeline selection skipping a failed
+      unit job and accepting an acceptance-only failure, and a test report with
+      skipped, parameterized, unowned and acceptance cases. Checks every count
+      reconciles and that the token never appears in the response.
+    - StatsPanel: successful zero-case report renders 0, not Unavailable; a
+      superseded request is aborted and its late answer changes nothing.
+    - Owner entry for the new test file.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 1689605a82685abc48a8b18f3601db7973534422
+Merge: 263f08e 39260af
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 03:07:19 2026 +0000
+
+    Merge branch 'enzo-33-ci-reporting' into 'main'
+    
+    Refs #33: Normalize JUnit and publish unit-test ownership artifact in CI
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!13
+
+commit 39260afd3f8f8fa05f33e699d33dc8b2f0a53a13
+Merge: 292261d 263f08e
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 22:04:26 2026 -0500
+
+    Merge remote-tracking branch 'origin/main' into enzo-33-ci-reporting
+    
+    # Conflicts:
+    #       tests/test-owners.json
+
+commit 263f08e7b1dfe8bcecf1dea7c73ae4ec6e51da4a
+Merge: aacc631 d3ce0fb
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 02:59:10 2026 +0000
+
+    Merge branch 'enzo-34-about' into 'main'
+    
+    Refs #34: Build About page with team cards and live statistics
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!12
+
+commit d3ce0fb05fbc370a1b520f1a9991a703af97c69a
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 21:56:56 2026 -0500
+
+    Refs #34: Build About page with team cards and live statistics
+    
+    - AboutPage: purpose and intended users; five TeamCards from team.json
+      (Jia shown as Phase I leader); repository statistics with metric
+      definitions and timestamps; data sources with usage; tools and how each
+      is used; all media credits; GitLab repository and Postman links.
+    - statsClient: GET to VITE_STATS_URL with response validation; 429, other
+      HTTP errors, network failures and non-JSON become unavailable reasons.
+    - StatsPanel: loading/current/stale/unavailable states, Retry, refresh every
+      five minutes while visible (catching up when the tab returns), keeps the
+      last values on a failed refresh, cancels on unmount.
+    - Shared copy in en.ts, formatDateTime, catalog media getters, SourceList
+      showUsage option, About styles.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit aacc63169d57c864479d1ba61ebee56f00661d32
+Merge: 3df5da7 8f4e13b
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 02:48:27 2026 +0000
+
+    Merge branch 'enzo-build-stats' into 'main'
+    
+    Refs #33: Add build-stats Lambda bundle script
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!11
+
+commit 8f4e13b04eeb926898e289b27c7174f794963e7d
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 21:45:32 2026 -0500
+
+    Refs #33: Add build-stats Lambda bundle script
+    
+    - scripts/build-stats.ts: bundles server/stats/handler.ts with Vite (SSR
+      mode, all dependencies inlined) into server/dist/index.mjs and zips it as
+      server/dist/stats-lambda.zip for upload. Handler: index.handler, runtime
+      nodejs24.x. No new dependencies; deterministic zip via node:zlib.
+    - .gitlab-ci.yml: build job also runs build-stats and publishes the zip.
+    - docs/deployment.md: exact upload file and handler setting.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 292261d17ff51f495ee5f00ead2fdebdddb5a418
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 21:39:27 2026 -0500
+
+    Refs #33: Normalize JUnit and publish unit-test ownership artifact in CI
+    
+    - scripts/report-unit-tests.ts (+ scripts/lib/unitTestReport.ts): rewrites
+      reports/junit.xml so each classname carries the repository-relative file
+      path and suite name ("tests/unit/a.test.ts > Suite", name = test title,
+      file attribute added); writes reports/unit-test-owners.json with
+      schemaVersion 1, CI_PIPELINE_ID, CI_COMMIT_SHA and the owners map from
+      tests/test-owners.json. Fails on duplicate test identities; warns on
+      unowned test files.
+    - .gitlab-ci.yml: unit job runs the report step even when tests fail, then
+      exits with Vitest's status; artifacts remain `when: always`.
+    - Cross-phase CI contract documented in README and the CI file header.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 3df5da731c4fc92be9385ef262bc955dd148e622
+Merge: 654b6a6 0640bc2
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 02:33:30 2026 +0000
+
+    Merge branch 'enzo-32-stats-aggregation' into 'main'
+    
+    Refs #32: Add statistics aggregation, cache and contributor map
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!10
+
+commit 654b6a60c6ba0cc99bd0f605ecf758c1e77d71ae
+Merge: 9f5843d b8f9d89
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 02:28:17 2026 +0000
+
+    Merge branch 'jia-42-bios' into 'main'
+    
+    Refs #41 #42: Add team bios, headshots and submission info
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!7
+
+commit 0640bc2afdd11c4c2b766c8eaab0803a21012d57
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 21:27:08 2026 -0500
+
+    Refs #32: Add statistics aggregation, cache and contributor map
+    
+    - aggregate.ts: commits attributed via CONTRIBUTOR_MAP email/exact-name
+      aliases (deduped by SHA); issues by author ID, never assignee; unit tests
+      from the newest of the last 20 default-branch pipelines whose `unit` job
+      succeeded, deduped by classname + name, skipped counted separately, owners
+      from the same pipeline's unit-test-owners.json artifact. Members +
+      unattributed always reconcile to totals; when attribution is impossible
+      both become unavailable while the total stays available.
+    - service.ts/cache.ts: per-source current/stale/unavailable with original
+      timestamps; 5-minute in-memory cache (30 s after a degraded refresh);
+      concurrent refreshes coalesced.
+    - contributors.ts + server/config/contributors.example.json (placeholder
+      aliases only); src/types/stats.ts shared response contract.
+    - gitlabClient.ts: job artifact download following one storage redirect
+      without the token. handler.ts now exports the Lambda entry point.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 9f5843d79464eaef9f638f197ffe582894fbe693
+Merge: 09283d4 7940f27
+Author: John Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Thu Oct 1 02:00:28 2026 +0000
+
+    Merge branch 'enzo-31-stats-client' into 'main'
+    
+    Refs #31: Add GitLab client and GET-only handler for statistics Lambda
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!9
+
+commit 7940f278d6b2993d7316a29685661e3a1b903439
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 20:54:46 2026 -0500
+
+    Refs #31: Add GitLab client and GET-only handler for statistics Lambda
+    
+    - gitlabClient.ts: resolves the project/default branch and roster user IDs;
+      reads default-branch commits, issues (scope=all, state=all), recent
+      pipelines, jobs and test reports. Follows Link/X-Next-Page pagination to
+      exhaustion (same-origin only), bounded per-request timeouts, honors 429
+      Retry-After/RateLimit-Reset within limits, refuses redirects.
+    - handler.ts: accepts only GET /, 405/404 otherwise, generic 500 on failure;
+      emits no CORS headers and logs only sanitized errors.
+    - config.ts: token and project path read from the server environment only.
+    - server/tsconfig.json wired into tsc -b; tests owned in test-owners.json.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit b8f9d895ebc636c96a30e828a300360e07b330a6
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 20:53:58 2026 -0500
+
+    Refs #41 #42: Add team bios, headshots and submission info
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 09283d426e0a022cff64bfe4fcda1b120e80bab0
+Merge: ecf5981 47c454b
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 01:23:45 2026 +0000
+
+    Merge branch 'jia-41-readme' into 'main'
+    
+    Refs #41: Update README to match DESIGN.md Phase I scope
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!1
+
+commit ecf5981bb46fc16158fb67db65404dfb9bbdfc71
+Merge: 3121654 9d6a9ae
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 01:23:36 2026 +0000
+
+    Merge branch 'jia-23-home' into 'main'
+    
+    Closes #23: Build Home splash page
+    
+    Closes #23
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!3
+
+commit 31216543a41aa91f268c26dce25a7b2706632eeb
+Merge: a2d4e82 d20d4d4
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 01:23:25 2026 +0000
+
+    Merge branch 'jia-42-about' into 'main'
+    
+    Refs #42: Add team.json with placeholder profiles
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!6
+
+commit a2d4e82093fba0bf48028ac77003ad5a45a64943
+Merge: 17dc81e 4be161d
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 01:22:29 2026 +0000
+
+    Merge branch 'jia-22-test-owners' into 'main'
+    
+    Refs #22: Fix test-owners.json key for opportunity detail tests
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!5
+
+commit 47c454bde784c3cbc258642e04de2478a51ef780
+Merge: 90b9558 17dc81e
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 20:16:18 2026 -0500
+
+    Merge branch 'main' into jia-41-readme
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit d20d4d4d3c7820ef241b6ee8a1ffbaabf5df5c8d
+Merge: e97d3e8 17dc81e
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 20:16:18 2026 -0500
+
+    Merge branch 'main' into jia-42-about
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 4be161d37794bd1383f14c40566a2fd782faf4d6
+Merge: c58ff71 17dc81e
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 20:16:17 2026 -0500
+
+    Merge branch 'main' into jia-22-test-owners
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 9d6a9aea32b646f853626137f6d833deac3ce5db
+Merge: 8b9851b 17dc81e
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 20:16:17 2026 -0500
+
+    Merge branch 'main' into jia-23-home
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 17dc81efa9bac6cf30ed5726b2b667b83b255c2a
+Merge: a622251 0ca78fe
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Thu Oct 1 01:14:54 2026 +0000
+
+    Merge branch 'jia-22-unused-cards' into 'main'
+    
+    Refs #22: Remove unused cards variable breaking lint
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!4
+
+commit e97d3e82970ae8a096f56d82a2fd89b916c8dab9
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 20:08:43 2026 -0500
+
+    Refs #42: Add team.json with placeholder profiles
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit c58ff71ea8ba35f028558bb39549c70499718e4a
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 19:16:05 2026 -0500
+
+    Refs #22: Fix test-owners.json key for opportunity detail tests
+    
+    The entry pointed at tests/unit/OpportunitiesPage.test.tsx, which doesn't
+    exist; the file added in fc24efb is tests/unit/opportunity-detail.test.tsx.
+    Every unit-test file now has an owner (cross-phase CI contract, DESIGN.md §4.9).
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 0ca78feb2ae0d0bc4ec00a6de0a2ba92c08a66b9
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 19:10:37 2026 -0500
+
+    Refs #22: Remove unused cards variable breaking lint
+    
+    The unused `cards` constant in OpportunitiesPage failed eslint in the
+    check job and tsc in the build, so the acceptance web server never started.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit a6222516db96cbf06aa40a69075b217bcfa22865
+Merge: fc24efb 3fd69c7
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 18:56:28 2026 -0500
+
+    resolved conflicts + task 22: opportunity detail pages
+
+commit 8b9851b617539f5dee540ad37fa56af362cee6b7
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:52:19 2026 -0500
+
+    Closes #23: Build Home splash page
+    
+    Intro beside the Austin skyline hero with its caption and credit, the
+    Austin Public Health current-resources callout, primary Sites/Vaccines
+    actions and a visually secondary volunteering section (DESIGN.md §4.2, §4.8).
+    CurrentResourcesLink takes an optional body so Home's copy doesn't say
+    "the sites below".
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit fc24efb721da613a57f60de3869166ec838e54cd
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 18:52:12 2026 -0500
+
+    tak 22: opportunities detail pages complete
+
+commit 90b9558b703f3e315798058797f4ad524bbb25f0
+Merge: 571acce 3fd69c7
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:41:50 2026 -0500
+
+    Merge branch 'main' into jia-41-readme
+
+commit 3fd69c768f7389dd46710a429719edf956e10b3e
+Merge: 6d29b32 f6199fc
+Author: Jia Luthra <jialuthra@gmail.com>
+Date:   Wed Sep 30 23:41:42 2026 +0000
+
+    Merge branch 'jia-14-shell' into 'main'
+    
+    Closes #14: Add shared Navbar, Footer and PageLayout
+    
+    Closes #14
+    
+    See merge request nifemisoyemi/cs373-fall-2026-18!2
+
+commit f6199fc7d1aeef7181aee8135068bfba86b12e8c
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:34:35 2026 -0500
+
+    Closes #14: Add shared Navbar, Footer and PageLayout
+    
+    Replace the temporary header in App.tsx with the shared shell from
+    DESIGN.md §4.2: navbar with active-section marking and a collapsible
+    mobile menu, skip link, a single main landmark, and a footer linking
+    the existing routes and the repository. Adds shell unit and acceptance
+    tests.
+    
+    Also restores the en.ts string sections removed in 6d29b32 and drops
+    the useMemo in OpportunitiesPage that failed lint, so typecheck and
+    lint pass again.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 571accedf0f7e604b7d87192dd88ffbe7302a819
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:20:35 2026 -0500
+
+    Refs #41: Add local setup and cross-phase CI contract to README
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 6d29b321d63c5727527fe1fbf9b2f010ac0f4d09
+Author: Enzo Sagun <j.enzosagun@gmail.com>
+Date:   Wed Sep 30 18:17:01 2026 -0500
+
+    task 19: opportunities page
+
+commit e320673049736003bdf67d989702befe8fc0338d
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:09:44 2026 -0500
+
+    Refs #41: Match README time commitment to DESIGN.md
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit c298ae5fc9c7c781dfab7df040bdb660029138a2
+Merge: 1f0f873 9f98620
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:08:51 2026 -0500
+
+    Merge main into jia-41-readme
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 1f0f873cf2f1eef4f7f37d5beab3566faf656d44
+Author: jiakl <jialuthra@gmail.com>
+Date:   Wed Sep 30 18:02:22 2026 -0500
+
+    Refs #41: Update README to match DESIGN.md Phase I scope
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 9f9862021d32a65d3a7a7ec1e73b9291d304818b
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 17:35:57 2026 -0500
+
+    Give the site a softer, friendlier finish
+    
+    Using only the existing palette tokens: a light powder-blue/sage wash
+    behind pages, a two-color mark under page headings, accent bars on
+    section headings, pill buttons and badges, rounder cards that lift on
+    hover or focus, uppercase fact labels, a blue filter tray, a sage result
+    chip and dotted source markers. Motion stays off under
+    prefers-reduced-motion.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 1a772294e082d1c4062b85faa47955cb5799d479
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 17:33:52 2026 -0500
+
+    Build the Vaccine detail pages
+    
+    Show the summary, a note to confirm eligibility and timing with a
+    qualified provider, the five facts, the description, the photo and the
+    APH video through MediaBlock, related sites (as documented activity) and
+    opportunities through RelatedCards, the official CDC links and
+    SourceList. Add unit tests and a browser check for both media types.
+    
+    Closes #21
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit faf5db42a35a63276cfcbefc3ff2c409f3a6b862
+Author: nifemisoyemi <adenifemisoyemi@hotmail.com>
+Date:   Wed Sep 30 17:19:55 2026 -0500
+
+    Add the deployment runbook for Amplify, vaxaccess.me and the stats Lambda
+    
+    Refs #38 #39 #40
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit fee538509e4b870be39c44560017dca366973f88
+Author: nifemisoyemi <adenifemisoyemi@hotmail.com>
+Date:   Wed Sep 30 17:19:28 2026 -0500
+
+    Add the Postman collection for the future domain API
+    
+    Six GET requests with collection variables, saved examples for every
+    record, filtering, sorting, pagination, zero matches and 400/404/500
+    errors, and test scripts written for a future server. Example bodies are
+    generated from the fixtures with the frontend's display strings and
+    filter/sort rules.
+    
+    Closes #36
+    Refs #37
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 5ecbcf0c37f9448f50e4b62c45bd07ba4104a24c
+Author: nifemisoyemi <adenifemisoyemi@hotmail.com>
+Date:   Wed Sep 30 17:17:47 2026 -0500
+
+    Build Site detail pages with reusable media and source components
+    
+    Site details show the dated historical context first, a link to current
+    Austin Public Health services, cost/population/appointment facts, the
+    photo, an OpenStreetMap embed on the collected coordinates, related
+    vaccine and opportunity cards, external links and sources.
+    
+    MediaBlock (photo, OpenStreetMap, YouTube) and SourceList are shared so
+    the Vaccine and Opportunity detail pages can reuse them.
+    
+    Closes #20
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 124719e248b096b9ff73bfd0d3503b89045908e4
+Author: nifemisoyemi <adenifemisoyemi@hotmail.com>
+Date:   Wed Sep 30 17:15:49 2026 -0500
+
+    Build the Sites listing page
+    
+    Adds the explanation, a prominent link to Austin Public Health's current
+    immunization resources, and the filterable, sortable site cards.
+    
+    Closes #17
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 754c845ec665690c6d9e019bc412f8023af97848
+Author: nifemisoyemi <adenifemisoyemi@hotmail.com>
+Date:   Wed Sep 30 17:15:18 2026 -0500
+
+    Add palette tokens and global Bootstrap styles
+    
+    All 55 palette colors as custom properties, semantic variables, and
+    Bootstrap overrides for body, links, buttons, focus and cards.
+    
+    Closes #10
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 6c359f30098a9b698a5200235b5f6fd3ea4538c6
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:34:21 2026 -0500
+
+    Add Playwright acceptance tests and CI job
+    
+    Run against the production build served by vite preview: all 14 URLs on
+    direct load and refresh, unknown path/ID redirects, a crawl of every
+    internal link that fails on redirects or extra pages, listing cards,
+    photos, sort/filter/clear, and responsive columns and overflow. Chromium
+    runs the full suite; Firefox and WebKit run @smoke tests. The new
+    acceptance job keeps its reports as artifacts and does not touch the
+    unit job's JUnit report.
+    
+    The Sites and Opportunities listing tests fail until #17 and #19 land.
+    
+    Closes #30
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit ee7ca8c5c323aa0f78aa34b5d4cfc34399b1311c
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:30:39 2026 -0500
+
+    Validate fixture integrity in CI
+    
+    scripts/lib/dataValidation.ts checks the DESIGN.md data contracts:
+    three records per model, slug IDs, required strings, HTTPS links,
+    source/photo/video references, nine distinct card photos, collected
+    coordinates, retained evidence, no dates in timeCommitment, no signup on
+    past activities, and edges that are known, unique and connect every
+    record to both other models. npm run validate-data runs it on the real
+    files in the CI check job; unit tests cover each rule.
+    
+    Closes #29
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit e6a0d317db59108762fe16399b8c75cec7380959
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:28:13 2026 -0500
+
+    Verify vaccine clinical text against the collected CDC pages
+    
+    - COVID-19: CDC now recommends vaccination for everyone 6 months and
+      older through individual decision-making; types are mRNA or protein
+      subunit. Link the current interim clinical considerations.
+    - Influenza: cite the key-facts page for the schedule, which is where
+      the two-dose rule for some children appears.
+    - Mpox: replace an unsourced transmission claim with CDC's advice on
+      skin-to-skin contact; note subcutaneous use under 18 and 28 days.
+    
+    Rerun collection so data/raw keeps the passages this text relies on,
+    and refresh each source's retrievedAt.
+    
+    Closes #27
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 095fe882ce91d10960456e669fa7b6711de831c5
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:27:01 2026 -0500
+
+    Fill Site coordinates and source provenance from collection
+    
+    Copy the accepted Census Geocoder coordinates into sites.json and each
+    source's retrievedAt and rawPath from data/collection-manifest.json.
+    Record the publication dates the FOX 7 and UT nursing articles state.
+    
+    Closes #26
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 16af4a9c16d04ad89e109ce29fe7bc47b5928450
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:25:54 2026 -0500
+
+    Collect source evidence and Census Geocoder responses
+    
+    scripts/collect-data.ts fetches every HTML source and keeps bounded
+    evidence (status, retrieval time, publication date, body hash, short
+    excerpts with contact details removed) in data/raw/. It geocodes each
+    Site through the Census one-line endpoint, accepting only a match whose
+    ZIP, street and house-number range agree with the source address, and
+    keeps the actual REST responses. The script never edits src/data.
+    
+    Closes #25
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 532c727ed33f4f72e716d4d0eebcded42631b42e
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:22:05 2026 -0500
+
+    Build the Vaccines listing page
+    
+    Add the explanation and ModelListing with the vaccine cards below the
+    catalog summary, with tests for the header, cards, links and filtering.
+    
+    Closes #18
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit bbf2d02a7705aa1f824f417d6ad336edfb585971
+Author: abui304 <atb2923@utexas.edu>
+Date:   Wed Sep 30 15:21:17 2026 -0500
+
+    Add the nine card photos and their media metadata
+    
+    Download the Wikimedia originals, resize to 1200 px wide JPEGs and record
+    originalUrl, width, height and changes in media.json. Rewrite alt text to
+    match the actual images (the influenza photo shows a vial, not an
+    injection; the VAMOS photo shows an injection in progress).
+    
+    Closes #28
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit bf4ca46ad866ba5e80d9bada82451f105a52921b
+Author: Luke <lukeyanj@gmail.com>
+Date:   Wed Sep 30 00:34:19 2026 -0500
+
+    Add tsx so TypeScript script tasks can run
+    
+    collect-data, validate-data, build-stats and validate-release failed
+    with "tsx: not found" because tsx was never installed.
+    
+    Closes #47
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit b4e5764977fe6df5fe2bc75360ae6df6a85550c6
+Author: Luke <lukeyanj@gmail.com>
+Date:   Wed Sep 30 00:23:55 2026 -0500
+
+    Add remaining-work checklist and directory READMEs
+
+commit af949273db4ce7beaaf68515714f8fecc9e07f7a
+Author: Luke <lukeyanj@gmail.com>
+Date:   Wed Sep 30 00:06:20 2026 -0500
+
+    Add component tests for cards, listing controls and routing
+    
+    Covers card content, photo credit, badges, heading levels, filter AND
+    matching and case-insensitivity, zero matches, Clear filters keeping the
+    sort, sorting by field in both directions, the collapsible panel,
+    related-card sections, all 14 routes and the redirects.
+    
+    Closes #24
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit cc9c65d70dfb616a5fc5763501d1027f202e565b
+Author: Luke <lukeyanj@gmail.com>
+Date:   Wed Sep 30 00:06:20 2026 -0500
+
+    Build reusable model card and listing controls
+    
+    ModelCard shows the photo with caption and credit, linked name, status
+    badge, the five labeled attributes and a detail link. ModelListing
+    combines the collapsible per-field filters, sort field and direction,
+    result count, zero-match message with Clear filters, and a 1/2/3-column
+    grid. RelatedCards reuses the same card for detail-page sections.
+    
+    Closes #16
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit d8f4a0cb20bacd5b771a5b486ad4ea9133737deb
+Author: Luke <lukeyanj@gmail.com>
+Date:   Wed Sep 30 00:04:27 2026 -0500
+
+    Add routing for the 14 pages and redirects
+    
+    Data router with exactly the DESIGN.md §4.1 URLs. Unknown paths redirect
+    to Home; unknown instance IDs redirect to their listing with an
+    explanation in router state. Placeholder page components are ready for
+    the page owners (#17-#23, #34), and English UI strings and public site
+    config are centralized in src/content/en.ts and src/config/site.ts.
+    
+    Closes #15
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit b9db2dce1ef2597cc4a1eb534d9eb192454ac032
+Author: Luke <lukeyanj@gmail.com>
+Date:   Wed Sep 30 00:02:18 2026 -0500
+
+    Add unit tests for catalog and listing services
+    
+    Covers display strings, relationships in both directions, distinct card
+    photos, every filter and sort key for all three models, AND matching,
+    case-insensitivity, trimming, tie-breaking and zero matches.
+    
+    Also lets listing helpers infer field keys from the items rather than
+    the sort key, and adds an AnyCardData union type.
+    
+    Closes #13
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 518fd216bc95da303b4b15099772babe97b54c45
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:59:47 2026 -0500
+
+    Implement catalog service and display strings
+    
+    Single access point for fixtures: record lookup, relationships derived
+    in both directions from stored edges, the DESIGN.md §4.4 display
+    strings, and card data shared by listings and related-record sections.
+    
+    Closes #11
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 99c1a3b9ac112cc80d5316e02661bbaf1baeb524
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:59:47 2026 -0500
+
+    Implement listing filter and sort utilities
+    
+    Trimmed, case-insensitive substring filters combined with AND; sort by
+    name or any field key in either direction with English collation and
+    name/ID tie-breakers. Filtering precedes sorting.
+    
+    Closes #12
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 4f8f227b76483d5712489fac185129d615e57208
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:58:37 2026 -0500
+
+    Define domain types and seed fixtures
+    
+    TypeScript contracts from DESIGN.md §4.5 and seed JSON for the nine
+    records, nine relationship edges, sources S1-S14 and media metadata,
+    populated from the DESIGN.md §4.6-4.8 tables.
+    
+    Collection outputs (coordinates, retrievedAt/rawPath, image original
+    URL and dimensions) are null until the collection issues (#25, #26,
+    #28) fill them; photo alt text should be checked against the images.
+    
+    Closes #9
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 1eadb34fa915bd59e44ba8840ca3a889d615812b
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:56:11 2026 -0500
+
+    Add GitLab CI pipeline with check, unit and build jobs
+    
+    The unit job publishes its JUnit report and documents the cross-phase
+    CI contract the statistics Lambda depends on.
+    
+    Refs #8
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 96827d5ba1941ecd517b55f821b1299303bf97f5
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:56:03 2026 -0500
+
+    Add .gitignore, Makefile, amplify.yml and .env.example
+    
+    Makefile targets mirror the npm tasks from DESIGN.md §4.12. amplify.yml
+    builds from the lockfile and documents the SPA rewrite rule.
+    
+    Closes #7
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit f2334a5dd75cd098d7aad5aaeea9c84caacd4a09
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:56:03 2026 -0500
+
+    Scaffold React + TypeScript + Vite project
+    
+    Strict TypeScript, React Router, Bootstrap, Vitest + React Testing
+    Library and ESLint. Node 24 pinned in .nvmrc and package engines.
+    
+    Closes #6
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit b0ebd1dd9a5c43b4cba75aadbe7cdf71e66b9cf5
+Author: Luke <lukeyanj@gmail.com>
+Date:   Tue Sep 29 23:21:00 2026 -0500
+
+    Iterate design doc
+
+commit 5fe6acff74ede9ddde471ec8abd0b3a7dd649a60
+Author: jiakl <jialuthra@gmail.com>
+Date:   Tue Sep 29 23:05:18 2026 -0500
+
+    added design doc
+
+commit bb77530a77a3909a64c1ccd1d1c760c1ba0b414a
+Author: nifemisoyemi <adenifemisoyemi@hotmail.com>
+Date:   Fri Sep 25 17:42:41 2026 -0500
+
+    README done
+
+commit 9a626d3c10b9b551bc8b745f33ffce4a5b96023f
+Author: Nifemi Soyemi <nifemisoyemi@gmail.com>
+Date:   Fri Sep 25 21:18:49 2026 +0000
+
+    Initial commit
