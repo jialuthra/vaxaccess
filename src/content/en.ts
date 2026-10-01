@@ -180,5 +180,21 @@ export const en = {
       `We couldn't find that ${singular}. Here are all ${pluralNoun} instead.`,
   },
 
+  opportunityDetail: {
+    pastNotice: 'Past activity — not accepting signups through this listing.',
+    viewHistoricalSource: 'View historical source',
+    exploreOrganizer: 'Explore organizer information',
+    signUp: 'Sign up',
+    detailsHeading: 'Details',
+    dateLabel: 'Date',
+    statusLabel: 'Status',
+    noEndDate: 'Ongoing — no end date',
+    dateNotStated: 'Date not stated',
+    aboutHeading: 'About this opportunity',
+    locationHeading: 'Location',
+    relatedSites: 'Related sites',
+    relatedVaccines: 'Related vaccines',
+  },
+
   notConfigured: 'Not configured',
 };

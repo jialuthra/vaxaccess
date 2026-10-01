@@ -5,7 +5,7 @@ import { getOpportunityCards, getCatalogSummary } from '../services/catalog.ts';
 export default function OpportunitiesPage() {
   const strings = en.models.opportunities;
   const summary = getCatalogSummary('opportunities');
-
+ 
   return (
     <div className="container py-4">
       <h1>{strings.title}</h1>
